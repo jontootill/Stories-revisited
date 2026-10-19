@@ -1,0 +1,130 @@
+{
+  "nodes": {
+    "node_1_1": {
+      "text": "It’s just past dusk when you pull back your kitchen curtains to check the weather, your eyes drifting across the courtyard to the opposing brick building. Most apartments opposite have their blinds firmly drawn, but one second-floor window is wide open and brightly lit. Inside, you catch the soft flickering blue glow of a television screen. A man is sitting on the edge of his sofa, casually watching a late-night broadcast, entirely unaware that his living room is completely visible from where you stand.",
+      "choices": [
+        {
+          "text": "Watch for a few seconds out of idle curiosity, then drop your curtains and turn away.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_2_cautious"
+        },
+        {
+          "text": "Pause, leaning against the window frame a little longer, finding a quiet comfort in watching.",
+          "effects": { "heat": 5, "heart": 5, "inhibition": 0 },
+          "next_node": "node_1_2_normal"
+        },
+        {
+          "text": "Keep your lights off so you can stand right at the glass, studying his silhouette in the dim glow.",
+          "effects": { "heat": 15, "inhibition": -10, "heart": 0 },
+          "next_node": "node_1_2_bold"
+        }
+      ]
+    },
+    "node_1_2_cautious": {
+      "text": "You spent last night staring at closed blinds, proud of your self-control. Days pass. You throw yourself into work, avoiding the kitchen after dark entirely. But on a rainy Thursday night, you're forced to open the window to let out the steam from cooking. Across the courtyard, his light is on again. He’s sitting at his small dining table eating a quiet late-night dinner, a glass of water beside his plate, oblivious to the world outside.",
+      "choices": [
+        {
+          "text": "Slam the window shut immediately. Watching someone eat feels far too personal.",
+          "effects": { "heart": 0, "inhibition": 15, "heat": -5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Pause with the wooden spoon in your hand, quietly taking in the solitary rhythm of his evening.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Turn off the kitchen stove and step right up to the wet glass to watch him finish his meal.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 15 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_2_normal": {
+      "text": "The next evening, the sun dips below the horizon, leaving the courtyard in deep shadow. You find yourself standing by your kitchen window again with a warm mug of tea. Sure enough, his window is illuminated. He’s moving around his flat with headphones on, casually vacuuming the rug, totally lost in whatever music he’s listening to, completely unbothered by the wide-open blinds.",
+      "choices": [
+        {
+          "text": "Smile softly to yourself, then force yourself to step away and focus on your own chores.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Lean against the counter, watching him move through his private routine with easy familiarity.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 10 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Turn off your overhead lights so you can rest your forehead against the pane and watch him unimpeded.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 20 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_2_bold": {
+      "text": "By Saturday night, watching has become a deliberate choice. You don't even turn on your kitchen lights anymore. You linger in the dark near the glass, waiting. Around eleven, he emerges from his bathroom with a towel thrown over his shoulder, damp hair clinging to his forehead, bare-chested and entirely relaxed as he walks through his living room.",
+      "choices": [
+        {
+          "text": "Step back quickly into the hallway, cheeks burning at having caught something so private.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Feel a sudden jolt in your stomach at the intimacy of it, but hold your ground in the dark.",
+          "effects": { "heart": 5, "inhibition": -10, "heat": 20 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Slowly step right up to the pane, letting your eyes linger deliberately on the muscle across his back.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 30 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_3": {
+      "text": "A full week slips by, and the habit takes deeper root in the background of your life. Seeing the warm glow of his apartment across the square has become an expected fixture of dusk. You know his small quirks now—how he always leaves one floor lamp burning while he works on his laptop, or how he rests his mug on the sill.",
+      "choices": [
+        {
+          "text": "Watch furtively from behind the heavy fabric of your curtain edge, keeping yourself carefully hidden.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_4"
+        },
+        {
+          "text": "Stand comfortably at the glass for longer stretches, holding a fresh glass of wine as you observe.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 10 },
+          "next_node": "node_1_4"
+        },
+        {
+          "text": "Make sure every light in your apartment is killed, standing in complete pitch blackness to get closer.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 20 },
+          "next_node": "node_1_4"
+        }
+      ]
+    },
+    "node_1_4": {
+      "text": "On Friday evening, a close friend comes over for a bottle of wine and a long-overdue catch-up. You're sitting around the kitchen counter when night falls over the courtyard. Right on queue, across the dark square, the familiar second-floor window lights up. He moves into view in his living room, completely unbothered and oblivious.",
+      "choices": [
+        {
+          "text": "Casually stand up and draw your kitchen blinds shut tight, ensuring your friend sees nothing.",
+          "effects": { "heart": 0, "inhibition": 15, "heat": -5 },
+          "flags": { "friend_involved": false },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        },
+        {
+          "text": "Keep talking normally, but position your chair so you can keep discreetly glancing out the glass.",
+          "effects": { "heart": 5, "inhibition": 0, "heat": 10 },
+          "flags": { "friend_involved": false },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        },
+        {
+          "text": "Nudge your friend with a playful smirk, pointing out the window to show off your view.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 25 },
+          "flags": { "friend_involved": true },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        }
+      ]
+    }
+  }
+}

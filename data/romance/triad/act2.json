@@ -1,0 +1,73 @@
+{
+  "nodes": {
+    "node_2_1": {
+      "text": "--- ACT 2: UNSPOKEN BOUNDARIES ---\n\nHe guides you both from the kitchen island toward the low-lit living room. The large velvet sofa sits in the center of the space. How the three of you sit will set the rhythm for the rest of the evening. He sits back against the central cushions, resting one arm comfortably along the back frame, watching to see where you and your friend will move. The soft fabric of his shirt stretches across his chest with each slow breath.",
+      "choices": [
+        {
+          "text": "Sit on the armchair adjacent to the sofa, keeping a polite distance while maintaining soft eye contact, aware of the warmth already gathering low in your belly.",
+          "effects": { "heart": 10, "inhibition": 10, "heat": 5 },
+          "next_node": "node_2_2"
+        },
+        {
+          "text": "Sit beside him on the sofa, guiding your friend to take the spot on his other side. Your thigh brushes his, and the light contact sends a quiet spark through you.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 20 },
+          "next_node": "node_2_2"
+        },
+        {
+          "text": "Sit directly between his legs on the plush rug, leaning back against his knees as your friend sits beside him. The solid heat of his thighs frames you, and you feel the subtle shift of his body behind yours.",
+          "min_heat": 30,
+          "max_inhibition": 35,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "next_node": "node_2_2"
+        }
+      ]
+    },
+    "node_2_2": {
+      "text": "The atmosphere grows heavier and warm. He reaches out, his fingers lightly trailing across your shoulder while his other hand reaches out to touch your friend's wrist. The unspoken permission shifts through the trio—a silent check-in where eyes meet, breaths hitch, and everyone confirms they want to move forward together. His fingertips linger a moment longer than necessary against your skin.",
+      "choices": [
+        {
+          "text": "Rest your hand gently over his fingers, looking at your friend to share a slow, comfortable smile. The simple contact feels intimate enough to make your pulse quicken.",
+          "effects": { "heart": 15, "inhibition": 5, "heat": 15 },
+          "next_node": "node_2_3"
+        },
+        {
+          "text": "Lean into his touch, turning your head to whisper a warm encouragement to your friend. His palm settles more firmly against your shoulder, thumb brushing the edge of your collarbone.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 25 },
+          "next_node": "node_2_3"
+        },
+        {
+          "text": "Reach out with both hands—one taking his jawline and the other taking your friend’s hand, drawing them both closer. You feel the warmth of his breath against your wrist as the three of you close the last of the space.",
+          "min_heat": 40,
+          "max_inhibition": 25,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 40 },
+          "next_node": "node_2_3"
+        }
+      ]
+    },
+    "node_2_3": {
+      "text": "Conversation fades into low ambient music and steady breathing. The distance between three bodies dissolves. Jackets and shoes are kicked off, landing silently on the rug. Standing up or leaning back on the cushions, the initial awkwardness is completely gone, replaced by a deep, mutual appetite for what comes next. The air feels charged, every small movement heightened.",
+      "choices": [
+        {
+          "text": "Unbutton the collar of your shirt softly, letting the warm air brush your skin as you sit back. The small reveal draws both of their eyes for a lingering second.",
+          "effects": { "heart": 10, "inhibition": 0, "heat": 20 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/triad/act3.json"
+        },
+        {
+          "text": "Slowly slip your shirt off your shoulders, dropping it onto the floor while looking at both of them. The cool air meets your bare skin, and you feel the quiet intensity of their attention.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 30 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/triad/act3.json"
+        },
+        {
+          "text": "Reach for his shirt buttons while guiding your friend's hands to your own waist, taking complete control of the escalation. Your fingers brush the warm skin of his chest as you open the fabric, and your friend’s palms settle against the soft curve of your hips.",
+          "min_heat": 50,
+          "max_inhibition": 20,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 45 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/triad/act3.json"
+        }
+      ]
+    }
+  }
+}

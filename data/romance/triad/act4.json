@@ -1,0 +1,139 @@
+{
+  "nodes": {
+    "node_4_1": {
+      "text": "--- ACT 4: THE GLASS PERFORMANCE ---\n\nHe stands up, guiding you and your friend across the dark hardwood floor toward his massive floor-to-ceiling kitchen window. Overhead, his amber kitchen lights are fully lit, turning the pane into an uncurtained stage. Standing right at the glass, fully bare, you look directly across the dark square at your own empty kitchen window. For months, you stood over there watching him. Now, you stand in his light, looking back.",
+      "choices": [
+        {
+          "text": "Press your palm against the glass, overwhelmed by the surreal perspective of seeing your own building while his hands settle on your hips from behind.",
+          "effects": { "heart": 15, "inhibition": 5, "heat": 20 },
+          "next_node": "node_4_2_window_contact"
+        },
+        {
+          "text": "Pull your friend up to the glass beside you, leaning your back against his chest as his arms wrap around you both. The cold pane meets your breasts and hers at the same time.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 30 },
+          "next_node": "node_4_2_window_contact"
+        },
+        {
+          "text": "Press your bare front flat against the cold glass in full view of the courtyard, letting out a soft, shuddering sigh as he steps in close and the hard length of him rests against your lower back.",
+          "min_heat": 55,
+          "max_inhibition": 20,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 45 },
+          "next_node": "node_4_2_window_contact"
+        }
+      ]
+    },
+    "node_4_2_window_contact": {
+      "text": "He steps up behind you at the window sill, his hands sliding down your hips while your friend stands facing you, kissing your lips and jawline. The contrast between the cold glass against your stomach and the intense warmth of two bare bodies surrounding you creates an intoxicating rush. The entire dark courtyard stretches out below your lit stage.",
+      "choices": [
+        {
+          "text": "Keep your eyes locked on your own distant window across the way as he begins to move behind you, the thick head of him sliding slowly between your slick folds.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 30 },
+          "next_node": "node_4_3_the_show"
+        },
+        {
+          "text": "Arch your back into his chest, holding your friend tight as his hands move over your hips at the glass. He presses forward and sinks into your heat in one deep, steady thrust while your friend reaches down to touch where you are joined.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 40 },
+          "next_node": "node_4_3_the_show"
+        },
+        {
+          "text": "Reach behind you to grip his thigh while pulling your friend down against you, explicitly performing for the night air. He lifts one of your legs higher against the glass and drives into you hard, every wet sound carrying in the quiet kitchen.",
+          "min_heat": 65,
+          "max_inhibition": 15,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 55 },
+          "next_node": "node_4_3_the_show"
+        }
+      ]
+    },
+    "node_4_3_the_show": {
+      "text": "The glass fogs slightly from your combined breathing. He lifts you slightly, setting a deep, steady rhythm while your friend stands right in front of you, holding your shoulders and kissing you continuously. Every motion is amplified in the bright overhead lighting—a three-person performance playing out directly behind the pane where he once stood alone. Your friend slips two fingers between your bodies to rub your clit in time with his thrusts.",
+      "choices": [
+        {
+          "text": "Bite your lip as you hold onto your friend's neck, gasping softly against their skin while the first orgasm rolls through you, clenching tightly around him.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 35 },
+          "next_node": "node_4_4_shared_finish"
+        },
+        {
+          "text": "Match his pace stroke for stroke while running your hands over your friend's bare back. The dual stimulation of his depth and her fingers pushes you into a hard climax that leaves your thighs shaking against the glass.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 45 },
+          "next_node": "node_4_4_shared_finish"
+        },
+        {
+          "text": "Flatten both palms against the fogged glass, arching back into him as your friend touches you right at the sill. You climax loudly against the pane, juices running down your legs, and feel him swell even thicker inside you as he nears his own edge.",
+          "min_heat": 70,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -30, "heat": 60 },
+          "next_node": "node_4_4_shared_finish"
+        }
+      ]
+    },
+    "node_4_4_shared_finish": {
+      "text": "He eases out of you at the last moment, breathing hard against your neck. With a low sound he turns you and your friend so that both of you are facing him at the glass. His hand moves rapidly along his length while the two of you drop to your knees together on the cool floor, looking up at him under the bright kitchen lights.",
+      "choices": [
+        {
+          "text": "Open your mouth and hold your friend’s hand as he finishes across both of your tongues. Warm, thick pulses land on your lips and chin; you and your friend swallow what you can and kiss the rest from each other’s mouths.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 40 },
+          "next_node": "node_4_5_visible_aftermath"
+        },
+        {
+          "text": "Guide him so that he finishes across your breasts and your friend’s. The hot stripes of semen land in thick ropes over your skin; you both look down at the glistening evidence before leaning in to lick it slowly from each other while he watches.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 50 },
+          "next_node": "node_4_5_visible_aftermath"
+        },
+        {
+          "text": "Take him deep into your throat one last time while your friend licks and kisses the base. When he peaks you hold him there, swallowing every pulse, then pull back so the last thick strands land across your tongue and lips. Your friend leans in to share the taste, both of you swallowing while still on your knees at the glass.",
+          "min_heat": 75,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -30, "heat": 60 },
+          "next_node": "node_4_5_visible_aftermath"
+        }
+      ]
+    },
+    "node_4_5_visible_aftermath": {
+      "text": "The three of you remain at the window for a long moment, breathing hard. Semen glistens on skin, lips, and the occasional droplet that has landed on the glass itself. The bright overhead lights leave nothing hidden. Across the dark courtyard your own empty kitchen window stares back like a silent witness.",
+      "choices": [
+        {
+          "text": "Rest your forehead against the cool glass, still tasting him, while your friend gently wipes a strand from your chin with her thumb and brings it to her own mouth.",
+          "effects": { "heart": 20, "inhibition": -5, "heat": 35 },
+          "next_node": "node_4_6_lingering"
+        },
+        {
+          "text": "Turn to your friend and kiss her deeply, sharing the last of the taste between you while he stands behind both of you, hands resting possessively on your hips, the evidence of what just happened still visible on your bodies.",
+          "effects": { "heart": 15, "inhibition": -15, "heat": 45 },
+          "next_node": "node_4_6_lingering"
+        },
+        {
+          "text": "Look directly across at your dark flat while slowly licking a thick stripe of semen from your friend’s breast. You hold the gaze of the empty window as if daring it to remember every detail of what it is seeing.",
+          "min_heat": 80,
+          "max_inhibition": 5,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 55 },
+          "next_node": "node_4_6_lingering"
+        }
+      ]
+    },
+    "node_4_6_lingering": {
+      "text": "Eventually the intensity softens into something quieter but no less charged. He gathers both of you against his chest, the three of you still standing in the bright light at the glass. Semen cools on skin; the fog on the pane begins to thin. The performance is over, yet none of you move away from the window just yet.",
+      "choices": [
+        {
+          "text": "Slide down softly against the glass onto the rug together, tangled in each other's arms, breathing heavily, the taste of him still on your tongues.",
+          "effects": { "heart": 20, "inhibition": 0, "heat": 30 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/triad/act5.json"
+        },
+        {
+          "text": "Rest your forehead against the glass for a long, thrilling moment before turning into their arms, a visible strand still glistening at the corner of your mouth.",
+          "effects": { "heart": 15, "inhibition": -15, "heat": 40 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/triad/act5.json"
+        },
+        {
+          "text": "Hold them both tight against you at the glass, looking across at your dark flat with a triumphant, breathless smile. You make no move to wipe the evidence from your skin or hers.",
+          "min_heat": 75,
+          "max_inhibition": 10,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 50 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/triad/act5.json"
+        }
+      ]
+    }
+  }
+}

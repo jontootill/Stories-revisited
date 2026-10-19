@@ -1,0 +1,165 @@
+{
+  "nodes": {
+    "node_3_1": {
+      "text": "--- ACT 3: SHARED INTIMACY ---\n\nClothing drops to the plush rug in soft piles, leaving three bare bodies flushed and glowing under the dim floor lamp. The heat in the room is suffocatingly sweet. He sits back against the sofa cushions, one arm wrapped firmly around your friend’s waist while his other hand reaches across to trace the warm curve of your hip, then lower, fingertips gliding between your already slick folds. The transition from fantasy to physical proximity is complete.",
+      "choices": [
+        {
+          "text": "Lean your head back against his shoulder, letting your hand rest gently over your friend's knee while his fingers slowly circle your swollen clit.",
+          "effects": { "heart": 10, "inhibition": 5, "heat": 15 },
+          "next_node": "node_3_2_group_touch"
+        },
+        {
+          "text": "Turn to kiss your friend deeply, feeling his hands move over both of your spines at the same time before one slides between your thighs and the other between hers, stroking you both in matching rhythm.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 25 },
+          "next_node": "node_3_2_group_touch"
+        },
+        {
+          "text": "Straddle his lap, pulling your friend close so all three of your chests are pressed together. You rock your wet heat against the hard length of him while your friend grinds against his thigh, both of you already trembling on the edge.",
+          "min_heat": 40,
+          "max_inhibition": 30,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 40 },
+          "next_node": "node_3_2_group_touch"
+        }
+      ]
+    },
+    "node_3_2_group_touch": {
+      "text": "The rhythm of touch becomes continuous and shared. Hands slide over slick skin, exploring every contour. Your friend shifts, kneeling beside you as he leans forward to kiss your neck, his fingers trailing down your stomach and then lower, parting your folds and pressing two fingers deep inside you while his other hand firmly grips your friend's thigh and does the same to her. The sensation of being held, touched, and filled by two people simultaneously sends waves of electricity through your chest.",
+      "choices": [
+        {
+          "text": "Close your eyes and breathe softly, giving yourself over entirely to the shared hands on your body as his fingers curl inside you and your friend’s mouth finds your nipple.",
+          "effects": { "heart": 15, "inhibition": 0, "heat": 20 },
+          "next_node": "node_3_5_first_penetration"
+        },
+        {
+          "text": "Guide your friend's hands over your breasts while arching into his touch behind you. His fingers work deeper, and you feel the first sharp flutter of orgasm building as your friend pinches your nipples in time with his strokes.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 30 },
+          "next_node": "node_3_5_first_penetration"
+        },
+        {
+          "text": "Take active control, guiding him down between you and your friend on the rug as you both lean over him. You lower yourself onto his mouth while your friend straddles his hips, grinding her wet entrance along the length of him until both of you are gasping.",
+          "min_heat": 50,
+          "max_inhibition": 20,
+          "flags": { "intense_scene": true },
+          "effects": { "heart": 5, "inhibition": -25, "heat": 45 },
+          "next_node": "node_3_3_oral_him"
+        }
+      ]
+    },
+    "node_3_3_oral_him": {
+      "text": "He shifts onto his back on the thick rug, looking up at both of you with dark, burning eyes. Your friend kneels beside his hips, looking over at you for approval. You move down together—one on each side—sharing long, deliberate kisses before focusing your attention entirely on him. The coordination between the two of you feels natural, instinctual, and intensely heightened as you take turns taking him deep into your mouths.",
+      "choices": [
+        {
+          "text": "Focus on kissing your friend passionately while his hands pull both of your hips tight against his legs. You feel his tongue slide between your folds and then lower, circling the tight ring of your rear entrance while your friend does the same to him with her mouth.",
+          "effects": { "heart": 15, "inhibition": -5, "heat": 25 },
+          "next_node": "node_3_4_mutual_oral"
+        },
+        {
+          "text": "Take turns tasting him while holding your friend’s hand over his chest. You sink your mouth all the way down until your lips meet the base of him, throat relaxing around his thickness, while your friend licks and kisses the places you cannot reach. His hips lift and a low groan escapes him as you both work him deeper.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 35 },
+          "flags": { "oral_scene": true },
+          "next_node": "node_3_4_mutual_oral"
+        },
+        {
+          "text": "Work together in perfect synchrony, using your lips and hands in tandem until his hips lift off the floor with a low groan. One of you takes him deep into your throat while the other spreads his thighs and runs her tongue slowly over his rear entrance, alternating until he is shaking and both of you are dripping onto the rug.",
+          "min_heat": 60,
+          "max_inhibition": 15,
+           "flags": { "anal_scene": true },
+          "effects": { "heart": 5, "inhibition": -25, "heat": 50 },
+          "next_node": "node_3_6_anal_play"
+        }
+      ]
+    },
+    "node_3_4_mutual_oral": {
+      "text": "He sits up and pulls both of you higher, arranging the three of you so that mouths and bodies overlap. Your friend lowers her head between your thighs while you do the same for her, the two of you tasting each other at the same time he moves behind one of you. The room fills with soft, wet sounds and the rising pitch of two women’s pleasure.",
+      "choices": [
+        {
+          "text": "Moan softly into your friend’s heat as her tongue circles your clit, your own orgasm building quickly while his hands stroke both of your backs.",
+          "effects": { "heart": 15, "inhibition": -5, "heat": 30 },
+          "next_node": "node_3_5_first_penetration"
+        },
+        {
+          "text": "Grind down against your friend’s mouth while you lick her open, both of you climaxing almost together in a trembling, shared wave as he watches and strokes himself.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 40 },
+          "next_node": "node_3_5_first_penetration"
+        },
+        {
+          "text": "Hold your friend’s hips firmly in place and bury your tongue deep inside her while she does the same to you. The dual sensation pushes both of you into hard, shaking orgasms one after another, juices coating each other’s chins as he leans in to taste whichever of you is closest.",
+          "min_heat": 65,
+          "max_inhibition": 15,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 50 },
+          "next_node": "node_3_5_first_penetration"
+        }
+      ]
+    },
+    "node_3_5_first_penetration": {
+      "text": "He pulls you both upright again, breathing hard. With careful strength he guides you onto his lap so that the thick head of him presses against your soaked entrance. Your friend kneels close, one hand on your waist and the other reaching back to stroke him as he begins to ease inside you. The stretch is slow and deep, every inch shared with the woman watching and touching you both.",
+      "choices": [
+        {
+          "text": "Sink down onto him with a long, shaky breath, resting your forehead against his while your friend kisses your shoulder. The full feeling alone is enough to make you climax around him within moments.",
+          "effects": { "heart": 15, "inhibition": -5, "heat": 35 },
+          "next_node": "node_3_7_double"
+        },
+        {
+          "text": "Rock your hips in a steady rhythm, taking him deeper with every movement while your friend reaches between your bodies to rub your clit. The combined stimulation makes you orgasm hard, clenching around his length as your friend watches with dark, hungry eyes.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 45 },
+          "next_node": "node_3_7_double"
+        },
+        {
+          "text": "Lift yourself almost off him and then drop back down, taking every inch in one smooth motion. Your friend presses two fingers into her own heat and matches your rhythm until both of you are crying out, your orgasm triggering hers as you squeeze tightly around him.",
+          "min_heat": 70,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 55 },
+          "next_node": "node_3_7_double"
+        }
+      ]
+    },
+    "node_3_6_anal_play": {
+      "text": "He eases out of you carefully and turns his attention to both of you in turn. Slick fingers circle and then gently press into your rear entrance while your friend leans forward to offer the same. The new stretch is intense and intimate; every slow push of his fingers is matched by soft encouragement from the woman beside you. The room feels even warmer, bodies glistening.",
+      "requires_flag": ["intense_scene","anal_scene"],
+      "choices": [
+        {
+          "text": "Breathe deeply and push back against his fingers, letting the new sensation build until a second, deeper orgasm rolls through you while your friend holds your hand.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 40 },
+          "next_node": "node_3_7_double"
+        },
+        {
+          "text": "Guide your friend’s hand so that she adds a second finger alongside his inside you. The dual stretch and the sight of her watching your face push you into a long, shaking climax that leaves you dripping onto his thighs.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 50 },
+          "next_node": "node_3_7_double"
+        },
+        {
+          "text": "Turn and present yourself fully, encouraging him to replace his fingers with the head of his length at your rear entrance while your friend slides beneath you to lick your clit. The combination of slow anal penetration and her tongue sends you into a powerful, full-body orgasm that makes your legs tremble.",
+          "min_heat": 75,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -30, "heat": 60 },
+          "next_node": "node_3_7_double"
+        }
+      ]
+    },
+    "node_3_7_double": {
+      "text": "The three of you rearrange with practiced urgency. He remains deep inside one of you while his hand or your friend’s fingers fill the other. Bodies overlap until it becomes impossible to tell where one ends and another begins. The shared fullness, the wet sounds, and the constant stimulation push both of you toward the edge again and again.",
+      "choices": [
+        {
+          "text": "Hold tightly to your friend as he thrusts steadily into you and his fingers work inside her. The two of you climax together, voices overlapping, bodies shaking against him in long, rolling waves.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 45 },
+          "next_node": "node_4_1",
+          "next_file": "data/romance/triad/act4.json"
+        },
+        {
+          "text": "Switch positions so that he fills your rear entrance while your friend rides his fingers. The intense double sensation and the sight of her orgasming above you trigger another hard climax of your own, juices running freely down your thighs.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 55 },
+          "next_node": "node_4_1",
+          "next_file": "data/romance/triad/act4.json"
+        },
+        {
+          "text": "Look across the room toward the illuminated kitchen glass. 'Take us over to the window,' you whisper. He carries both of you there, pressing you against the cool glass while he sinks into your heat and guides your friend onto his hand at the same time. The double penetration—his thickness inside you and his fingers stretching her—makes both of you climax hard against the glass, bodies shaking, wetness streaking the pane as the city lights blur beyond.",
+          "min_heat": 80,
+          "max_inhibition": 5,
+          "effects": { "heart": 5, "inhibition": -35, "heat": 65 },
+          "next_node": "node_4_1",
+          "next_file": "data/romance/triad/act4.json"
+        }
+      ]
+    }
+  }
+}

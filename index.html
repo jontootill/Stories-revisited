@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Story Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HOMEPAGE VIEW -->
+    <div id="homepage-container">
+        <h1>Stories Revisited</h1>
+        <p>Your gateway to revisiting stories until you get the ending you want.</p>
+
+        <div class="genre-grid">
+            <!-- Open Genres -->
+            <button class="genre-card" onclick="startGenre('sci-fi')">
+                <h2>Historical</h2>
+                <p>Explore alternative endings to historical events.</p>
+            </button>
+
+            <button class="genre-card" onclick="startGenre('fantasy')">
+                <h2>Fantasy / Adventure</h2>
+                <p>Forge your path through ancient realms.</p>
+            </button>
+
+            <!-- Password Protected Romance Genre -->
+            <button class="genre-card protected" onclick="startGenre('romance')">
+                <h2>Romance 🔒</h2>
+                <p>Password protected collection.</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- ROMANCE SUB-LIBRARY VIEW (Make sure this exists in your HTML!) -->
+    <div id="romance-library-container" class="hidden">
+        <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
+        <h2>Romance Library</h2>
+        <p>Select a story to begin:</p>
+
+        <div class="genre-grid">
+            <button class="genre-card protected" onclick="startStory('data/window/act1.json')">
+                <h2>The Window</h2>
+                <p>The original distant observation saga.</p>
+            </button>
+
+            <button class="genre-card protected" onclick="startStory('data/triad/act1.json')">
+                <h2>The Triad Arc</h2>
+                <p>The sequel: Crossing the threshold together.</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- PASSWORD MODAL -->
+    <div id="password-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Restricted Section</h3>
+            <p>Please enter the password to access this genre:</p>
+            <input type="password" id="genre-password" placeholder="Enter password">
+            <div class="modal-buttons">
+                <button onclick="unlockRomance()">Submit</button>
+                <button onclick="closePasswordModal()">Cancel</button>
+            </div>
+            <p id="password-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- GAME VIEW -->
+    <div id="game-container" class="hidden">
+        <div id="top-bar">
+            <button id="home-btn" onclick="returnToHome()">← Main Menu</button>
+            <div id="stats-display">
+                Heat: <span id="stat-heat">0</span> | 
+                Heart: <span id="stat-heart">0</span> | 
+                Inhibition: <span id="stat-inhibition">50</span>
+            </div>
+        </div>
+
+        <div id="story-box">
+            <p id="story-text"></p>
+            <div id="choices-box"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "nodes": {
+    "node_5_1": {
+      "text": "--- ACT 5: THE MORNING AFTER ---\n\nSoft morning sunlight filters through his large kitchen window, casting long golden rectangles across the living room floor. You wake up on his wide sofa, flanked on either side by his chest and your friend's shoulder. The electric intensity of the night has dissolved into a quiet, warm intimacy. He stirs beside you, his arm resting lazily over your waist.",
+      "choices": [
+        {
+          "text": "Lie still in the quiet morning light, enjoying the soft warmth of both bodies beside you.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 5 },
+          "next_node": "node_5_2_morning_coffee"
+        },
+        {
+          "text": "Turn your head to kiss him softly on the jaw before leaning over to wake your friend.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 15 },
+          "next_node": "node_5_2_morning_coffee"
+        },
+        {
+          "text": "Slide your hand over his hip under the sheets, starting a slow morning touch between the three of you.",
+          "min_heat": 60,
+          "effects": { "heart": 5, "inhibition": -15, "heat": 30 },
+          "next_node": "node_5_2_morning_coffee"
+        }
+      ]
+    },
+    "node_5_2_morning_coffee": {
+      "text": "An hour later, the three of you stand around his kitchen counter in cotton t-shirts and shorts, steam rising from coffee mugs. Through the glass, your own flat across the courtyard looks quiet and familiar. He sets his mug down, looking back and forth between you and your friend. 'So,' he says quietly, a soft smile touching his lips. 'Where do we go from here?'",
+      "choices": [
+        {
+          "text": "Look at your friend first, suggesting that you keep this as a rare, perfect memory.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 5 },
+          "flags": { "future_choice": "one_night" },
+          "next_node": "node_5_3_the_future"
+        },
+        {
+          "text": "Smile and suggest meeting up like this whenever the kitchen lights flash twice across the courtyard.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 20 },
+          "flags": { "future_choice": "recurring_triad" },
+          "next_node": "node_5_3_the_future"
+        },
+        {
+          "text": "Walk up to him and rest your palm over his chest, suggesting an open, ongoing dynamic between all three of you.",
+          "min_heat": 65,
+          "effects": { "heart": 10, "inhibition": -20, "heat": 35 },
+          "flags": { "future_choice": "full_arrangement" },
+          "next_node": "node_5_3_the_future"
+        }
+      ]
+    },
+    "node_5_3_the_future": {
+      "text": "The conversation flows easily over coffee—no jealousy, no awkwardness, only the natural understanding of three adults who shared something extraordinary. As you finish your coffee and prepare to head back across the courtyard, the trajectory of your dynamic is settled.",
+      "choices": [
+        {
+          "text": "Pack your belongings and share a warm, three-way hug at his apartment door.",
+          "effects": { "heart": 15, "inhibition": 0, "heat": 10 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/triad/act6.json"
+        },
+        {
+          "text": "Give him a lingering kiss at the door before walking back downstairs arm-in-arm with your friend.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 25 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/triad/act6.json"
+        },
+        {
+          "text": "Set your key down on his counter with a wink. 'You keep the spare key now,' you whisper.",
+          "min_heat": 70,
+          "max_inhibition": 15,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 40 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/triad/act6.json"
+        }
+      ]
+    }
+  }
+}

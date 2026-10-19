@@ -1,0 +1,47 @@
+{
+  "nodes": {
+    "node_6_1": {
+      "text": "--- ACT 6: TRIAD RESOLUTION ---\n\nYou step back out into the fresh afternoon air of the courtyard. The distance between the two buildings remains the same, but everything about how you see those illuminated windows has changed forever.",
+      "choices": [
+        {
+          "text": "Look back up at his kitchen glass with a deep sense of contentment.",
+          "effects": { "heart": 10, "inhibition": 0, "heat": 0 },
+          "next_node": "node_6_2_recurring"
+        }
+      ]
+    },
+    "node_6_2_one_night_legend": {
+      "text": "You and your friend walk back up into your own flat, closing the door behind you. That night remains a rare, golden memory—a secret shared between three people that deepened your friendship without changing your everyday lives. Whenever you glance across the courtyard at his lit window, you exchange a knowing smile, completely fulfilled.\n\n--- THE END: A PERFECT MEMORY ---",
+      "choices": [
+        {
+          "text": "Play 'The Window' Again",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_recurring": {
+      "text": "Winter turns to spring. The signal is established: whenever two kitchen lights flick twice across the dark courtyard, your friend comes over, and the two of you walk across the square together. What started as an uncurtained fantasy has grown into a seamless, joyful connection enjoyed regularly by all three of you.\n\n--- THE END: THE MIDNIGHT ARRANGEMENT ---",
+      "choices": [
+        {
+          "text": "Play 'The Window' Again",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_unbroken_bond": {
+      "text": "You leave your spare key on his counter. Over the coming months, the boundary between the two flats disappears entirely. Whether it's late-night dinners around his counter, shared weekends, or spontaneous late-night visits, the three of you have built an unbreakable, open bond in the heart of the city.\n\n--- THE END: THE PERMANENT TRIAD ---",
+      "choices": [
+        {
+          "text": "Play 'The Window' Again",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/window/act1.json"
+        }
+      ]
+    }
+  }
+}

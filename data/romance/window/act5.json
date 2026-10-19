@@ -1,0 +1,102 @@
+{
+  "nodes": {
+    "node_5_1": {
+      "text": "--- ACT 5: SILENT DIALOGUE & THE CROSSROAD ---\n\nThe silence across the courtyard feels charged, heavy with mutual realization. Neither of you hides anymore. Standing fully illuminated in your respective kitchen windows, your gazes remain locked across the open night air. For several long minutes, no one moves. The wordless boundary has been breached, and the unwritten rules must now be chosen.",
+      "choices": [
+        {
+          "text": "Slowly step back into your room and turn off your light, leaving him with the lingering memory of your bare silhouette and the soft gleam of moisture still visible on your inner thighs.",
+          "effects": { "heart": 10, "inhibition": 10, "heat": 5 },
+          "next_node": "node_5_2_first_signal"
+        },
+        {
+          "text": "Hold his stare firmly, resting your palm against the glass as a silent invitation, your other hand still lightly cupping the warm, slick heat between your legs.",
+          "effects": { "heart": 15, "inhibition": -5, "heat": 20 },
+          "next_node": "node_5_2_first_signal"
+        },
+        {
+          "text": "Slowly trace a heart or a question mark on the condensation of your window pane while looking straight at him, your free hand sliding lower to part your folds and show him how wet you still are.",
+          "min_heat": 70,
+          "effects": { "heart": 10, "inhibition": -20, "heat": 35 },
+          "next_node": "node_5_2_first_signal"
+        }
+      ]
+    },
+    "node_5_2_first_signal": {
+      "text": "The next evening at dusk, you find a thick black marker and a stack of white paper waiting on your counter. Right on cue, his light switches on. He walks up to his glass holding a sheet of paper. Written in bold, heavy letters is a simple question: 'WHAT IS YOUR NAME?'",
+      "choices": [
+        {
+          "text": "Write a note back holding it up to your pane: 'BETTER IF WE DON'T KNOW.' Your robe hangs open, the soft curve of one breast and the shadowed line between your thighs still on full display.",
+          "effects": { "heart": 10, "inhibition": 15, "heat": 10 },
+          "flags": { "keep_glass_boundary": true },
+          "next_node": "node_5_3_rules"
+        },
+        {
+          "text": "Write your actual name on the paper in clear letters and hold it against the glass with a smile, the light catching the tight peaks of your nipples and the faint sheen still visible on your skin.",
+          "effects": { "heart": 20, "inhibition": -10, "heat": 15 },
+          "flags": { "personal_connection": true },
+          "next_node": "node_5_3_rules"
+        },
+        {
+          "text": "Write a provocative challenge on your sign: 'SHOW ME AGAIN FIRST.' As you hold it up you slowly part your thighs, two fingers gliding through your wet entrance so he can see exactly what you mean.",
+          "min_heat": 75,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 40 },
+          "flags": { "bold_communicator": true },
+          "next_node": "node_5_3_rules"
+        }
+      ]
+    },
+    "node_5_3_rules": {
+      "text": "A unspoken negotiation unfolds over the next hour through held-up signs and hand signals across the gap. You learn his smile, his quick handwriting, and the intense, focused look in his eyes when he reads your notes. The game has evolved from raw fantasy into a shared secret language between two windows in the city night.",
+      "choices": [
+        {
+          "text": "Hold up a note establishing the rules: 'ONLY EVER BEHIND GLASS. THAT'S THE MAGIC.' Your free hand rests low on your belly, fingers tracing slow circles just above the place he has already watched you open for him.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 10 },
+          "flags": { "chosen_route": "glass_permanence" },
+          "next_node": "node_5_4_the_crossroad"
+        },
+        {
+          "text": "Hold up a note suggesting a shift: 'TOMORROW NIGHT. COURTYARD BENCH AT MIDNIGHT.' As you press the paper to the glass you let your robe slip further open, giving him one last clear view of your bare breasts and the soft, glistening folds between your legs.",
+          "effects": { "heart": 20, "inhibition": -15, "heat": 25 },
+          "flags": { "chosen_route": "physical_encounter" },
+          "next_node": "node_5_4_the_crossroad"
+        },
+        {
+          "text": "If your friend is with you, write a joint note: 'WOULD YOU PREFER BOTH OF US OR JUST ONE?' Side by side at the lit glass, you and your friend both stand with thighs parted, fingers slowly working through your own wet heat while you wait for his answer.",
+          "min_heat": 80,
+          "max_inhibition": 15,
+          "effects": { "heart": 10, "inhibition": -30, "heat": 45 },
+          "requires_flag": "friend_involved",
+          "flags": { "chosen_route": "friend_triad" },
+          "next_node": "node_5_4_the_crossroad"
+        }
+      ]
+    },
+    "node_5_4_the_crossroad": {
+      "text": "The hour grows late. Midnight arrives, and the warm yellow light in his flat flickers twice—his signature sign-off for the night. He stands by his window pane, resting his hand against the glass right where yours would align if the space between your buildings vanished. The trajectory of your fantasy now rests entirely on your choice.",
+      "choices": [
+        {
+          "text": "Press your palm flat against the cold glass opposite his, committing to the perfection of an unbroken, distant fantasy. Your other hand stays between your thighs, gently holding the lingering ache he left you with.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 15 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        },
+        {
+          "text": "Write a final note against the glass before turning off your light: 'I'M COMING DOWNSTAIRS NOW.' Your body is still bare, nipples tight, the soft evidence of your earlier pleasure still visible on your inner thighs as you step away from the window.",
+          "min_heat": 50,
+          "max_inhibition": 30,
+          "effects": { "heart": 20, "inhibition": -20, "heat": 35 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        },
+        {
+          "text": "Flick your lights off and walk straight to your front door, key already in hand, letting the anticipation consume you. Every step reminds you how open and slick you still feel, the memory of his eyes locked on your most private places driving you forward.",
+          "min_heat": 60,
+          "max_inhibition": 20,
+          "effects": { "heart": 10, "inhibition": -30, "heat": 50 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        }
+      ]
+    }
+  }
+}

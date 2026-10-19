@@ -1,0 +1,58 @@
+{
+  "nodes": {
+    "node_6_1": {
+      "text": "--- ACT 6: DENOUEMENT ---\n\nThe decision is made. The air in your apartment is electric as the distance between fantasy and reality reaches its final, inevitable outcome.",
+      "choices": [
+        {
+          "text": "Refuse to shatter the spell. Step up to the glass for your nightly ritual behind the safety of the pane.",
+          "effects": { "heart": 20, "inhibition": 15, "heat": 10 },
+          "next_node": "node_6_2_glass_sanctuary"
+        },
+        {
+          "text": "Step out into the cool night air of the courtyard, walking slowly toward the entrance of his building.",
+          "effects": { "heart": 15, "inhibition": -20, "heat": 35 },
+          "next_node": "node_6_2_physical_threshold"
+        },
+        {
+          "text": "Walk down the stairs side-by-side with your friend, heading across the square toward his lit door.",
+          "effects": { "heart": 10, "inhibition": -30, "heat": 50 },
+          "requires_flag": "friend_involved",
+          "next_node": "node_6_2_triad_encounter"
+        }
+      ]
+    },
+    "node_6_2_glass_sanctuary": {
+      "text": "Months pass into winter. You never meet in person. You never learn his surname or hear the sound of his voice. But every single evening at dusk, two windows across the courtyard light up simultaneously. In a world full of messy, predictable realities, you have built something rare and perfect: an unbroken, intoxicating sanctuary of pure desire, preserved forever behind glass.\n\n--- THE END: THE GLASS SANCTUARY ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_physical_threshold": {
+      "text": "The courtyard rain washes over your skin as you reach his door. You press the buzzer. A second later, the latch clicks open. You walk up the stairs, your heart hammering wildly against your ribs. As you reach the second floor, his door is already standing half-open, warm lamp light spilling into the hallway. You step inside, and for the very first time, the glass is gone.\n\n--- THE END: THE PHYSICAL THRESHOLD ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_triad_encounter": {
+      "text": "The hallway light flickers as the two of you stand outside his door. The latch pulls back with a soft click, and he steps into the doorway, his eyes taking in both of you standing together in the warm corridor. A slow, knowing smile touches his lips as he steps back, holding the door wide open for you both to enter.\n\n--- THE END: THE SHARED DESTINY ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/triad/act1.json"
+        }
+      ]
+    }
+  }
+}
