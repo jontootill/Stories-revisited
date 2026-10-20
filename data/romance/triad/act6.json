@@ -1,11 +1,11 @@
 {
   "nodes": {
     "node_6_1": {
-      "text": "--- ACT 6: TRIAD RESOLUTION ---\n\nYou step back out into the fresh afternoon air of the courtyard. The distance between the two buildings remains the same, but everything about how you see those illuminated windows has changed forever.",
+      "text": "\n\nYou step back out into the fresh afternoon air of the courtyard. The distance between the two buildings remains the same, but everything about how you see those illuminated windows has changed forever.",
       "choices": [
         {
           "text": "Look back up at his kitchen glass with a deep sense of contentment.",
-          "effects": { "heart": 10, "inhibition": 0, "heat": 0 },
+          "effects": { "heart": 10, "shyness": 0, "intensity": 0 },
           "next_node": "node_6_2_recurring"
         }
       ]
@@ -15,9 +15,9 @@
       "choices": [
         {
           "text": "Play 'The Window' Again",
-          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "effects": { "heart": 0, "shyness": 0, "intensity": 0 },
           "next_node": "node_1_1",
-          "next_file": "data/window/act1.json"
+          "next_file": "data/romance/window/act1.json"
         }
       ]
     },
@@ -26,9 +26,9 @@
       "choices": [
         {
           "text": "Play 'The Window' Again",
-          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "effects": { "heart": 0, "shyness": 50, "intensity": 0 },
           "next_node": "node_1_1",
-          "next_file": "data/window/act1.json"
+          "next_file": "data/romance/window/act1.json"
         }
       ]
     },
@@ -37,9 +37,9 @@
       "choices": [
         {
           "text": "Play 'The Window' Again",
-          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "effects": { "heart": 0, "shyness": 0, "intensity": 0 },
           "next_node": "node_1_1",
-          "next_file": "data/window/act1.json"
+          "next_file": "data/romance/window/act1.json"
         }
       ]
     }

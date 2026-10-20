@@ -45,12 +45,12 @@
                 <p>The original distant observation saga.</p>
             </button>
 
-            <button class="genre-card protected" onclick="startStory('data/triad/act1.json')">
-                <h2>The Triad Arc</h2>
-                <p>The sequel: Crossing the threshold together.</p>
-            </button>
-        </div>
+            <button id="btn-triad" class="genre-card protected locked-story" onclick="selectTriadStory()">
+            <h2>The Triad Arc <span id="triad-lock-icon">🔒</span></h2>
+            <p id="triad-desc">Complete 'The Window' to unlock this sequel.</p>
+        </button>
     </div>
+</div>
 
     <!-- PASSWORD MODAL -->
     <div id="password-modal" class="modal hidden">
@@ -69,8 +69,8 @@
     <!-- GAME VIEW -->
     <div id="game-container" class="hidden">
         <div id="top-bar">
-            <button id="home-btn" onclick="returnToHome()">← Main Menu</button>
-            <div id="stats-display">
+            <button id="home-btn" onclick="returnToRomanceLibrary()">← Romance Library</button>
+        <div id="stats-display">
                 Heat: <span id="stat-heat">0</span> | 
                 Heart: <span id="stat-heart">0</span> | 
                 Inhibition: <span id="stat-inhibition">50</span>

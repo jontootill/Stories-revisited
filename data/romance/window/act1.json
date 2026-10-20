@@ -1,4 +1,10 @@
-{
+{"story_title": "The Window",
+  "initial_stats": {
+    "heart": 0,
+    "inhibition": 50,
+    "heat": 0
+  },
+
   "nodes": {
     "node_1_1": {
       "text": "It’s just past dusk when you pull back your kitchen curtains to check the weather, your eyes drifting across the courtyard to the opposing brick building. Most apartments opposite have their blinds firmly drawn, but one second-floor window is wide open and brightly lit. Inside, you catch the soft flickering blue glow of a television screen. A man is sitting on the edge of his sofa, casually watching a late-night broadcast, entirely unaware that his living room is completely visible from where you stand.",

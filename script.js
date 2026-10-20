@@ -1,3 +1,8 @@
+let gameState = {
+    stats: {},       // Dynamic stats container
+    flags: {},       // Story flags
+    currentFile: ''  // Currently loaded act JSON file
+};
 
 function openPasswordModal() {
     document.getElementById('password-modal').classList.remove('hidden');
@@ -12,74 +17,96 @@ function closePasswordModal() {
 // Called when the user clicks "Submit" in the password modal
 function unlockRomance() {
     let inputPassword = document.getElementById('genre-password').value;
-    const ROMANCE_PASSWORD = "261213"; // Replace with your actual password
+    const ROMANCE_PASSWORD = "261213"; 
     
     if (inputPassword === ROMANCE_PASSWORD) {
         closePasswordModal();
         
-        // Both elements must exist in index.html for this to work without errors
         document.getElementById('homepage-container').classList.add('hidden');
         document.getElementById('romance-library-container').classList.remove('hidden');
+        
+        // Refresh story locks when entering the Romance Library
+        updateStoryUnlocks();
     } else {
         document.getElementById('password-error').innerText = "Incorrect password. Try again.";
     }
 }
 
-function restartGame() {
-    gameState.heat = 0;
-    gameState.heart = 0;
-    gameState.inhibition = 50;
-    gameState.flags = {};
-}
-
 function startGenre(genre) {
-    if (genre === 'sci-fi') {
+    if (genre === 'sci-fi' || genre === 'historical') {
         startStory('data/historical/act1.json');
     } else if (genre === 'fantasy') {
         startStory('data/fantasy/act1.json');
     } else if (genre === 'romance') {
-        // Trigger the password modal instead of opening directly!
         openPasswordModal();
     }
 }
 
-function startStory(startFile) {
-    // Hide BOTH the main homepage AND the romance sub-library
+async function startStory(startFile) {
+    // Hide libraries and reveal game reader view
     document.getElementById('homepage-container').classList.add('hidden');
     document.getElementById('romance-library-container').classList.add('hidden');
-    
-    // Reveal the clean game reader view
     document.getElementById('game-container').classList.remove('hidden');
-    
-    // Reset state & load story
-    restartGame();
-    loadNode('node_1_1', startFile);
+
+    // Reset flags and current file path
+    gameState.flags = {};
+    gameState.stats = {};
+    gameState.currentFile = startFile;
+
+    try {
+        let response = await fetch(startFile);
+        if (!response.ok) throw new Error(`Failed to load ${startFile}`);
+        let data = await response.json();
+
+        // 1. Load starting stats dynamically if defined in Act 1 JSON
+        if (data.initial_stats) {
+            gameState.stats = { ...data.initial_stats };
+        }
+
+        // 2. Render dynamic HUD stats bar
+        renderStatsHUD();
+
+        // 3. Load starting node using the specific story file path passed in!
+        loadNode('node_1_1', startFile);
+
+    } catch (error) {
+        console.error("Error starting story:", error);
+    }
+}
+
+function renderStatsHUD() {
+    let statsDisplay = document.getElementById('stats-display');
+    if (!statsDisplay) return;
+
+    let statPairs = [];
+    for (let [key, value] of Object.entries(gameState.stats)) {
+        let formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        statPairs.push(`${formattedKey}: <span id="stat-${key}">${value}</span>`);
+    }
+
+    statsDisplay.innerHTML = statPairs.join(' | ');
+}
+
+function updateStatsDisplay() {
+    for (let [key, value] of Object.entries(gameState.stats)) {
+        let el = document.getElementById(`stat-${key}`);
+        if (el) el.innerText = value;
+    }
 }
 
 function returnToHome() {
-    // Hide game view and sub-library
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('romance-library-container').classList.add('hidden');
-    
-    // Return to main light homepage
     document.getElementById('homepage-container').classList.remove('hidden');
 }
 
-window.onload = () => {
-    // Ensure everything starts clean on the main homepage
+// Returns from active game reader back to the Romance Sub-Library
+function returnToRomanceLibrary() {
     document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('romance-library-container').classList.add('hidden');
-    document.getElementById('password-modal').classList.add('hidden');
-    document.getElementById('homepage-container').classList.remove('hidden');
-};
-
-let gameState = {
-    heat: 0,
-    heart: 0,
-    inhibition: 50,
-    flags: {},
-    currentFile: 'data/romance/window/act1.json'
-};
+    document.getElementById('homepage-container').classList.add('hidden');
+    document.getElementById('romance-library-container').classList.remove('hidden');
+    updateStoryUnlocks();
+}
 
 // Function to load a node from a JSON file
 async function loadNode(nodeId, actFile) {
@@ -88,8 +115,7 @@ async function loadNode(nodeId, actFile) {
     }
 
     // --- CHECKPOINT 1: ACT 3 STAT CHECK ---
-    // If attempting to enter Act 3 without enough Heat or with too much Inhibition, end early safely.
-if (gameState.currentFile === 'data/romance/window/act3.json' && nodeId === 'node_3_1') {
+    if (gameState.currentFile === 'data/romance/window/act3.json' && nodeId === 'node_3_1') {
         if (gameState.heat < 300 || gameState.inhibition > 20) {
             resolveAct6Ending();
             return;
@@ -97,8 +123,7 @@ if (gameState.currentFile === 'data/romance/window/act3.json' && nodeId === 'nod
     }
 
     // --- CHECKPOINT 2: ACT 4 STAT CHECK ---
-    // Act 4 requires significant Heat to drop cover and turn the light on.
-if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'node_4_1') {
+    if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'node_4_1') {
         if (gameState.heat < 400) {
             resolveAct6Ending();
             return;
@@ -131,7 +156,6 @@ if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'nod
         choicesBox.innerHTML = "";
 
         currentNode.choices.forEach(choice => {
-            // Hide choices requiring unearned flags
             if (choice.requires_flag && !gameState.flags[choice.requires_flag]) {
                 return;
             }
@@ -140,7 +164,6 @@ if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'nod
             let isLocked = false;
             let lockReason = "";
 
-            // Evaluate Stat Gates
             if (choice.min_heat && gameState.heat < choice.min_heat) {
                 isLocked = true;
                 lockReason += ` [Req: ${choice.min_heat} Heat]`;
@@ -153,7 +176,7 @@ if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'nod
             if (isLocked) {
                 btn.innerText = choice.text + lockReason;
                 btn.disabled = true;
-                btn.classList.add('locked-choice'); // Use CSS to style (opacity, cursor: not-allowed)
+                btn.classList.add('locked-choice');
             } else {
                 btn.innerText = choice.text;
                 btn.onclick = () => makeChoice(choice);
@@ -170,42 +193,24 @@ if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'nod
 // Handle player choice execution
 function makeChoice(choice) {
     if (choice.effects) {
-        gameState.heat = Math.max(0, gameState.heat + (choice.effects.heat || 0));
-        gameState.heart = Math.max(0, gameState.heart + (choice.effects.heart || 0));
-        gameState.inhibition = Math.min(100, Math.max(0, gameState.inhibition + (choice.effects.inhibition || 0)));
+        for (let [statKey, changeValue] of Object.entries(choice.effects)) {
+            if (gameState.stats.hasOwnProperty(statKey)) {
+                gameState.stats[statKey] += changeValue;
+            } else {
+                gameState.stats[statKey] = changeValue;
+            }
+        }
+        updateStatsDisplay();
     }
-    
+
     if (choice.flags) {
-        for (let flagKey in choice.flags) {
-            gameState.flags[flagKey] = choice.flags[flagKey];
+        for (let key in choice.flags) {
+            gameState.flags[key] = choice.flags[key];
         }
     }
 
-    // Refresh UI Display
-    document.getElementById('stat-heat').innerText = gameState.heat;
-    document.getElementById('stat-heart').innerText = gameState.heart;
-    document.getElementById('stat-inhibition').innerText = gameState.inhibition;
-
-    loadNode(choice.next_node, choice.next_file);
-}
-
-// --- EARLY SAFE ENDINGS ---
-function triggerEarlyEnding(reason) {
-    let storyBox = document.getElementById('story-text');
-    let choicesBox = document.getElementById('choices-box');
-    choicesBox.innerHTML = "";
-
-    if (reason === "heat_too_low_act3") {
-        storyBox.innerText = "--- EARLY ENDING: THE DRAWN BLINDS ---\n\nAs the weeks pass, your initial interest quietly fades. Without enough inner fire driving you to step into the dark, watching him feels increasingly meaningless. One evening, you firmly draw your heavy kitchen curtains shut, turn on your living room lamps, and go back to your quiet, comfortable life. You never look out across the courtyard again.";
-    } else if (reason === "heat_too_low_act4") {
-        storyBox.innerText = "--- EARLY ENDING: A DISTANT MEMORY ---\n\nYou stand in your dark kitchen with your hand resting on the light switch, but you simply cannot bring yourself to cross the line. The fear of exposure outweighs your desire. You step away from the glass for the last time, leaving him as nothing more than a passing, distant memory from a window across the square.";
-    }
-
-    // Add Restart Button
-    let restartBtn = document.createElement('button');
-    restartBtn.innerText = "Start Over";
-    restartBtn.onclick = () => restartGame();
-    choicesBox.appendChild(restartBtn);
+    let nextFile = choice.next_file || gameState.currentFile;
+    loadNode(choice.next_node, nextFile);
 }
 
 // --- AUTOMATIC ACT 6 ENDING SELECTION ---
@@ -213,48 +218,60 @@ function resolveAct6Ending() {
     let choicesBox = document.getElementById('choices-box');
     choicesBox.innerHTML = "";
 
-    // Inside resolveAct6Ending() or makeChoice() for the Triad ending:
-if (gameState.flags["friend_involved"] && gameState.heat >= 400) {
-    localStorage.setItem('triad_unlocked', 'true'); // <-- Saves permanent unlock state!
-    loadNode('node_6_2_triad_encounter', 'data/romance/window/act6.json');
-    return;
-}
+    // Mark 'The Window' as completed so the Triad sequel unlocks!
+    localStorage.setItem('window_completed', 'true');
 
-    // 2. Physical Threshold Ending (High Heat + Low Inhibition)
+    if (gameState.flags["friend_involved"] && gameState.heat >= 400) {
+        localStorage.setItem('triad_unlocked', 'true');
+        loadNode('node_6_2_triad_encounter', 'data/romance/window/act6.json');
+        return;
+    }
+
     if (gameState.heat >= 300 && gameState.inhibition <= 30) {
         loadNode('node_6_2_physical_threshold', 'data/romance/window/act6.json');
         return;
     }
 
-    // 3. Glass Sanctuary Ending (Default resolution for lower Heat or higher Inhibition)
     loadNode('node_6_2_glass_sanctuary', 'data/romance/window/act6.json');
 }
 
-// Restart Function
-function restartGame() {
-    gameState = {
-        heat: 0,
-        heart: 0,
-        inhibition: 50,
-        flags: {},
-        currentFile: 'data/romance/window/act1.json'
-    };
-    document.getElementById('stat-heat').innerText = gameState.heat;
-    document.getElementById('stat-heart').innerText = gameState.heart;
-    document.getElementById('stat-inhibition').innerText = gameState.inhibition;
-    loadNode('node_1_1', 'data/romance/window/act1.json');
-}
+// Function to update the Romance Sub-Library menu based on completion status
+function updateStoryUnlocks() {
+    const isCompleted = localStorage.getItem('window_completed') === 'true';
+    const triadBtn = document.getElementById('btn-triad');
+    const triadLockIcon = document.getElementById('triad-lock-icon');
+    const triadDesc = document.getElementById('triad-desc');
 
-window.onload = () => {
-    loadNode('node_1_1', 'data/romance/window/act1.json');
-};
-
-function startTriadStory() {
-    if (localStorage.getItem('triad_unlocked') === 'true') {
-        loadNode('node_1_1', 'data/romance/triad/act1.json');
-    } else {
-        document.getElementById('story-text').innerText = 
-            "LOCKED: You must complete 'The Window' with the Shared Destiny (Triad) ending to unlock this sequel arc!";
-        document.getElementById('choices-box').innerHTML = "";
+    if (triadBtn) {
+        if (isCompleted) {
+            triadBtn.classList.remove('locked-story');
+            if (triadLockIcon) triadLockIcon.innerText = "✨";
+            if (triadDesc) triadDesc.innerText = "The sequel: Crossing the threshold together.";
+        } else {
+            triadBtn.classList.add('locked-story');
+            if (triadLockIcon) triadLockIcon.innerText = "🔒";
+            if (triadDesc) triadDesc.innerText = "Complete 'The Window' to unlock this sequel.";
+        }
     }
 }
+
+// Handler for when the user clicks The Triad Arc button
+function selectTriadStory() {
+    const isCompleted = localStorage.getItem('window_completed') === 'true';
+
+    if (isCompleted) {
+        startStory('data/romance/triad/act1.json');
+    } else {
+        alert("The Triad Arc is locked! You must complete 'The Window' first to unlock this sequel.");
+    }
+}
+
+// Single clean window.onload setup
+window.onload = () => {
+    document.getElementById('game-container').classList.add('hidden');
+    document.getElementById('romance-library-container').classList.add('hidden');
+    document.getElementById('password-modal').classList.add('hidden');
+    document.getElementById('homepage-container').classList.remove('hidden');
+
+    updateStoryUnlocks();
+};

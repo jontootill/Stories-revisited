@@ -1,22 +1,28 @@
 
-{
+{"story_title": "The Triad",
+  "initial_stats": {
+    "connection": 0,
+    "shyness": 50,
+    "intensity": 0
+  },
+
   "nodes": {
     "node_1_1": {
-      "text": "--- ACT 1: CROSSING THE THRESHOLD ---\n\nThe latch clicks open, sound echoing softly in the warm corridor. He steps back into his hallway, holding the door open. You and your friend step past him into his flat. The air smells subtly of cedar and amber. For months, you viewed this apartment through double-paned glass—a distant, lit stage. Now, the carpet is real beneath your feet, and his physical presence fills the room.",
+      "text": "CROSSING THE THRESHOLD\n\nThe latch clicks open, sound echoing softly in the warm corridor. He steps back into his hallway, holding the door open. You and your friend step past him into his flat. The air smells subtly of cedar and amber. For months, you viewed this apartment through double-paned glass—a distant, lit stage. Now, the carpet is real beneath your feet, and his physical presence fills the room.",
       "choices": [
         {
           "text": "Hesitate near the coat rack, taking a quiet breath to steady your pounding pulse.",
-          "effects": { "heart": 10, "inhibition": 10, "heat": 5 },
+          "effects": { "connection": 10, "shyness": 10, "intensity": 5 },
           "next_node": "node_1_2"
         },
         {
           "text": "Walk smoothly into the living room, taking in the sofa, the lamps, and the quiet warmth of his home.",
-          "effects": { "heart": 10, "inhibition": -5, "heat": 15 },
+          "effects": { "connection": 10, "shyness": -5, "intensity": 15 },
           "next_node": "node_1_2"
         },
         {
           "text": "Turn back to look straight into his eyes, giving him a slow, knowing smile as he closes the door.",
-          "effects": { "heart": 5, "inhibition": -15, "heat": 25 },
+          "effects": { "connection": 5, "shyness": -15, "intensity": 25 },
           "next_node": "node_1_2"
         }
       ]
@@ -26,18 +32,18 @@
       "choices": [
         {
           "text": "Accept a glass with a quiet 'Thank you,' keeping your eyes down as your fingers briefly brush his.",
-          "effects": { "heart": 10, "inhibition": 5, "heat": 10 },
+          "effects": { "connection": 10, "shyness": 5, "intensity": 10 },
           "next_node": "node_1_3"
         },
         {
           "text": "Lean your forearm against the counter, exchanging a subtle, thrilled glance with your friend.",
-          "effects": { "heart": 5, "inhibition": -10, "heat": 20 },
+          "effects": { "connection": 5, "shyness": -10, "intensity": 20 },
           "next_node": "node_1_3"
         },
         {
           "text": "Reach directly for the glass, deliberately letting your hand linger over his fingers as you pour.",
-          "min_heat": 15,
-          "effects": { "heart": 5, "inhibition": -20, "heat": 30 },
+          "min_intensity": 15,
+          "effects": { "connection": 5, "shyness": -20, "intensity": 30 },
           "next_node": "node_1_3"
         }
       ]
@@ -47,21 +53,21 @@
       "choices": [
         {
           "text": "Swill your wine in your glass, offering a soft blush and a quiet nod.",
-          "effects": { "heart": 15, "inhibition": 5, "heat": 10 },
+          "effects": { "connection": 15, "shyness": 5, "intensity": 10 },
           "next_node": "node_2_1",
           "next_file": "data/romance/triad/act2.json"
         },
         {
           "text": "Set your glass down on the marble top. 'The signs were just the invitation,' you reply smoothly.",
-          "effects": { "heart": 10, "inhibition": -10, "heat": 25 },
+          "effects": { "connection": 10, "shyness": -10, "intensity": 25 },
           "next_node": "node_2_1",
           "next_file": "data/romance/triad/act2.json"
         },
         {
           "text": "Step around the counter toward him. 'No more signs. We prefer direct communication now.'",
-          "min_heat": 25,
-          "max_inhibition": 40,
-          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "min_intensity": 25,
+          "max_shyness": 40,
+          "effects": { "connection": 5, "shyness": -20, "intensity": 35 },
           "next_node": "node_2_1",
           "next_file": "data/romance/triad/act2.json"
         }
@@ -69,3 +75,4 @@
     }
   }
 }
+
