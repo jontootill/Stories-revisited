@@ -57,7 +57,7 @@
           "next_node": "node_2_4_underwear"
         },
         {
-          "text": "If you pointed him out before, pour two glasses, dim the kitchen lights, and whisper as you watch him together.",
+          "text": "Pour two glasses, dim the kitchen lights, and whisper as you watch him together.",
           "min_heat": 75,
           "max_inhibition": 20,
           "effects": { "heart": 10, "inhibition": -20, "heat": 30 },

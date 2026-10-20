@@ -44,7 +44,11 @@ function startGenre(genre) {
 }
 
 function startStory(startFile) {
+    // Hide BOTH the main homepage AND the romance sub-library
     document.getElementById('homepage-container').classList.add('hidden');
+    document.getElementById('romance-library-container').classList.add('hidden');
+    
+    // Reveal the clean game reader view
     document.getElementById('game-container').classList.remove('hidden');
     
     // Reset state & load story
@@ -53,8 +57,11 @@ function startStory(startFile) {
 }
 
 function returnToHome() {
+    // Hide game view and sub-library
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('romance-library-container').classList.add('hidden');
+    
+    // Return to main light homepage
     document.getElementById('homepage-container').classList.remove('hidden');
 }
 
