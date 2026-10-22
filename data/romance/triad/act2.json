@@ -28,7 +28,8 @@
         {
           "text": "Rest your hand gently over his fingers, looking at your friend to share a slow, comfortable smile. The simple contact feels intimate enough to make your pulse quicken.",
           "effects": { "connection": 15, "shyness": 5, "intensity": 15 },
-          "next_node": "node_2_3"
+          "next_node": "node_5_3",
+          "next_file": "data/romance/triad/act5.json"
         },
         {
           "text": "Lean into his touch, turning your head to whisper a warm encouragement to your friend. His palm settles more firmly against your shoulder, thumb brushing the edge of your collarbone.",
@@ -50,8 +51,7 @@
         {
           "text": "Unbutton the collar of your shirt softly, letting the warm air brush your skin as you sit back. The small reveal draws both of their eyes for a lingering second.",
           "effects": { "connection": 10, "shyness": 0, "intensity": 20 },
-          "next_node": "node_3_1",
-          "next_file": "data/romance/triad/act3.json"
+          "next_node": "node_2_2"
         },
         {
           "text": "Slowly slip your shirt off your shoulders, dropping it onto the floor while looking at both of them. The cool air meets your bare skin, and you feel the quiet intensity of their attention.",

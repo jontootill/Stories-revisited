@@ -1,7 +1,8 @@
+// Global State Tracker
 let gameState = {
-    stats: {},       // Dynamic stats container
-    flags: {},       // Story flags
-    currentFile: ''  // Currently loaded act JSON file
+    stats: {},         // Dynamic stats container (e.g., fatigue, heat, witanLoyalty)
+    flags: {},         // Story flags
+    currentFile: ''    // Currently loaded act JSON file
 };
 
 function openPasswordModal() {
@@ -21,34 +22,61 @@ function unlockRomance() {
     
     if (inputPassword === ROMANCE_PASSWORD) {
         closePasswordModal();
-        
         document.getElementById('homepage-container').classList.add('hidden');
         document.getElementById('romance-library-container').classList.remove('hidden');
-        
-        // Refresh story locks when entering the Romance Library
         updateStoryUnlocks();
     } else {
         document.getElementById('password-error').innerText = "Incorrect password. Try again.";
     }
 }
 
-function startGenre(genre) {
-    if (genre === 'sci-fi' || genre === 'historical') {
-        startStory('data/historical/act1.json');
+// Add origin variable to state tracker
+gameState.previousView = 'home'; // Default fallback
+
+
+// Opens a specific genre's sub-library page
+function openGenreLibrary(genre) {
+    document.getElementById('homepage-container').classList.add('hidden');
+    
+    if (genre === 'historical') {
+        document.getElementById('historical-library-container').classList.remove('hidden');
     } else if (genre === 'fantasy') {
-        startStory('data/fantasy/act1.json');
-    } else if (genre === 'romance') {
+        document.getElementById('fantasy-library-container').classList.remove('hidden');
+    }
+}
+// Handles genre button clicks from homepage
+function startGenre(genre) {
+    if (genre === 'romance') {
         openPasswordModal();
     }
 }
 
-async function startStory(startFile) {
-    // Hide libraries and reveal game reader view
+// Updated startStory to accept and remember origin view
+async function startStory(startFile, originView = 'historical') {
+    gameState.previousView = originView;
+
+    // Dynamically update the back button text based on source library
+    const backBtn = document.getElementById('back-to-library-btn');
+    if (backBtn) {
+        if (originView === 'historical') {
+            backBtn.innerText = "← Back to Historical Library";
+        } else if (originView === 'fantasy') {
+            backBtn.innerText = "← Back to Fantasy Library";
+        } else if (originView === 'romance') {
+            backBtn.innerText = "← Back to Romance Library";
+        }
+    }
+
+    // Hide all libraries and reveal game view
     document.getElementById('homepage-container').classList.add('hidden');
-    document.getElementById('romance-library-container').classList.add('hidden');
+    document.getElementById('historical-library-container').classList.add('hidden');
+    document.getElementById('fantasy-library-container').classList.add('hidden');
+    const romanceLib = document.getElementById('romance-library-container');
+    if (romanceLib) romanceLib.classList.add('hidden');
+    
     document.getElementById('game-container').classList.remove('hidden');
 
-    // Reset flags and current file path
+    // Reset game state
     gameState.flags = {};
     gameState.stats = {};
     gameState.currentFile = startFile;
@@ -58,30 +86,43 @@ async function startStory(startFile) {
         if (!response.ok) throw new Error(`Failed to load ${startFile}`);
         let data = await response.json();
 
-        // 1. Load starting stats dynamically if defined in Act 1 JSON
         if (data.initial_stats) {
             gameState.stats = { ...data.initial_stats };
         }
 
-        // 2. Render dynamic HUD stats bar
         renderStatsHUD();
 
-        // 3. Load starting node using the specific story file path passed in!
-        loadNode('node_1_1', startFile);
+        let startNodeKey = data.start_node || (data.nodes ? Object.keys(data.nodes)[0] : Object.keys(data)[0]);
+        loadNode(startNodeKey, startFile);
 
     } catch (error) {
         console.error("Error starting story:", error);
     }
 }
 
+// Smart back button returns to the exact genre sub-library the user came from
+function smartBack() {
+    document.getElementById('game-container').classList.add('hidden');
+    
+    if (gameState.previousView === 'historical') {
+        document.getElementById('historical-library-container').classList.remove('hidden');
+    } else if (gameState.previousView === 'fantasy') {
+        document.getElementById('fantasy-library-container').classList.remove('hidden');
+    } else if (gameState.previousView === 'romance') {
+        document.getElementById('romance-library-container').classList.remove('hidden');
+    } else {
+        document.getElementById('homepage-container').classList.remove('hidden');
+    }
+}
+
 function renderStatsHUD() {
-    let statsDisplay = document.getElementById('stats-display');
+    let statsDisplay = document.getElementById('stats-display') || document.getElementById('stats-bar');
     if (!statsDisplay) return;
 
     let statPairs = [];
     for (let [key, value] of Object.entries(gameState.stats)) {
-        let formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
-        statPairs.push(`${formattedKey}: <span id="stat-${key}">${value}</span>`);
+        let formattedKey = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
+        statPairs.push(`<span class="stat-item">${formattedKey}: <span id="stat-${key}">${value}</span></span>`);
     }
 
     statsDisplay.innerHTML = statPairs.join(' | ');
@@ -94,46 +135,29 @@ function updateStatsDisplay() {
     }
 }
 
+// Returns to the root homepage
 function returnToHome() {
     document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('romance-library-container').classList.add('hidden');
+    document.getElementById('historical-library-container').classList.add('hidden');
+    document.getElementById('fantasy-library-container').classList.add('hidden');
+    const romanceLib = document.getElementById('romance-library-container');
+    if (romanceLib) romanceLib.classList.add('hidden');
+    
     document.getElementById('homepage-container').classList.remove('hidden');
 }
 
-// Returns from active game reader back to the Romance Sub-Library
 function returnToRomanceLibrary() {
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('homepage-container').classList.add('hidden');
-    document.getElementById('romance-library-container').classList.remove('hidden');
+    const romanceLib = document.getElementById('romance-library-container');
+    if (romanceLib) romanceLib.classList.remove('hidden');
     updateStoryUnlocks();
 }
 
-// Function to load a node from a JSON file
+// Universal node loader supporting single-file JSON maps or multi-act structures
 async function loadNode(nodeId, actFile) {
     if (actFile) {
         gameState.currentFile = actFile;
-    }
-
-    // --- CHECKPOINT 1: ACT 3 STAT CHECK ---
-    if (gameState.currentFile === 'data/romance/window/act3.json' && nodeId === 'node_3_1') {
-        if (gameState.heat < 300 || gameState.inhibition > 20) {
-            resolveAct6Ending();
-            return;
-        }
-    }
-
-    // --- CHECKPOINT 2: ACT 4 STAT CHECK ---
-    if (gameState.currentFile === 'data/romance/window/act4.json' && nodeId === 'node_4_1') {
-        if (gameState.heat < 400) {
-            resolveAct6Ending();
-            return;
-        }
-    }
-
-    // --- CHECKPOINT 3: AUTOMATIC ACT 6 ENDING SELECTION ---
-    if (gameState.currentFile === 'data/romance/window/act6.json' && nodeId === 'node_6_1') {
-        resolveAct6Ending();
-        return;
     }
 
     try {
@@ -141,49 +165,86 @@ async function loadNode(nodeId, actFile) {
         if (!response.ok) throw new Error(`Failed to load ${gameState.currentFile}`);
         
         let data = await response.json();
-        let currentNode = data.nodes[nodeId];
+        
+        // Supports both structured { nodes: { ... } } formats and flat JSON passage maps
+        let nodeCollection = data.nodes ? data.nodes : data;
+        let currentNode = nodeCollection[nodeId];
 
         if (!currentNode) {
             console.error(`Node "${nodeId}" not found in "${gameState.currentFile}"`);
             return;
         }
 
-        // Render Story Text
-        document.getElementById('story-text').innerText = currentNode.text;
+        // Render Story Title & Text
+        const titleElem = document.getElementById('scene-title');
+        if (titleElem) titleElem.innerText = currentNode.title ? currentNode.title.replace(/_/g, ' ') : '';
+
+        const textElem = document.getElementById('story-text') || document.getElementById('scene-text');
+        if (textElem) {
+            let cleanBody = currentNode.text
+                .replace(/^#\s*/gm, '')
+                .replace(/^\*\s*/gm, '')
+                .replace(/\n\n/g, '<br><br>');
+            textElem.innerHTML = cleanBody;
+        }
         
         // Render Choices
         let choicesBox = document.getElementById('choices-box');
         choicesBox.innerHTML = "";
 
-        currentNode.choices.forEach(choice => {
-            if (choice.requires_flag && !gameState.flags[choice.requires_flag]) {
-                return;
-            }
+        if (currentNode.choices && currentNode.choices.length > 0) {
+            currentNode.choices.forEach(choice => {
+                // Flag requirement check
+                if (choice.requires_flag && !gameState.flags[choice.requires_flag]) {
+                    return;
+                }
 
-            let btn = document.createElement('button');
-            let isLocked = false;
-            let lockReason = "";
+                let btn = document.createElement('button');
+                let isLocked = false;
+                let lockReason = "";
 
-            if (choice.min_heat && gameState.heat < choice.min_heat) {
-                isLocked = true;
-                lockReason += ` [Req: ${choice.min_heat} Heat]`;
-            }
-            if (choice.max_inhibition && gameState.inhibition > choice.max_inhibition) {
-                isLocked = true;
-                lockReason += ` [Max ${choice.max_inhibition} Inhibition]`;
-            }
+                // Dynamic generic stat requirement checking (e.g., min_heat, min_fatigue, max_inhibition)
+                if (choice.requirements) {
+                    for (let [reqStat, limitVal] of Object.entries(choice.requirements)) {
+                        // Check if requirement is a minimum or maximum rule
+                        if (reqStat.startsWith('min_')) {
+                            let statName = reqStat.replace('min_', '');
+                            if ((gameState.stats[statName] || 0) < limitVal) {
+                                isLocked = true;
+                                lockReason += ` [Req: ${limitVal} ${statName}]`;
+                            }
+                        } else if (reqStat.startsWith('max_')) {
+                            let statName = reqStat.replace('max_', '');
+                            if ((gameState.stats[statName] || 0) > limitVal) {
+                                isLocked = true;
+                                lockReason += ` [Max: ${limitVal} ${statName}]`;
+                            }
+                        }
+                    }
+                }
 
-            if (isLocked) {
-                btn.innerText = choice.text + lockReason;
-                btn.disabled = true;
-                btn.classList.add('locked-choice');
-            } else {
-                btn.innerText = choice.text;
-                btn.onclick = () => makeChoice(choice);
-            }
+                // Legacy fallback checks for backward compatibility
+                if (choice.min_heat && (gameState.stats.heat || 0) < choice.min_heat) {
+                    isLocked = true;
+                    lockReason += ` [Req: ${choice.min_heat} Heat]`;
+                }
+                if (choice.max_inhibition && (gameState.stats.inhibition || 0) > choice.max_inhibition) {
+                    isLocked = true;
+                    lockReason += ` [Max ${choice.max_inhibition} Inhibition]`;
+                }
 
-            choicesBox.appendChild(btn);
-        });
+                if (isLocked) {
+                    btn.innerText = choice.text + lockReason;
+                    btn.disabled = true;
+                    btn.classList.add('locked-choice');
+                } else {
+                    btn.innerText = choice.text;
+                    btn.onclick = () => makeChoice(choice);
+                }
+
+                choicesBox.appendChild(btn);
+            });
+        }
 
     } catch (error) {
         console.error("Error in loadNode:", error);
@@ -192,6 +253,7 @@ async function loadNode(nodeId, actFile) {
 
 // Handle player choice execution
 function makeChoice(choice) {
+    // Apply stat changes dynamically
     if (choice.effects) {
         for (let [statKey, changeValue] of Object.entries(choice.effects)) {
             if (gameState.stats.hasOwnProperty(statKey)) {
@@ -203,6 +265,7 @@ function makeChoice(choice) {
         updateStatsDisplay();
     }
 
+    // Apply flags
     if (choice.flags) {
         for (let key in choice.flags) {
             gameState.flags[key] = choice.flags[key];
@@ -210,32 +273,10 @@ function makeChoice(choice) {
     }
 
     let nextFile = choice.next_file || gameState.currentFile;
-    loadNode(choice.next_node, nextFile);
+    loadNode(choice.target || choice.next_node, nextFile);
 }
 
-// --- AUTOMATIC ACT 6 ENDING SELECTION ---
-function resolveAct6Ending() {
-    let choicesBox = document.getElementById('choices-box');
-    choicesBox.innerHTML = "";
-
-    // Mark 'The Window' as completed so the Triad sequel unlocks!
-    localStorage.setItem('window_completed', 'true');
-
-    if (gameState.flags["friend_involved"] && gameState.heat >= 400) {
-        localStorage.setItem('triad_unlocked', 'true');
-        loadNode('node_6_2_triad_encounter', 'data/romance/window/act6.json');
-        return;
-    }
-
-    if (gameState.heat >= 300 && gameState.inhibition <= 30) {
-        loadNode('node_6_2_physical_threshold', 'data/romance/window/act6.json');
-        return;
-    }
-
-    loadNode('node_6_2_glass_sanctuary', 'data/romance/window/act6.json');
-}
-
-// Function to update the Romance Sub-Library menu based on completion status
+// Romance Unlock Checkers (Kept safe so your romance features continue to work)
 function updateStoryUnlocks() {
     const isCompleted = localStorage.getItem('window_completed') === 'true';
     const triadBtn = document.getElementById('btn-triad');
@@ -255,23 +296,27 @@ function updateStoryUnlocks() {
     }
 }
 
-// Handler for when the user clicks The Triad Arc button
+// Updated selectTriadStory helper
 function selectTriadStory() {
     const isCompleted = localStorage.getItem('window_completed') === 'true';
-
     if (isCompleted) {
-        startStory('data/romance/triad/act1.json');
+        startStory('data/romance/triad/act1.json', 'romance');
     } else {
         alert("The Triad Arc is locked! You must complete 'The Window' first to unlock this sequel.");
     }
 }
 
-// Single clean window.onload setup
+// Window Onload Setup
 window.onload = () => {
-    document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('romance-library-container').classList.add('hidden');
-    document.getElementById('password-modal').classList.add('hidden');
-    document.getElementById('homepage-container').classList.remove('hidden');
+    const gameCont = document.getElementById('game-container');
+    const romanceLib = document.getElementById('romance-library-container');
+    const modal = document.getElementById('password-modal');
+    const homeCont = document.getElementById('homepage-container');
+
+    if (gameCont) gameCont.classList.add('hidden');
+    if (romanceLib) romanceLib.classList.add('hidden');
+    if (modal) modal.classList.add('hidden');
+    if (homeCont) homeCont.classList.remove('hidden');
 
     updateStoryUnlocks();
 };

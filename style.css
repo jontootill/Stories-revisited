@@ -289,3 +289,48 @@ button.locked-choice {
     text-decoration: underline;
     transform: none;
 }
+
+
+/* --- ENHANCED GENRE CARD STYLING --- */
+
+/* Historical Card Theme (Slate & Deep Blue Accent) */
+.genre-card.historical-card {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+.genre-card.historical-card h2 {
+    color: #1e293b;
+}
+.genre-card.historical-card:hover {
+    transform: translateY(-6px);
+    border-color: #475569;
+    box-shadow: 0 12px 20px rgba(71, 85, 105, 0.15);
+}
+
+/* Fantasy Card Theme (Forest & Emerald Accent) */
+.genre-card.fantasy-card {
+    border-color: #b8e994;
+    background: #f4fbf7;
+}
+.genre-card.fantasy-card h2 {
+    color: #00b894;
+}
+.genre-card.fantasy-card:hover {
+    transform: translateY(-6px);
+    border-color: #00b894;
+    box-shadow: 0 12px 20px rgba(0, 184, 148, 0.15);
+}
+
+/* Romance Card Theme (Amber & Rose Accent) */
+.genre-card.romance-card.protected {
+    border-color: #f1c40f;
+    background: #fffdf5;
+}
+.genre-card.romance-card.protected h2 {
+    color: #d35400;
+}
+.genre-card.romance-card.protected:hover {
+    transform: translateY(-6px);
+    border-color: #e17055;
+    box-shadow: 0 12px 20px rgba(225, 112, 85, 0.15);
+}

@@ -8,49 +8,78 @@
 </head>
 <body>
 
-    <!-- HOMEPAGE VIEW -->
+    <!-- HOMEPAGE VIEW (Main Library Hub) -->
     <div id="homepage-container">
         <h1>Stories Revisited</h1>
         <p>Your gateway to revisiting stories until you get the ending you want.</p>
 
         <div class="genre-grid">
-            <!-- Open Genres -->
-            <button class="genre-card" onclick="startGenre('sci-fi')">
+            <!-- Historical Genre Card -->
+            <button class="genre-card historical-card" onclick="openGenreLibrary('historical')">
                 <h2>Historical</h2>
                 <p>Explore alternative endings to historical events.</p>
             </button>
 
-            <button class="genre-card" onclick="startGenre('fantasy')">
+            <!-- Fantasy Genre Card -->
+            <button class="genre-card fantasy-card" onclick="openGenreLibrary('fantasy')">
                 <h2>Fantasy / Adventure</h2>
                 <p>Forge your path through ancient realms.</p>
             </button>
 
-            <!-- Password Protected Romance Genre -->
-            <button class="genre-card protected" onclick="startGenre('romance')">
+            <!-- Romance Genre Card (Password Protected) -->
+            <button class="genre-card romance-card protected" onclick="startGenre('romance')">
                 <h2>Romance 🔒</h2>
                 <p>Password protected collection.</p>
             </button>
         </div>
     </div>
 
-    <!-- ROMANCE SUB-LIBRARY VIEW (Make sure this exists in your HTML!) -->
+    <!-- HISTORICAL SUB-LIBRARY VIEW -->
+    <div id="historical-library-container" class="hidden">
+        <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
+        <h2>Historical Library</h2>
+        <p>Select a story to begin:</p>
+
+        <div class="genre-grid">
+            <button class="genre-card historical-card" onclick="startStory('data/Historical/Norman Conquest/storydata.json', 'historical')">
+                <h2>Norman Conquests</h2>
+                <p>Lead Harold, William, or Hardrada for the crown of England.</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- FANTASY SUB-LIBRARY VIEW -->
+    <div id="fantasy-library-container" class="hidden">
+        <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
+        <h2>Fantasy Library</h2>
+        <p>Select a story to begin:</p>
+
+        <div class="genre-grid">
+            <button class="genre-card fantasy-card" onclick="startStory('data/fantasy/act1.json', 'fantasy')">
+                <h2>Realm of Shadows</h2>
+                <p>An epic journey through enchanted realms.</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- ROMANCE SUB-LIBRARY VIEW -->
     <div id="romance-library-container" class="hidden">
         <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
         <h2>Romance Library</h2>
         <p>Select a story to begin:</p>
 
         <div class="genre-grid">
-            <button class="genre-card protected" onclick="startStory('data/romance/window/act1.json')">
+            <button class="genre-card romance-card protected" onclick="startStory('data/romance/window/act1.json', 'romance')">
                 <h2>The Window</h2>
                 <p>The original distant observation saga.</p>
             </button>
 
-            <button id="btn-triad" class="genre-card protected locked-story" onclick="selectTriadStory()">
-            <h2>The Triad Arc <span id="triad-lock-icon">🔒</span></h2>
-            <p id="triad-desc">Complete 'The Window' to unlock this sequel.</p>
-        </button>
+            <button id="btn-triad" class="genre-card romance-card protected locked-story" onclick="selectTriadStory()">
+                <h2>The Triad Arc <span id="triad-lock-icon">🔒</span></h2>
+                <p id="triad-desc">Complete 'The Window' to unlock this sequel.</p>
+            </button>
+        </div>
     </div>
-</div>
 
     <!-- PASSWORD MODAL -->
     <div id="password-modal" class="modal hidden">
@@ -69,15 +98,15 @@
     <!-- GAME VIEW -->
     <div id="game-container" class="hidden">
         <div id="top-bar">
-            <button id="home-btn" onclick="returnToRomanceLibrary()">← Romance Library</button>
-        <div id="stats-display">
-                Heat: <span id="stat-heat">0</span> | 
-                Heart: <span id="stat-heart">0</span> | 
-                Inhibition: <span id="stat-inhibition">50</span>
-            </div>
+            <!-- Dynamic Back Button -->
+            <button id="back-to-library-btn" class="back-btn" onclick="smartBack()">← Back</button>
+            
+            <!-- Dynamic HUD Container -->
+            <div id="stats-display"></div>
         </div>
 
         <div id="story-box">
+            <h1 id="scene-title"></h1>
             <p id="story-text"></p>
             <div id="choices-box"></div>
         </div>

@@ -1,0 +1,1469 @@
+{
+  "1 The King dies": {
+    "title": "1 The King dies",
+    "text": "# 1066: The Struggle for England\n\nThree men claim the crown of England after the death of Edward the Confessor. \n\nChoose your leader:\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Play as Harold Godwinson",
+        "target": "1 Harold Start"
+      },
+      {
+        "text": "Play as Duke William of Normandy",
+        "target": "1 William Start"
+      },
+      {
+        "text": "Play as King Harald Hardrada",
+        "target": "1 Hardrada Start"
+      }
+    ]
+  },
+  "1 Harold Start": {
+    "title": "1 Harold Start",
+    "text": "**Leader:** $character | **Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\nJanuary 1066 – Westminster Palace\n\nKing Edward lies dead in his chambers without a clear heir. Outside, the Witan—the council of English nobles—gathers to decide the fate of the realm. Duke William of Normandy claims Edward promised him the throne, while King Harald Hardrada of Norway prepares longships in the north.\n\nAs Earl of Wessex, the crown is within your reach, but every choice carries risk.\n\nWhat is your first directive?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Claim the throne immediately and seek full Witan backing",
+        "target": "1 Harold Coronation"
+      },
+      {
+        "text": "Send an embassy to Normandy to negotiate a peaceful resolution",
+        "target": "1 Harold Embassy"
+      },
+      {
+        "text": "Dispatch messengers north to secure the loyalty of Earls Edwin and Morcar",
+        "target": "1 Harold Northern Alliance"
+      }
+    ]
+  },
+  "1 William Start": {
+    "title": "1 William Start",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### January 1066 – The Ducal Palace, Rouen\n\nWord reaches Normandy: Edward the Confessor is dead, and Harold Godwinson has seized the English throne. You recall vividly the sacred relics Harold swore upon when he pledged to support *your* ascension to the crown.\n\nYour Norman barons are hesitant to finance an unprecedented cross-Channel invasion against a fortified kingdom. To invade, you need legitimacy, ships, and allies.\n\nHow do you open your campaign for England?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Send envoys to Rome to secure the Pope's blessing and Papal Banner",
+        "target": "1 William Papal Blessing"
+      },
+      {
+        "text": "Order immediate logging and shipyard construction across Normandy's ports",
+        "target": "1 William Build Fleet"
+      },
+      {
+        "text": "Summon the Council of Lillebonne to force your reluctant barons into funding the fleet",
+        "target": "1 William Baron Council"
+      }
+    ]
+  },
+  "1 Hardrada Start": {
+    "title": "1 Hardrada Start",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Spring 1066 – Nidaros (Trondheim), Norway\n\nWord arrives in Scandinavia that Edward is dead. You are the *Thunderbolt of the North*, a legendary warrior of the Varangian Guard who has fought from Constantinople to Sicily. \n\nYour claim rests on a pact made years ago between your predecessor, Harthacnut, and King Magnus of Norway: if either died without heir, the other would inherit their realm. \n\nTostig Godwinson, the exiled and vengeful brother of King Harold, arrives at your court offering secret northern landing routes and English allies.\n\nHow will you launch your invasion of England?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Accept Tostig's offer of alliance and integrate his mercenary forces",
+        "target": "1 Hardrada Tostig Alliance"
+      },
+      {
+        "text": "Reject Tostig and launch a massive, independent Viking fleet from Norway",
+        "target": "1 Hardrada Solo Invasion"
+      },
+      {
+        "text": "Raid the Orkney and Shetland Islands first to gather winter supplies and levying local warriors",
+        "target": "1 Hardrada Island Raid"
+      }
+    ]
+  },
+  "1 Harold Coronation": {
+    "title": "1 Harold Coronation",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Westminster Abbey – January 6, 1066\n\nYou move with decisive speed. Before rival factions can coordinate, Archbishop Stigand places the crown of England upon your head. The Witan swears solemn fealty, unifying the southern Saxon nobles behind your reign.\n\nHowever, spies report that Duke William in Normandy is outraged by your swift crowning, viewing it as a breach of a holy oath. In the north, Earls Edwin and Morcar remain distant and wary of southern dominance.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Begin assembling coastal defenses along the English Channel",
+        "target": "2 Harold Channel Defense"
+      },
+      {
+        "text": "Prepare for rumored raids by your exiled brother, Tostig",
+        "target": "2 Harold Tostig Threat"
+      }
+    ]
+  },
+  "1 Harold Embassy": {
+    "title": "1 Harold Embassy",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### London – Late January 1066\n\nYou delay your coronation and dispatch an embassy to Rouen. Your envoys offer William generous land grants in England if he renounces his claim to the crown. \n\nWilliam rejects the offer outright and uses your hesitation to rally the Norman barons, claiming your ambassador's arrival proves your crown lacks legitimate backing. The English Witan grows restless over your lack of decisive action.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Crown yourself immediately to stem growing domestic political panic",
+        "target": "1 Harold Coronation"
+      },
+      {
+        "text": "Focus fully on defensive war preparations along the south coast",
+        "target": "2 Harold Channel Defense"
+      }
+    ]
+  },
+  "1 Harold Northern Alliance": {
+    "title": "1 Harold Northern Alliance",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### York – February 1066\n\nRecognizing that England cannot stand divided, you ride hard for Northumbria. You negotiate a marriage to Aldgyth, sister to Earls Edwin and Morcar. \n\nThe northern earls pledge their levies to your defense, securing the North against Viking threats. However, the long winter ride has exhausted your royal housecarls before campaign season has even begun, and southern nobles complain of your absence from London.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Return to London to formalize your coronation",
+        "target": "1 Harold Coronation"
+      },
+      {
+        "text": "Order the northern earls to fortify the Yorkshire coastline",
+        "target": "2 Harold Fortify the North"
+      }
+    ]
+  },
+  "StoryInit": {
+    "title": "StoryInit",
+    "text": "",
+    "choices": []
+  },
+  "2 Harold Channel Defense": {
+    "title": "2 Harold Channel Defense",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### May 1066 – Pevensey & The Isle of Wight\n\nYou station the main body of your housecarls along the southern coast and summon the *fyrd*—the Saxon militia of farmers and landholders. Months pass as you watch the empty horizon of the English Channel. \n\nBy early September, your provisions run out. The militia farmers demand to return home for the harvest, and news reaches London that your exiled brother, Tostig, has joined King Harald Hardrada of Norway to invade Yorkshire.\n\nWhat is your command?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Disband the coastal fyrd to gather harvest, then force-march north to engage Hardrada",
+        "target": "2 Harold Force March"
+      },
+      {
+        "text": "Maintain coastal watches in the south and send Earls Edwin and Morcar to handle the Norse invasion",
+        "target": "2 Harold Leave to Earls"
+      },
+      {
+        "text": "Order a quick tactical retreat to London to replenish supplies before deciding where to strike",
+        "target": "2 Harold Retreat to London"
+      }
+    ]
+  },
+  "2 Harold Tostig Threat": {
+    "title": "2 Harold Tostig Threat",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### May 1066 – The Humber Estuary\n\nExpecting your exiled brother Tostig to strike, you position naval squadrons along the eastern coast. Tostig's early raiding fleet is repulsed at the River Humber by your ships, forcing him to flee north to Scotland.\n\nHowever, hunting Tostig leaves your southern coastal lookouts undermanned just as Duke William completes his fleet construction in Normandy.\n\nWhat is your next tactical move?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Re-deploy all naval vessels to blockade the Normandy coast",
+        "target": "2 Harold Channel Defense"
+      },
+      {
+        "text": "Set up an early warning beacon network along the northern roads",
+        "target": "2 Harold Retreat to London"
+      }
+    ]
+  },
+  "2 Harold Fortify the North": {
+    "title": "2 Harold Fortify the North",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### August 1066 – York\n\nBy fortifying Yorkshire alongside Earls Edwin and Morcar, you build strong defensive earthworks along the River Ouse. \n\nWhen Hardrada's longships arrive in September, your fortified positions turn the Battle of Fulford into a fierce stalemate rather than an Anglo-Saxon defeat, giving you vital time to march up with royal reinforcements.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Combine forces with the Northern Earls for a pitched battle at Stamford Bridge",
+        "target": "2 Harold Force March"
+      },
+      {
+        "text": "Offer Tostig his former Earldom back to split the Norse-English alliance from within",
+        "target": "3 Harold Norse Bribe"
+      }
+    ]
+  },
+  "1 William Papal Blessing": {
+    "title": "1 William Papal Blessing",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Rome & Rouen – Spring 1066\n\nYour diplomatic strategy yields a monumental victory. Pope Alexander II declares Harold a perjurer and bestows upon you the Papal Banner. \n\nWith holy sanction behind your cause, hundreds of knights, mercenaries, and adventuring nobles from Brittany, Flanders, and France rush to enlist under your banner. Your baronage willingly opens their coffers to fund the invasion.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Begin rapid construction of transport vessels at River Dives",
+        "target": "1 William Build Fleet"
+      },
+      {
+        "text": "Dispatch agents to secure alliances with Harold's exiled enemies",
+        "target": "2 William Exile Alliances"
+      }
+    ]
+  },
+  "1 William Build Fleet": {
+    "title": "1 William Build Fleet",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Barfleur & Rouen – Spring 1066\n\nYou prioritize war material over politics. Hundreds of oaks are felled across Norman forests. Shipwrights work day and night constructing hundreds of flat-bottomed transports designed to carry warhorses across the Channel.\n\nYour fleet will be ready ahead of schedule, but without Papal backing, your army relies entirely on Norman mercenaries rather than international crusading knights.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Petition the Pope for a late blessing before launch",
+        "target": "1 William Papal Blessing"
+      },
+      {
+        "text": "Move the invasion force to Pevensey Bay as soon as winds permit",
+        "target": "2 William Channel Crossing"
+      }
+    ]
+  },
+  "1 William Baron Council": {
+    "title": "1 William Baron Council",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Council of Lillebonne – Spring 1066\n\nYou clash fiercely with your barons in council. They argue that crossing the sea is too dangerous and beyond their feudal duty. \n\nThrough sheer force of will, threats, and promises of English earldoms, you compel them to sign the charter. They agree to build ships, but the bitter political bargaining delays your timber harvesting by two months.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Send an urgent embassy to Rome to boost morale with a Papal Banner",
+        "target": "1 William Papal Blessing"
+      },
+      {
+        "text": "Order high-speed shipbuilding to make up for lost time",
+        "target": "1 William Build Fleet"
+      }
+    ]
+  },
+  "2 William Exile Alliances": {
+    "title": "2 William Exile Alliances",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### May 1066 – Saint-Valery-sur-Somme\n\nYou establish secret contact with Tostig Godwinson and King Harald Hardrada. You encourage their invasion of northern England, knowing a two-front war will divide Harold Godwinson's forces and weaken his shield wall.\n\nMeanwhile, adverse northern winds trap your 700 invasion transports in harbor for over a month. Provisions are running low, and rumors spread among the men that the winds are a sign of divine disfavor.\n\nHow do you manage your stalled army?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Parade the holy relics of Saint Valery through the camp to restore faith and morale",
+        "target": "2 William Relic Procession"
+      },
+      {
+        "text": "Order immediate raids on nearby French lands to seize livestock and maintain rations",
+        "target": "2 William Camp Rationing"
+      },
+      {
+        "text": "Risk an immediate crossing despite the dangerous, unfavorable winds",
+        "target": "Death William Shipwreck"
+      }
+    ]
+  },
+  "2 William Channel Crossing": {
+    "title": "2 William Channel Crossing",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### September 28, 1066 – Pevensey Bay\n\nYour fleet lands without losing a single warhorse. You learn from scouts that Harold Godwinson has just fought a devastating battle against Harald Hardrada at Stamford Bridge in the far north.\n\nEngland's crown is within your grasp, but Harold is force-marching back south with his elite housecarls.\n\nWhat is your invasion strategy?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Pillage Harold's personal estates in Sussex to provoke him into a hasty attack",
+        "target": "3 William Pillage Sussex"
+      },
+      {
+        "text": "Entrench at Hastings and prepare defensive earthworks for a pitched battle",
+        "target": "3 William Build Hastings Castle"
+      },
+      {
+        "text": "March straight on Rochester to cut off London's eastern river access",
+        "target": "3 William March London"
+      }
+    ]
+  },
+  "1 Hardrada Tostig Alliance": {
+    "title": "1 Hardrada Tostig Alliance",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### The North Sea – Summer 1066\n\nYou join forces with Tostig Godwinson. Tostig provides crucial tactical knowledge of Northumbrian defenses and brings Flemings and rebel English warriors into your host.\n\nTogether, your combined fleet grows to over 300 longships. Tostig promises that the northern nobles hate Harold and will welcome you as liberators—though your warrior council warns you never to fully trust an English renegade.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Sail directly up the River Humber toward York",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Raid along the coast of Northumbria to draw out the Northern Earls",
+        "target": "2 Hardrada Coastal Raid"
+      }
+    ]
+  },
+  "1 Hardrada Solo Invasion": {
+    "title": "1 Hardrada Solo Invasion",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Nidaros – Summer 1066\n\nYou cast Tostig out of your hall. A King of Norway does not share victory or plunder with an exiled Saxon traitor. \n\nYou issue the *leidang* call across Norway, summoning 10,000 elite Norse veterans. Your warbands are fiercely loyal and motivated by pure plunder and glory, unburdened by treacherous English politics.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Set sail for the Tyne Estuary to strike northern England unannounced",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Consolidate your fleet at Shetland before driving south",
+        "target": "1 Hardrada Island Raid"
+      }
+    ]
+  },
+  "1 Hardrada Island Raid": {
+    "title": "1 Hardrada Island Raid",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Orkney Islands – Summer 1066\n\nYou spend early summer subduing the Scottish Isles, demanding tribute, grain, and auxiliary warriors from the Norse Earls of Orkney. \n\nYour army is exceptionally well-provisioned for a long campaign, but the delay allows Harold Godwinson in London extra time to consolidate his forces and position scouts along the North Sea.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Launch your grand invasion fleet south toward Yorkshire",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Form a late alliance with Tostig to gain insider intelligence on Harold's moves",
+        "target": "2 Hardrada Tostig Alliance"
+      }
+    ]
+  },
+  "2 Hardrada Humber Advance": {
+    "title": "2 Hardrada Humber Advance",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### September 1066 – The River Ouse, Yorkshire\n\nYour fleet of 300 longships sails up the Humber and enters the River Ouse. You anchor at Riccall, landing thousands of Norse warbands.\n\nAt Fulford, two miles south of York, Earls Edwin and Morcar draw up their Anglo-Saxon army behind a swampy ditch to block your march on the city.\n\nHow do you order your battle line?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Lead the veteran Norse right flank in a ferocious charge against the young Earls",
+        "target": "2 Hardrada Fulford Charge"
+      },
+      {
+        "text": "Feign a retreat on the left flank to draw the Saxon warriors into the marshland",
+        "target": "2 Hardrada Fulford Trap"
+      },
+      {
+        "text": "Hold formation and allow your archers to pin down the English shield wall",
+        "target": "3 Hardrada Fulford Archers"
+      }
+    ]
+  },
+  "2 Hardrada Coastal Raid": {
+    "title": "2 Hardrada Coastal Raid",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### August 1066 – Scarborough\n\nYou torch the coastal town of Scarborough by hurling burning pitch-baskets down from the cliffs. News of the destruction spreads terror across Northumbria.\n\nWhile the plunder enriches your men, the delay gives King Harold in London exact knowledge of your landing location.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Drive up the River Humber toward York before Harold can arrive",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Establish a naval fort at the mouth of the Tyne to force Harold into a coastal battle",
+        "target": "3 Hardrada Tyne Fort"
+      }
+    ]
+  },
+  "2 Hardrada Tostig Alliance": {
+    "title": "2 Hardrada Tostig Alliance",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### The North Sea – August 1066\n\nYou form a pact with Tostig Godwinson in Flanders, binding his fate to yours. Tostig brings crucial tactical intelligence regarding Northumbrian defenses, as well as a fleet of Flemish mercenaries and renegade English housecarls to bolster your host.\n\nTogether, your combined invasion fleet swells to over 300 longships. Tostig promises that the northern earldoms despise Harold and will welcome you as liberators—though your warrior council warns you never to fully trust an exiled Saxon.\n\nHow do you order the combined fleet to strike?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Sail directly up the River Humber toward York to force an early decisive confrontation",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Raid the Northumbrian coastline first to draw out Earls Edwin and Morcar on your terms",
+        "target": "2 Hardrada Coastal Raid"
+      },
+      {
+        "text": "Use Tostig's contacts to send secret emissaries into York offering terms before launching the attack",
+        "target": "2 Hardrada York Subversion"
+      }
+    ]
+  },
+  "2 Harold Force March": {
+    "title": "2 Harold Force March",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Stamford Bridge – September 25, 1066\n\nYou march 185 miles north in just five days, catching Hardrada's Norse army completely unawares and unarmored along the River Derwent. \n\nIn a bloody, grueling victory, Hardrada and Tostig are slain. However, your army is utterly exhausted, and before your men can recover, a horseman rides in with news: Duke William landed at Pevensey yesterday.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Rush back south immediately to catch William off-balance before he secures a beachhead",
+        "target": "3 Harold Rush South"
+      },
+      {
+        "text": "Rest your exhausted troops in York for two weeks while levying fresh northern reinforcements",
+        "target": "3 Harold Rest in York"
+      }
+    ]
+  },
+  "2 Harold Leave to Earls": {
+    "title": "2 Harold Leave to Earls",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Fulford, near York – September 20, 1066\n\nYou keep your army in the south to watch for William. Left on their own, Earls Edwin and Morcar suffer a disastrous defeat against Hardrada at the Battle of Fulford. York surrenders, and the Norse capture vast stores of weapons and hostages.\n\nWith northern England kneeling to Hardrada, the Witan panics and demands you march north immediately.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Abandon the south completely and march north to save the kingdom from Norse control",
+        "target": "2 Harold Force March"
+      },
+      {
+        "text": "Send royal gold to bribe Hardrada into returning to Norway so you can focus on William",
+        "target": "3 Harold Norse Bribe"
+      }
+    ]
+  },
+  "2 Harold Retreat to London": {
+    "title": "2 Harold Retreat to London",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### London – Mid-September 1066\n\nYou fall back to London in good order. The fyrd gathers the harvest, and your housecarls are well-rested and well-supplied. \n\nNews arrives simultaneously: Hardrada has defeated the northern earls at Fulford, and William's fleet has just landed at Pevensey. Holding central interior lines in London, you can choose which invader to fight first with a fully rested army.\n\n* \n*",
+    "choices": [
+      {
+        "text": "March north with fresh troops to deal with Hardrada first",
+        "target": "3 Harold Fresh March North"
+      },
+      {
+        "text": "Blockade William in Sussex and let Hardrada waste his strength in the north",
+        "target": "3 Harold South Blockade"
+      }
+    ]
+  },
+  "3 Harold Rush South": {
+    "title": "3 Harold Rush South",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### London & Sussex – Early October 1066\n\nYou ride hard back to London in less than a week, leaving your wounded and archers behind to catch up. Your core housecarls are utterly exhausted, having fought a battle to the death and covered over 380 miles in three weeks. \n\nYour brother Gyrth begs you to remain in London to rest and allow fresh levies from the home counties to assemble. However, Duke William is actively burning your personal estates in Sussex to bait you into the field.\n\nWhat is your immediate tactical move?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Advance south immediately to trap William near Hastings before he can march on London",
+        "target": "4 Harold Hastings Immediately"
+      },
+      {
+        "text": "Heed Gyrth's advice: Hold London, assemble fresh levies, and starve William out of Sussex",
+        "target": "4 Harold London Defense"
+      },
+      {
+        "text": "Dispatch small cavalry raiding bands to harass William's foraging parties while your army rests",
+        "target": "4 Harold Harassment War"
+      }
+    ]
+  },
+  "3 Harold Rest in York": {
+    "title": "3 Harold Rest in York",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### York & London – October 1066\n\nYou spend ten days in York treating the wounded and securing fresh northern recruits from Earls Edwin and Morcar. Your men recover their full vigor, but the delay allows Duke William unhindered freedom to fortify Hastings and construct timber strongholds.\n\nSouthern Saxon nobles panic at your absence, suspecting you have abandoned the south to Norman plundering.\n\n* \n*",
+    "choices": [
+      {
+        "text": "March south with a fresh combined Saxon-Northern host to confront William at Hastings",
+        "target": "4 Harold Hastings Immediately"
+      },
+      {
+        "text": "Entrench at London and challenge William to attack your prepared city fortifications",
+        "target": "4 Harold London Defense"
+      }
+    ]
+  },
+  "3 Harold Norse Bribe": {
+    "title": "3 Harold Norse Bribe",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### York – Late September 1066\n\nYou send silver ship-loadings to Hardrada in exchange for his return to Norway. Hardrada accepts the silver, but uses it to pay his mercenaries and refuses to leave Yorkshire, realizing your crown is fragile.\n\nWith your gold spent and your reputation tarnished, you are forced to march north anyway, but news arrives that William has already landed in Pevensey.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Force-march north to smash Hardrada once and for all",
+        "target": "2 Harold Force March"
+      },
+      {
+        "text": "Abandon the North to Hardrada and turn all remaining strength south to face William",
+        "target": "4 Harold Hastings Immediately"
+      }
+    ]
+  },
+  "3 Harold Fresh March North": {
+    "title": "3 Harold Fresh March North",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Yorkshire Border – September 1066\n\nHaving organized your supplies in London, you lead a well-equipped, fully rested army north. While Earls Edwin and Morcar took heavy losses at Fulford, your arrival with fresh royal housecarls restores Anglo-Saxon confidence. \n\nHardrada’s Norse warbands, celebrating inside York, are caught off-guard as your army appears on the horizon.\n\n*  \n*",
+    "choices": [
+      {
+        "text": "Strike immediately at Stamford Bridge before Hardrada can gather his forces",
+        "target": "3 Hardrada Unarmoured Stamford"
+      },
+      {
+        "text": "Offer terms to Hardrada to buy time while you surround the city of York",
+        "target": "3 Hardrada Parley Terms"
+      }
+    ]
+  },
+  "3 Harold South Blockade": {
+    "title": "3 Harold South Blockade",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Thames Valley – Early October 1066\n\nYou establish a defensive line south of London, fortifying crossing points along the Thames while ordering English naval squadrons to patrol the Sussex coastline.\n\nYou refuse to give Duke William the open pitched battle he desperately needs. Deprived of local forage and unable to resupply by sea, William’s Norman barons grow restless as winter approaches.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Offer generous land concessions to William if he abandons his invasion and returns to Normandy",
+        "target": "4 Harold Sussex Blockade"
+      },
+      {
+        "text": "Launch a coordinated night assault on William’s entrenched coastal camp at Hastings",
+        "target": "4 Harold Harassment War"
+      }
+    ]
+  },
+  "2 William Relic Procession": {
+    "title": "2 William Relic Procession",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Saint-Valery-sur-Somme – September 27, 1066\n\nThe solemn procession of Saint Valery's casket revitalizes your men's spirits. That very night, the wind miraculously shifts to the south. \n\nYou board your flagship, the *Mora*, and lead the fleet across the English Channel. You land entirely unopposed at Pevensey on September 28—Harold's southern lookouts are nowhere to be seen!\n\n* \n*",
+    "choices": [
+      {
+        "text": "Construct a prefabricated wooden castle at Hastings to secure your beachhead",
+        "target": "3 William Build Hastings Castle"
+      },
+      {
+        "text": "Immediately march inland toward London to force Harold into an early battle",
+        "target": "3 William March London"
+      }
+    ]
+  },
+  "2 William Camp Rationing": {
+    "title": "2 William Camp Rationing",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Saint-Valery-sur-Somme – Late September 1066\n\nForaging parties sustain the army, but aggressive looting angers neighboring French lords and alienates Church papal observers. \n\nWhen the south wind finally blows, your army lands safely at Pevensey, but morale is tense and your supply lines back to Normandy remain vulnerable.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Pillage the Sussex countryside to force Harold to come to you",
+        "target": "3 William Pillage Sussex"
+      },
+      {
+        "text": "Fortify Pevensey Castle and await news of Harold's army in the north",
+        "target": "3 William Build Hastings Castle"
+      }
+    ]
+  },
+  "Death William Shipwreck": {
+    "title": "Death William Shipwreck",
+    "text": "### FATAL CHOICE: DESTROYED IN THE CHANNEL GALE\n\n\nRefUSING to wait for favorable winds, you order the fleet to set sail into a howling north gale. \n\nOut in open water, heavy wooden horse-transports capsize under massive waves. Hundreds of knights in chainmail drown, and your flagship is driven onto the rocky shoals of the Somme estuary. Your invasion force is scattered and destroyed before ever seeing the English coast.\n\n> **Historical Note:** Duke William strictly anchored his fleet for weeks at Saint-Valery-sur-Somme until September 27, resisting pressure from his barons to cross in dangerous winds.",
+    "choices": [
+      {
+        "text": "Return to Main Menu",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "3 William Build Hastings Castle": {
+    "title": "3 William Build Hastings Castle",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Hastings – Early October 1066\n\nYou dismantle the prefabricated timber castles brought in the holds of your transports and assemble a motte-and-bailey fort on the high ground overlooking Hastings harbor. \n\nYour scouts bring word that Harold Godwinson has crushed Hardrada at Stamford Bridge and is riding south at breakneck speed.\n\nHow do you prepare your strategy for Harold's arrival?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Send cavalry raiding parties to burn local Sussex villages to force Harold to attack immediately",
+        "target": "3 William Pillage Sussex"
+      },
+      {
+        "text": "Offer a final diplomatic ultimatum to Harold: Submit to Papal arbitration or face single combat",
+        "target": "3 William Ultimatum"
+      },
+      {
+        "text": "Form up your army at dawn and march five miles north to catch Harold before he completes his camp",
+        "target": "4 William March to Senlac"
+      }
+    ]
+  },
+  "3 William March London": {
+    "title": "3 William March London",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Rochester & Kent – October 1066\n\nYou bypass Hastings and advance northeast toward Rochester to secure control of the Dover road and cut off London from sea supply. \n\nWhile this puts pressure on the English capital, your supply lines back to the fleet at Pevensey become dangerously stretched and prone to Saxon guerrilla ambushes.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Fall back to the secure coast at Hastings to await Harold's move",
+        "target": "3 William Build Hastings Castle"
+      },
+      {
+        "text": "Press forward and offer battle near Southwark outside London's southern gates",
+        "target": "4 William March to Senlac"
+      }
+    ]
+  },
+  "3 William Pillage Sussex": {
+    "title": "3 William Pillage Sussex",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Sussex Countryside – October 1066\n\nYour knights lay waste to the surrounding manors, burning homes and seizing livestock. Because these lands are Harold's personal property, the tactic works: an enraged Harold rushes south without waiting for his archers or northern reinforcements.\n\nScouts report the English army has set up a dense shield wall on Senlac Hill.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a combined assault: Archers fire first, followed by heavy infantry and cavalry charges",
+        "target": "4 William Battle Combined Assault"
+      },
+      {
+        "text": "Deploy feigned retreats to trick the Saxon shield wall into breaking its formation",
+        "target": "4 William Feigned Retreat Strategy"
+      }
+    ]
+  },
+  "2 Hardrada Fulford Charge": {
+    "title": "2 Hardrada Fulford Charge",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Fulford – September 20, 1066\n\nRaising your raven banner, *Landwaster*, you charge into the front lines. Your Varangian veterans shatter the Saxon shield wall. Earls Edwin and Morcar flee the field, and York opens its gates to you four days later.\n\nThe city offers 150 elite hostages and provisions. You move your army 7 miles east to Stamford Bridge to receive the hostages and divide the plunder.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order your men to leave their heavy mail coats at the ships due to unseasonable heat",
+        "target": "3 Hardrada Unarmoured Stamford"
+      },
+      {
+        "text": "Maintain full war gear and establish defensive watchposts along the York road",
+        "target": "3 Hardrada Armoured Stamford"
+      }
+    ]
+  },
+  "2 Hardrada Fulford Trap": {
+    "title": "2 Hardrada Fulford Trap",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Fulford – September 20, 1066\n\nYour tactical feint works brilliantly. The inexperienced northern levies break rank to pursue your fleeing wing, becoming hopelessly mired in the boggy ground. \n\nYour hidden reserves envelop them from the side, crushing the northern army completely. York surrenders without firing an arrow.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Demand immediate financial tribute and host quarters inside York's city walls",
+        "target": "3 Hardrada Occupy York"
+      },
+      {
+        "text": "March to Stamford Bridge to secure hostages from the wider shire",
+        "target": "3 Hardrada Armoured Stamford"
+      }
+    ]
+  },
+  "3 Hardrada Fulford Archers": {
+    "title": "3 Hardrada Fulford Archers",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Fulford Meadows – September 20, 1066\n\nYou array your longbowmen along the ditch fronting the marsh. A steady rain of Norse arrows pins down Edwin and Morcar's inexperienced levies, shattering their morale before they can reach your main shield wall.\n\nWhen your Varangian guard finally advances, the depleted Saxon ranks break in terror, leaving York's road wide open.\n\n*  \n*",
+    "choices": [
+      {
+        "text": "Demand hostages and quarters at Stamford Bridge",
+        "target": "3 Hardrada Unarmoured Stamford"
+      },
+      {
+        "text": "Enter York directly in triumph to establish your court",
+        "target": "3 Hardrada Occupy York"
+      }
+    ]
+  },
+  "3 Hardrada Unarmoured Stamford": {
+    "title": "3 Hardrada Unarmoured Stamford",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Stamford Bridge – September 25, 1066\n\nIt is an unseasonably hot autumn day. You march seven miles east from your river anchorage at Riccall to Stamford Bridge to collect 150 hostages from Yorkshire. Expecting no resistance, you allow your men to leave their heavy chainmail coats (*byrnies*) behind on the ships.\n\nSuddenly, a cloud of dust appears on the horizon. Thousands of gilded helmets glint in the sun: King Harold Godwinson has arrived with his entire army!\n\nHow do you respond to the sudden Saxon surprise attack?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Send three fast riders back to Riccall to summon your armored reserve while holding the bridge",
+        "target": "3 Hardrada Bridge Delay"
+      },
+      {
+        "text": "Form a circular, unarmored shield ring (*fylking*) immediately along the riverbank",
+        "target": "Death Hardrada Unarmoured Stamford Bridge"
+      },
+      {
+        "text": "Offer Tostig's terms to Harold: Propose dividing England into northern and southern realms",
+        "target": "3 Hardrada Parley Terms"
+      }
+    ]
+  },
+  "3 Hardrada Armoured Stamford": {
+    "title": "3 Hardrada Armoured Stamford",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Stamford Bridge – September 25, 1066\n\nYour lookouts give early warning of Harold's approach. Fully clad in chainmail and fully formed into ranks, your veterans face the Saxon march with calm discipline.\n\nHarold's force is exhausted from their five-day force-march from London. Instead of catching an unarmored prey, Harold finds a fully armored Viking wall waiting for him.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Charge downhill into Harold's tired ranks before they can form an organized shield wall",
+        "target": "4 Hardrada Smashed Saxon March"
+      },
+      {
+        "text": "Maintain an impenetrable shield ring and let the tired Saxons wear themselves out against your spear points",
+        "target": "4 Hardrada Smashed Saxon March"
+      }
+    ]
+  },
+  "3 Hardrada Occupy York": {
+    "title": "3 Hardrada Occupy York",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### City of York – Late September 1066\n\nYou march into York under ringing church bells. The citizens yield 150 royal hostages and open their granaries to feed your 10,000 warriors. You establish your royal seat inside the Roman walls, securing northern England as a sovereign kingdom under Norse rule.\n\nSpies report that King Harold Godwinson is force-marching north to drive you out.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Lead your fully armored army out to crush Harold outside the city gates",
+        "target": "4 Hardrada Smashed Saxon March"
+      },
+      {
+        "text": "Prepare York's ancient stone ramparts to withstand a prolonged siege",
+        "target": "4 Hardrada Orre Relief"
+      }
+    ]
+  },
+  "3 Hardrada Tyne Fort": {
+    "title": "3 Hardrada Tyne Fort",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Mouth of the Tyne – September 1066\n\nBypassing York for now, you construct a heavily fortified palisade camp at the mouth of the River Tyne. Your longships remain safely anchored, protected by naval booms and earthworks.\n\nHarold Godwinson is forced to march all the way north to fight you on ground of your choosing, far from his southern base of supply.\n\n* \n*",
+    "choices": [
+      {
+        "text": "March out from your fortifications to meet Harold’s tired force in open battle",
+        "target": "4 Hardrada Smashed Saxon March"
+      },
+      {
+        "text": "Hold your palisade line and force Harold to launch a costly siege against your warbands",
+        "target": "4 Hardrada Orre Relief"
+      }
+    ]
+  },
+  "2 Hardrada York Subversion": {
+    "title": "2 Hardrada York Subversion",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Off the Coast of Holderness – Early September 1066\n\nTostig sends covert riders into York carrying his personal seal. He offers the city council a deal: surrender without bloodshed, refuse aid to Harold Godwinson, and host the Norse-Saxon army in exchange for total protection against plundering.\n\nThe burgesses of York, terrified of your legendary reputation and reluctant to support Harold's southern crown, agree to remain neutral during the initial clash at Fulford.\n\n* \n*",
+    "choices": [
+      {
+        "text": "March on Fulford to crush Edwin and Morcar's isolated field army",
+        "target": "2 Hardrada Humber Advance"
+      },
+      {
+        "text": "Bypass the field armies entirely and demand host quarters inside York's fortress walls",
+        "target": "3 Hardrada Occupy York"
+      }
+    ]
+  },
+  "4 Harold Hastings Immediately": {
+    "title": "4 Harold Hastings Immediately",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – October 13, 1066\n\nYou march through the night and take up a strong defensive position on Senlac Hill, blocking the road from Hastings to London. Your shield wall forms a dense, unbroken hedge of axes and spears.\n\nYour men are bone-tired, but they stand atop high ground. At dawn, Duke William's army emerges from the valley below, banners flying under the Papal cross.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Hold the high ground strictly and maintain an unbroken shield wall",
+        "target": "4 Harold Battle Shield Wall"
+      },
+      {
+        "text": "Order a full downhill charge as soon as William's initial line wavers",
+        "target": "4 Harold Battle Counter Charge"
+      }
+    ]
+  },
+  "4 Harold London Defense": {
+    "title": "4 Harold London Defense",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### London – Mid-October 1066\n\nYou refuse William's bait and remain inside London's Roman walls. Over ten days, thousands of fresh Saxon levies from Kent, Wessex, and the Midlands reinforce your army. Your veteran housecarls recover their strength.\n\nDenied a decisive pitched battle, William's supply lines in Sussex break down. His Norman barons demand action or retreat.\n\n* \n*",
+    "choices": [
+      {
+        "text": "March out of London with a massive, fully rested army to crush William near Southwark",
+        "target": "4 Harold Pitch Battle Rested"
+      },
+      {
+        "text": "Order a total naval and land blockade to trap William's army along the Sussex coastline",
+        "target": "4 Harold Sussex Blockade"
+      }
+    ]
+  },
+  "4 Harold Harassment War": {
+    "title": "4 Harold Harassment War",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Sussex Downs – October 1066\n\nRather than risking a full pitched battle against Norman heavy cavalry, you send fast Saxon mounted units to cut off William’s foraging parties and burn the countryside surrounding Hastings.\n\nThe attrition strategy works: Norman warhorses starve, and William is forced out of his fortified position to seek a decisive engagement.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Form up the main shield wall atop Senlac Hill as William marches to engage you",
+        "target": "4 Harold Battle Shield Wall"
+      },
+      {
+        "text": "Ambush William's vanguard in the dense woods of the Weald",
+        "target": "4 Harold Battle Counter Charge"
+      }
+    ]
+  },
+  "4 Harold Battle Shield Wall": {
+    "title": "4 Harold Battle Shield Wall",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 9:00 AM, October 14, 1066\n\nYou stand near your royal standards, *The Fighting Man* and *The Golden Dragon*, surrounded by your elite housecarls. You order the frontline spearmen to overlap their heavy wooden shields, creating an unbroken two-mile wall along the ridge.\n\nBelow, Norman crossbowmen and archers advance up the marshy slope and unleash heavy volleys of arrows. \n\nBecause of your high ground, most shafts fly overhead or split against the shield wall. Your frontline responds by hurling iron-headed throwing spears, Francisca axes, and heavy rocks into the massed ranks below.\n\nWhen Duke William orders his heavy foot soldiers and armored cavalry up the steep, muddy slope, the shield wall holds firm. Two-handed Dane axes cleave through horse and rider alike. \n\nSuddenly, the Breton infantry on William's left flank breaks under the ferocious Saxon resistance, fleeing downhill. A panic spreads among the Normans: *“The Duke is dead!”*\n\nHow do you command your ranks during the Breton collapse?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Maintain strict formation: Forbid any man from breaking ranks to pursue",
+        "target": "4 Harold Hastings Hold Line"
+      },
+      {
+        "text": "Order your right-wing fyrd militia to charge downhill and wipe out the fleeing Bretons",
+        "target": "4 Harold Hastings Pursue Bretons"
+      },
+      {
+        "text": "Send mounted housecarls down the flank to encircle the retreating Bretons without disrupting the main wall",
+        "target": "4 Harold Hastings Flank Bretons"
+      }
+    ]
+  },
+  "4 Harold Battle Counter Charge": {
+    "title": "4 Harold Battle Counter Charge",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 9:30 AM, October 14, 1066\n\nSeeing William's vanguard waver in the muddy marsh at the base of the hill, you blow the war horns and order a sudden, aggressive downhill counter-charge across your entire front line.\n\nThousands of Saxon warriors surge down the slope with deafening war cries. The momentum carries your housecarls directly into William's center, smashing through his archers and foot soldiers. \n\nHowever, charging downhill breaks your locked shield formation. Duke William takes advantage of the chaos: he rallies his heavy Norman cavalry on the dry flank and prepares to counter-strike your exposed infantry.\n\nHow do you reorganize your army on the flat ground?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Order an immediate tactical retreat back up Senlac Hill to reform the shield wall",
+        "target": "4 Harold Hastings Reform on Hill"
+      },
+      {
+        "text": "Form three dense infantry defensive rings (*fylkings*) right where you stand on the flat terrain",
+        "target": "4 Harold Hastings Flatland Rings"
+      },
+      {
+        "text": "Target Duke William's command unit directly in an all-or-nothing strike to slay him",
+        "target": "4 Harold Hastings Slay WIlliam Strike"
+      }
+    ]
+  },
+  "4 Harold Pitch Battle Rested": {
+    "title": "4 Harold Pitch Battle Rested",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Southwark Meadows, South of London – October 1066\n\nHaving fully rested your army inside London and gathered 10,000 fresh levies from the home counties, you march south to meet William on ground of your choosing at Southwark.\n\nYour housecarls are fresh, well-fed, and fully supplied. William’s army, worn down by weeks of foraging and sickness in Sussex, faces a Saxon army nearly twice its size.\n\nWilliam deploys his knights in a wide line across the marshy meadows bordering the River Thames.\n\nHow do you open this pitched engagement?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Deploy a massive bowmen barrage across your front to wear down William's warhorses",
+        "target": "4 Harold Southwark Archery Barrage"
+      },
+      {
+        "text": "Use your numeric superiority to attempt a double envelopment of both Norman flanks",
+        "target": "4 Harold Southwark Double Envelop"
+      },
+      {
+        "text": "Form a giant, thick shield wall and force William to attack your rested heavy housecarls",
+        "target": "4 Harold Southwark Rested Well"
+      }
+    ]
+  },
+  "4 Harold Sussex Blockade": {
+    "title": "4 Harold Sussex Blockade",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### The Sussex Border – October 1066\n\nYou refuse to offer William a open field battle. Instead, you entrench along the forest gaps of the Weald, while ordering the English fleet to blockade Pevensey Bay.\n\nWilliam’s invasion force is trapped in a narrow, devastated coastal strip with no food and no way to receive reinforcements or retreat by sea.\n\nBy week three, Norman foraging parties are being slaughtered in forest ambushes daily. William’s barons demand an exit strategy. A Norman herald arrives at your camp under a flag of truce.\n\nWhat terms do you present to William’s messenger?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Demand unconditional surrender: William must yield his fleet and enter monastic captivity",
+        "target": "5 Harold Unconditional Surrender"
+      },
+      {
+        "text": "Offer William safe passage back to Normandy if he formally renounces all claims forever",
+        "target": "5 Harold Negotiated Withdrawal"
+      },
+      {
+        "text": "Reject all parley and launch a coordinated night attack on the starved Norman camp at Hastings",
+        "target": "5 Harold Night Camp Assault"
+      }
+    ]
+  },
+  "3 William Ultimatum": {
+    "title": "3 William Ultimatum",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Hastings Camp – October 12, 1066\n\nYou send a monk named Hugh Margot to London bearing a demand: Harold must surrender the crown, accept the Pope's judgment, or meet you in single combat to spare Christian blood.\n\nHarold rejects all terms, declaring, *\"May the Lord judge between William and me this day!\"* Both armies prepare for battle along the road to London.\n\n*",
+    "choices": [
+      {
+        "text": "Lead your knights out to confront Harold on the slopes of Senlac Hill",
+        "target": "4 William March to Senlac"
+      }
+    ]
+  },
+  "4 William March to Senlac": {
+    "title": "4 William March to Senlac",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Road to London – October 13, 1066\n\nAt break of day, you order your army out of Hastings and march five miles north. As you crest a rise near Telham Hill, you spot Harold’s army assembling atop Senlac Hill, blocking the road to London with an impenetrable wall of interlocking shields.\n\nYour army deploys into three divisions: Bretons on the left, Normans in the center under your direct command, and French mercenaries on the right.\n\nHow do you open the engagement?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order archers to volley over the wall, followed immediately by infantry and cavalry charges",
+        "target": "4 William Battle Combined Assault"
+      },
+      {
+        "text": "Feign a retreat on the left flank to lure the Saxon warriors down from their high ground",
+        "target": "4 William Feigned Retreat Strategy"
+      }
+    ]
+  },
+  "4 William Battle Combined Assault": {
+    "title": "4 William Battle Combined Assault",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Senlac Hill – 9:00 AM, October 14, 1066\n\nYou order your line forward in three synchronized waves: missile troops first, followed by heavy infantry, with your armored cavalry holding in reserve to exploit any breach.\n\nYour archers advance to within bowshot, but firing uphill means their arrows lose force or fly harmlessly over the Saxon shield wall. The Anglo-Saxon line stands firm, hurling heavy throwing axes, iron spears, and boulders into your infantry as they struggle up the steep, muddy slope.\n\nOn your left, the Breton division takes catastrophic casualties under a hail of Saxon missiles. Panic breaks out among them, and they collapse downhill in a rout. A rumor spreads through your center: *“The Duke has fallen!”*\n\nHow do you regain control of the battle?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Remove your helmet, ride along the line shouting encouragement, and rally the Bretons",
+        "target": "4 William Hastings Rally Lines"
+      },
+      {
+        "text": "Order your center division to deliberately pull back alongside the Bretons to pull the Saxons out of rank",
+        "target": "4 William Feigned Retreat Strategy"
+      },
+      {
+        "text": "Commit your elite reserve knights to strike the Saxon center while they watch the Breton retreat",
+        "target": "4 William Hastings Reserve Commit"
+      }
+    ]
+  },
+  "4 William Feigned Retreat Strategy": {
+    "title": "4 William Feigned Retreat Strategy",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Senlac Hill – 12:30 PM, October 14, 1066\n\nSeeing the eager Saxon militia break ranks to pursue your wavering left wing, you turn disaster into a tactical trap. You order your central division of Norman knights to signal a panic and execute a **feigned retreat** downhill.\n\nScreaming in triumph, hundreds of Saxon warriors break away from the main shield wall atop the hill and rush down into the open valley to give chase.\n\nOnce the pursuing Saxons are fully isolated on the flat meadow, you raise your sword, signal the war horns, and wheel your heavy cavalry around in a disciplined arc.\n\nHow do you execute the trap?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Completely encircle the isolated Saxons in the valley and annihilate them with cavalry",
+        "target": "4 William Hastings Annihilate Valley"
+      },
+      {
+        "text": "Bypass the isolated pursuers and charge your heavy knights directly into the newly opened gap atop the hill",
+        "target": "4 William Hastings Gap Assault"
+      }
+    ]
+  },
+  "3 Hardrada Bridge Delay": {
+    "title": "3 Hardrada Bridge Delay",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### The Bridge at Stamford – September 25, 1066\n\nYou send riders sprinting for your ships. To buy time, a giant Norse berserker steps onto the narrow wooden bridge, wielding a two-handed Dane axe. Single-handedly, he holds back the entire Saxon advance, slaying dozens of attackers.\n\nWhile he holds the line, you form your main body into a tight circular shield wall on the high ground at Battle Flats.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Join the front line in a berserker rage with your greatsword, *Landwaster*",
+        "target": "Death Hardrada Unarmoured Stamford Bridge"
+      },
+      {
+        "text": "Hold the defensive ring strictly until Eystein Orre arrives with your armored reserves from Riccall",
+        "target": "4 Hardrada Orre Relief"
+      }
+    ]
+  },
+  "Death Hardrada Unarmoured Stamford Bridge": {
+    "title": "Death Hardrada Unarmoured Stamford Bridge",
+    "text": "### FATAL CHOICE: THE ARROW AT STAMFORD BRIDGE\n\n\nWithout your chainmail coat and fighting with wild fury on the front line, you are exposed. As the Saxon housecarls press the assault, a random arrow pierces your throat. \n\nYour men fight on valiantly around your fallen banner, *Landwaster*, but without your leadership, the Norse army is eventually overrun. Only 24 of your 300 longships return to Norway.\n\n> **Historical Note:** King Harald Hardrada died at Stamford Bridge on September 25, 1066, after being struck in the throat by an arrow while fighting unarmored.",
+    "choices": [
+      {
+        "text": "Return to Main Menu",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "3 Hardrada Parley Terms": {
+    "title": "3 Hardrada Parley Terms",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Stamford Bridge Meadow – September 25, 1066\n\nTwenty Saxon riders approach your lines. One offers Tostig his earldom back if he turns on you. Tostig asks what King Harold will give Harald Hardrada for his trouble. \n\nThe Saxon rider responds coldly: *\"Seven feet of English ground, or more, seeing as he is taller than other men.\"*\n\nThe rider gallops back; Tostig reveals it was King Harold Godwinson himself.\n\n*",
+    "choices": [
+      {
+        "text": "Order the shield wall to brace for an immediate frontal assault",
+        "target": "3 Hardrada Bridge Delay"
+      }
+    ]
+  },
+  "4 Hardrada Orre Relief": {
+    "title": "4 Hardrada Orre Relief",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Battle Flats, Stamford Bridge – September 25, 1066\n\nYour defensive circle holds off the initial Saxon fury while the giant berserker defends the bridge. Suddenly, a cloud of dust rises from the Riccall road: Eystein Orre arrives with the armored reserves (*Orre's Storm*).\n\nThough exhausted from running in full armor, the arrival of your fresh warbands hits Harold’s exposed left flank like a hammer.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a general counter-offensive across the entire battle line",
+        "target": "5 Hardrada Saxon Rout"
+      },
+      {
+        "text": "Offer terms to Harold Godwinson to surrender the northern earldoms",
+        "target": "5 Hardrada Dual Crown"
+      }
+    ]
+  },
+  "4 Hardrada Smashed Saxon March": {
+    "title": "4 Hardrada Smashed Saxon March",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Derwent Valley – Late September 1066\n\nHaving maintained full chainmail armor and scouts, your army catches Harold’s exhausted Saxon housecarls at the end of their grueling 185-mile march. \n\nYour fresh, fully armored Norse shield wall holds firm against Harold’s opening charge. With their ranks weary and disorganized, you order the raven banner *Landwaster* forward to counter-attack.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a decisive charge with your Varangian heavy axe-men to break Harold's center",
+        "target": "5 Hardrada Saxon Rout"
+      },
+      {
+        "text": "Encircle Harold's flanks using Tostig's English mercenary cavalry",
+        "target": "5 Hardrada Dual Crown"
+      }
+    ]
+  },
+  "5 Hardrada Saxon Rout": {
+    "title": "5 Hardrada Saxon Rout",
+    "text": "### ACT 5: THE NORSE MARCH ON LONDON – STEP 1\n\n\n### Derwent Valley – Late September 1066\n\nYour victory at Stamford Bridge is absolute. King Harold Godwinson’s army is shattered, and Harold himself falls in the bloody retreat back toward York. \n\nThe surviving English nobles and housecarls lay down their weapons and kneel before your raven banner, *Landwaster*. Northern England is entirely yours.\n\nHowever, three days later, a scout rides in with urgent news: **Duke William of Normandy has landed at Pevensey with 7,000 warriors**, claiming the English crown for himself.\n\nHow do you begin your campaign to secure all of England?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Crown yourself King of England in York Minster, then march south with a combined Norse-Saxon host",
+        "target": "5 Hardrada York Coronation"
+      },
+      {
+        "text": "March immediately on London to seize the royal treasury and the Witan before William can reach it",
+        "target": "5 Hardrada London Race"
+      },
+      {
+        "text": "Send Tostig Godwinson to negotiate a partition treaty with Duke William (Norse North / Norman South)",
+        "target": "5 Hardrada Partition Offer"
+      }
+    ]
+  },
+  "5 Hardrada Dual Crown": {
+    "title": "5 Hardrada Dual Crown",
+    "text": "### ACT 5: THE DUAL REALM DIPLOMACY – STEP 1\n\n\n### Stamford Bridge Meadow – Late September 1066\n\nRecognizing your tactical dominance, Harold Godwinson agrees to parley. At the negotiations, you present an uncompromising ultimatum: England will be divided into two sovereign realms.\n\nHarold retains Wessex and the South, while you are recognized as King of Northumbria, Mercia, and East Anglia, backed by an annual payment of 10,000 pounds of silver (*Danegeld*).\n\nTwo weeks later, word arrives that Duke William has landed at Pevensey to overthrow Harold. Harold sends an urgent messenger asking for your Norse army to aid him in repelling the Normans.\n\nHow do you answer Harold’s plea for aid?\n\n* \n* \n*",
+    "choices": [
+      {
+        "text": "Honor the treaty: March your Norse army south to fight alongside Harold as brothers-in-arms at Hastings",
+        "target": "5 Hardrada Dual Help Harold"
+      },
+      {
+        "text": "Betray Harold: Refuse aid and let William and Harold destroy each other, then pick off the victor",
+        "target": "5 Hardrada Dual Vulture Strategy"
+      },
+      {
+        "text": "Offer to fight William ONLY if Harold abdicates the southern crown to you entirely after the battle",
+        "target": "5 Hardrada Full Crown Demand"
+      }
+    ]
+  },
+  "4 Harold Hastings Hold Line": {
+    "title": "4 Harold Hastings Hold Line",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 12:00 PM\n\nYou ride behind the line, shouting orders for the men to keep their shields locked: *\"Stand firm! Hold the ridge!\"*\n\nYour strict discipline prevents a collapse. Duke William is forced to remove his helmet to rally his fleeing Bretons in the valley below. Realizing a direct frontal assault will not breach your wall, William begins ordering deliberate **feigned retreats**—his cavalry fakes panic, pulls back downhill, and turns to cut down any isolated pursuers.\n\nBecause you maintain firm control, your main line remains intact, though fatigue builds after hours of continuous combat.\n\nHow do you adapt your defense for the afternoon?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Reinforce the shield wall center with your elite royal housecarls",
+        "target": "4 Harold Hastings Reinforce Centre"
+      },
+      {
+        "text": "Order your archers forward to rain counter-fire into William's grouped cavalry",
+        "target": "4 Harold Hastings Archer Counter"
+      }
+    ]
+  },
+  "4 Harold Hastings Pursue Bretons": {
+    "title": "4 Harold Hastings Pursue Bretons",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill Slopes – 12:30 PM\n\nIntoxicated by the sight of fleeing enemies, your right-wing fyrd militia breaks rank and charges downhill in pursuit.\n\nIt proves fatal. Duke William rallies his heavy knights, wheels around, and catches your pursuing infantry in the open valley, slaughtering them completely. Your main shield wall atop Senlac Hill is now dangerously thinned on the right flank.\n\nHow do you plug the gap?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Stretch your remaining housecarls thinner across the hill to cover the right flank",
+        "target": "4 Harold Hastings Thinned Line"
+      },
+      {
+        "text": "Order a tactical retreat toward the woods of the Weald to reform your line",
+        "target": "4 Harold Hastings Tactical Retreat"
+      }
+    ]
+  },
+  "4 Harold Hastings Flank Bretons": {
+    "title": "4 Harold Hastings Flank Bretons",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Western Slope of Senlac Hill – 12:15 PM\n\nYou dispatch a small, mobile contingent of mounted housecarls around the western spur of the hill to hit the retreating Bretons in the flank, while keeping your main shield wall strictly locked atop the ridge.\n\nThe maneuver succeeds without compromising your high-ground defense. The Breton wing is decimated, and William is forced to commit his personal reserves to stabilize his left flank.\n\nHow do you capitalize on William's disrupted center?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Hold the high ground and allow William's tired reserves to assault your wall",
+        "target": "4 Harold Hastings Reinforce Centre"
+      },
+      {
+        "text": "Order missile units to concentrate fire on William's exposed cavalry reserves",
+        "target": "4 Harold Hastings Archer Counter"
+      }
+    ]
+  },
+  "4 Harold Hastings Reform on Hill": {
+    "title": "4 Harold Hastings Reform on Hill",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill Ridge – 11:30 AM\n\nBlowing the war horns, you order your men to disengage from the valley and fall back up the slope to reform the shield wall.\n\nWhile the retreat is messy and several militia units are ridden down by Norman cavalry during the climb, your core housecarls manage to re-lock their shields along the crest before William can launch a full-scale pursuit.\n\nHow do you prepare for the afternoon wave?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Hold the high ground strictly and absorb the next charge",
+        "target": "4 Harold Hastings Reinforce Centre"
+      },
+      {
+        "text": "Prepare a missile counter-barrage using collected Norman arrows",
+        "target": "4 Harold Hastings Archer Counter"
+      }
+    ]
+  },
+  "4 Harold Hastings Flatland Rings": {
+    "title": "4 Harold Hastings Flatland Rings",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Valley of Telham – 11:00 AM\n\nCaught on flat ground, your commanders form three dense, circular shield rings (*fylkings*). \n\nWith spears pointed outward, your housecarls resist repeated Norman cavalry passes. However, being surrounded on low ground deprives you of your tactical high-ground advantage, and Norman archers begin picking off your exposed inner ranks.\n\nWhat is your escape strategy?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Fight a slow, bloody defensive retreat back up Senlac Hill",
+        "target": "4 Harold Hastings Thinned Line"
+      },
+      {
+        "text": "Lead a focused wedge breakout toward the eastern woods",
+        "target": "4 Harold Hastings Tactical Retreat"
+      }
+    ]
+  },
+  "4 Harold Hastings Slay WIlliam Strike": {
+    "title": "4 Harold Hastings Slay WIlliam Strike",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Valley Meadow – 11:15 AM\n\nYou lead your personal guard in an all-out assault toward the Norman ducal banner, aiming to end the war in a single stroke.\n\nYou clash directly with William's knightly bodyguard. In the ferocious melee, William's horse is killed, throwing him to the ground. However, Norman knights swarm the area to protect their lord, cutting off your strike team from the main body of your army.\n\nWhat do you order in the chaos?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Press the attack on foot to finish William before his knights remount him",
+        "target": "5 Harold Victory Saxon Triumph"
+      },
+      {
+        "text": "Fight your way back to the main shield wall on the hill",
+        "target": "4 Harold Hastings Reinforce Centre"
+      }
+    ]
+  },
+  "4 Harold Southwark Archery Barrage": {
+    "title": "4 Harold Southwark Archery Barrage",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Southwark Meadows – October 1066\n\nYou open the battle by deploying longbowmen and slingers along the Thames marshland. Unbridled by supply shortages, your archers rain thousands of shafts into William’s tight formations.\n\nThe heavy missile fire panics William’s warhorses on the boggy terrain, throwing his frontline into disarray before his cavalry can even build momentum.\n\nHow do you follow up the barrage?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a general infantry advance with your fresh housecarls to sweep the marsh",
+        "target": "4 Harold Hastings Reinforce Centre"
+      },
+      {
+        "text": "Send cavalry around the marsh to cut off William’s retreat route to Pevensey",
+        "target": "4 Harold Southwark Double Envelop"
+      }
+    ]
+  },
+  "4 Harold Southwark Double Envelop": {
+    "title": "4 Harold Southwark Double Envelop",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Southwark & The Thames – October 1066\n\nLeveraging your superior numbers, you fix William's center with a heavy shield wall while sending mounted contingents from Kent and Surrey wide around both flanks.\n\nWilliam finds himself caught in a classic double envelopment, backed against the Thames with no room for his heavy cavalry to maneuver.\n\nWhat is your final directive to seal the victory?\n\n*  \n*",
+    "choices": [
+      {
+        "text": "Tighten the ring and demand William's surrender",
+        "target": "5 Harold Unconditional Surrender"
+      },
+      {
+        "text": "Order a total charge to crush the Norman force in the field",
+        "target": "5 Harold Victory Saxon Triumph"
+      }
+    ]
+  },
+  "4 Harold Southwark Rested Well": {
+    "title": "4 Harold Southwark Rested Well",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Southwark Ridge – October 1066\n\nYou form a massive, deep shield wall across the firm high ground at Southwark. Fully rested and well-provisioned, your housecarls stand six ranks deep.\n\nWilliam's worn-out knights charge repeatedly up the rise, but your fresh troops absorb every blow without giving an inch. By mid-afternoon, the Norman charges lose all momentum.\n\nHow do you deliver the counter-stroke?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a downhill charge to shatter the exhausted Norman army",
+        "target": "5 Harold Victory Saxon Triumph"
+      },
+      {
+        "text": "Offer terms to William's barons to abandon the battle and save their lives",
+        "target": "5 Harold Negotiated Withdrawal"
+      }
+    ]
+  },
+  "5 Harold Unconditional Surrender": {
+    "title": "5 Harold Unconditional Surrender",
+    "text": "### ACT 5: HAROLD'S REIGN – STEP 1: THE NORMAN HOSTAGES\n\n\n### Pevensey Bay – November 1066\n\nStarved and demoralized by your blockade, Duke William surrenders his camp at Hastings. You spare his life, but force him to sign the Treaty of Pevensey:\n1. William abdicates all claims to the English throne forever.\n2. Normandy yields 50 noble hostages to London, including William's eldest son, Robert Curthose.\n3. The Norman fleet is surrendered to the English Crown.\n\nWilliam returns to Normandy a broken leader. However, news arrives in London that Earls Edwin and Morcar in Northumbria are plotting a rebellion, believing your army is too weakened by the blockade to enforce royal law in the north.\n\nHow do you handle the Northern Earls' unrest?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Ride north personally with your elite housecarls to demonstrate absolute royal authority",
+        "target": "5 Harold Royal Progress North"
+      },
+      {
+        "text": "Offer Edwin and Morcar reduced tax rates and royal marriages to integrate them into your government",
+        "target": "5 Harold Northern Diplomacy"
+      }
+    ]
+  },
+  "5 Harold Negotiated Withdrawal": {
+    "title": "5 Harold Negotiated Withdrawal",
+    "text": "### ACT 5: THE TREATY OF LONDON\n\n\n### London – November 1066\n\nRecognizing the hopelessness of his position after being repulsed at Southwark, Duke William agrees to parley. \n\nUnder the terms of the Treaty of London:\n1. William renounces all claims to the crown of England.\n2. The Norman army is granted unmolested passage to embark from Pevensey.\n3. Normandy pays a substantial war indemnity in silver to cover the costs of the campaign.\n\nWilliam sails back to Rouen, his treasury depleted and his prestige damaged. You turn your full attention to rebuilding the kingdom, securing the northern borders, and cementing the House of Wessex on the English throne.\n\n> **Historical Outcome:** Alternate History. Harold successfully preserves Anglo-Saxon rule through diplomatic firmness and tactical superiority.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 Harold Night Camp Assault": {
+    "title": "5 Harold Night Camp Assault",
+    "text": "### ACT 5: HAROLD'S REIGN – STEP 1: THE NIGHT OF BLOOD\n\n\n### Hastings Ridge – Late October 1066\n\nUnder cover of a pitch-black, moonless night, you launch a surprise night assault on William’s entrenched coastal camp. \n\nYour housecarls pour over the timber palisades with torches and Dane axes. The surprised Norman army breaks into total panic. Duke William is slain in his tent while attempting to don his armor.\n\nThe Norman invasion is destroyed in a single night of fire and blood.\n\nWith the foreign threats eliminated, the Witan convenes in London to help you build a lasting peace. What is your primary domestic reform for England?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Establish a permanent standing navy (*Scip-fyrd*) along all southern ports to prevent future invasions",
+        "target": "5 Harold Final Ending Golden Saxon Age"
+      },
+      {
+        "text": "Reorganize the Saxon land laws to centralize power under the King, weakening regional Earls",
+        "target": "5 Harold Final Ending Centralized Kingdom"
+      }
+    ]
+  },
+  "4 William Hastings Rally Lines": {
+    "title": "4 William Hastings Rally Lines",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport \\vert{} **Fleet Status:**$fleetStatus\n\n\n### Senlac Hill Slopes – 12:00 PM\n\nYou push up your visor, riding before your wavering ranks with your sword held high: *\"Look at me! I live, and with God's help I shall conquer!\"*\n\nThe sight of your face restores discipline. You gather your heavy Norman cavalry and lead them in a counter-charge against the Saxon militia who broke rank to pursue your fleeing Bretons, trapping them in the marshy valley below.\n\nHowever, Harold's core housecarls atop Senlac Hill remain locked in an unbroken shield wall, watching the slaughter below.\n\nHow do you press your advantage for the afternoon assault?\n\n*  \n*",
+    "choices": [
+      {
+        "text": "Order deliberate **feigned retreats** to draw more of the Saxon line down off the hill",
+        "target": "4 William Feigned Retreat Strategy"
+      },
+      {
+        "text": "Instruct your archers to fire high-angle volleys into the dense ranks behind the shield wall",
+        "target": "4 William Hastings High Angle Archery"
+      }
+    ]
+  },
+  "4 William Hastings Reserve Commit": {
+    "title": "4 William Hastings Reserve Commit",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport \\vert{} **Fleet Status:**$fleetStatus\n\n\n### Senlac Hill Center – 12:15 PM\n\nIgnoring the chaos on your left flank, you throw your elite knightly reserves directly at the center of the Saxon shield wall while their attention is fixed on the fleeing Bretons.\n\nThe shock impact of mounted warhorses and heavy lances tests the Saxon line to its absolute limit. Dane axes cleave through horse armor, but your reserve knights manage to wedge into a minor gap near the royal banner.\n\nHow do you exploit this central breach?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Lead your personal bodyguard directly into the gap to cut down King Harold",
+        "target": "4 William Hastings Gap Assault"
+      },
+      {
+        "text": "Order high-angle archery volleys to pin down Saxon reinforcements attempting to plug the hole",
+        "target": "4 William Hastings High Angle Archery"
+      }
+    ]
+  },
+  "4 William Hastings Annihilate Valley": {
+    "title": "4 William Hastings Annihilate Valley",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport \\vert{} **Fleet Status:**$fleetStatus\n\n\n### Valley of Telham – 1:00 PM\n\nYour heavy cavalry wheels in a broad arc, sweeping around the Saxon militia trapped on the flat ground below Senlac Hill. Cut off from the main shield wall, over a thousand Saxon warriors are surrounded and wiped out completely.\n\nThe loss of these men leaves the right wing of Harold's hill position dangerously thin and short of spearmen.\n\nHow do you deliver the final blow to the hill position?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order a direct, massed cavalry assault aimed at the weakened Saxon right flank",
+        "target": "4 William Hastings Flank Assault"
+      },
+      {
+        "text": "Coordinate a high-angle arrow barrage with a massed infantry charge up the center",
+        "target": "4 William Hastings High Angle Archery"
+      }
+    ]
+  },
+  "4 William Hastings Gap Assault": {
+    "title": "4 William Hastings Gap Assault",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport \\vert{} **Fleet Status:**$fleetStatus\n\n\n### Senlac Hill Crest – 3:30 PM\n\nSpurring your warhorse through the bloody gap in the shield wall, you lead a wedge of Norman knights straight toward *The Fighting Man* banner. \n\nSaxon housecarls form a tight circle around King Harold, fighting with desperate fury. In the brutal melee, your horse is hacked down, but your knights press the attack around you, cutting down the King's personal guard.\n\nKing Harold falls in the melee, and without his command, the remaining Saxon shield wall shatters into a chaotic retreat toward the Weald.\n\nWhat is your immediate post-battle directive?",
+    "choices": [
+      {
+        "text": "Target King Harold's remaining nobles to break Saxon command and morale",
+        "target": "5 William Victory Historical Conquest"
+      },
+      {
+        "text": "Offer terms of surrender to the remaining Saxon nobles to secure their allegiance",
+        "target": "5 William Victory Diplomatic Submission"
+      }
+    ]
+  },
+  "5 Hardrada York Coronation": {
+    "title": "5 Hardrada York Coronation",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### York Minster – Early October 1066\n\nArchbishop Ealdred crowns you King of England in York. The northern Earls, Edwin and Morcar, swear solemn oaths of fealty. By securing legitimate coronation, thousands of northern Saxon levies join your army.\n\nYou now possess a mass army of 15,000 hardened Norse veterans and English levies, but Duke William is already pillaging through Sussex toward London.\n\nWhat is your campaign strategy against William?\n\n* \n*",
+    "choices": [
+      {
+        "text": "March south along the Ermine Street to engage William in a decisive pitched battle outside London",
+        "target": "5 Hardrada Pitched Battle London"
+      },
+      {
+        "text": "Dig in along the River Trent and force William to attack your heavily fortified river line",
+        "target": "5 Hardrada Trent Defensive Line"
+      }
+    ]
+  },
+  "5 Hardrada London Race": {
+    "title": "5 Hardrada London Race",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### The Great North Road – October 1066\n\nYou bypass formal ceremonies and force-march your longships' warbands south. You enter London through Aldermanbury Gate before William’s fleet even leaves Sussex.\n\nThe terrified English Witan in London yields to your veteran army. You seize the royal treasury at Winchester and fortify London's ancient Roman walls.\n\nDuke William arrives at Southwark, finding the London Bridge heavily barricaded by Varangian guards.\n\nHow do you handle William's siege?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Sortie out from London Bridge in a massive dawn counter-attack against William's camp",
+        "target": "5 Hardrada London Sortie"
+      },
+      {
+        "text": "Use your longships on the Thames to cut off William's supply fleet in the Channel",
+        "target": "5 Hardrada Thames Naval Blockade"
+      }
+    ]
+  },
+  "5 Hardrada Partition Offer": {
+    "title": "5 Hardrada Partition Offer",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### York – October 1066\n\nFollowing your victory at Stamford Bridge, you send messengers south to Duke William's camp at Hastings. You propose a grand partition of Britain: William will rule everything south of the River Humber, while you retain Northumbria, Mercia, and Scotland.\n\nWilliam, wary of your legendary reputation and facing an exhausted army, accepts the proposal. Together, you squeeze Harold Godwinson's remaining loyalists between your two empires.\n\nHow do you secure your new northern kingdom?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Demand a joint campaign with William to crush the remnant Saxon forces at London",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      },
+      {
+        "text": "Establish a permanent Viking court at York and fortify the Humber border",
+        "target": "5 Hardrada Final Ending Dual Empire"
+      }
+    ]
+  },
+  "5 Hardrada Pitched Battle London": {
+    "title": "5 Hardrada Pitched Battle London",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Northwark Meadows, Outside London – October 1066\n\nYou march your combined Norse-Saxon host down Ermine Street to meet Duke William outside London. William’s tired Norman cavalry attempts to charge your deep Norse shield ring, but your two-handed Dane axes shatter their cavalry lines.\n\nIn the midst of the battle, you charge William's command unit directly, wielding your legendary broadsword *Landwaster*. William falls in personal combat, and the remaining Norman knights flee toward Pevensey.\n\n*",
+    "choices": [
+      {
+        "text": "Claim total victory and enter London in triumph",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Trent Defensive Line": {
+    "title": "5 Hardrada Trent Defensive Line",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### River Trent Palisades – October 1066\n\nYou entrench along the River Trent, constructing wooden palisades across every bridge and ford. When William’s army arrives, exhausted and out of food, they find your armored Norse warbands holding impassable river defenses.\n\nUnable to cross or supply his troops, William’s army disintegrates due to starvation and desertion. William is forced to abandon his horses and flee back to Normandy in disgrace.\n\n*",
+    "choices": [
+      {
+        "text": "March south unopposed to claim the crown of England at Westminster Abbey",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada London Sortie": {
+    "title": "5 Hardrada London Sortie",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### London Bridge & Southwark – Late October 1066\n\nAt dawn, you open the gates of London Bridge and lead a surprise counter-attack against William’s siege camp at Southwark. \n\nCaught completely unprepared, the Norman knights are driven back into the Thames marshlands. William’s supply trains are captured, and his army is routed south toward Sussex.\n\n*",
+    "choices": [
+      {
+        "text": "Pursue the fleeing Normans to Pevensey Bay to destroy their remaining ships",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Thames Naval Blockade": {
+    "title": "5 Hardrada Thames Naval Blockade",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### The Thames Estuary – October 1066\n\nYou dispatch 100 longships down the River Thames to blockade the Sussex coastline, intercepting Norman supply transports from Rouen.\n\nDeprived of bread and grain from home, William’s army collapses within three weeks without a single arrow being fired. William surrenders his arms and retreats across the Channel.\n\n*",
+    "choices": [
+      {
+        "text": "Ascend the throne in Westminster Abbey as King of England and Norway",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Dual Help Harold": {
+    "title": "5 Hardrada Dual Help Harold",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### Senlac Hill – October 14, 1066\n\nIn an incredible historical twist, your Norse Varangians form a joint shield wall alongside Harold’s Saxon housecarls atop Senlac Hill.\n\nYour two-handed Dane axes and massive Norse broadswords prove devastating against William's Norman knights. William’s charges fail completely against the combined Anglo-Norse army.\n\nWith William captured on the battlefield, you and Harold meet on the hill to decide the future of Britain.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Fulfill the treaty: Return north to rule your earldoms in peace as co-ruler of Britain",
+        "target": "5 Hardrada Final Ending Dual Empire"
+      },
+      {
+        "text": "Double-cross Harold on the battlefield now that his army is bloodied, taking total power for yourself",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Dual Vulture Strategy": {
+    "title": "5 Hardrada Dual Vulture Strategy",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### York – October 1066\n\nYou sit back in York while Harold marches south alone. On October 14, Harold and William fight a bloody, grueling battle at Hastings. Harold is slain, and William’s army loses over half its force in the victory.\n\nWilliam marches to London, exhausted, wounded, and commanding a heavily depleted Norman force.\n\nYou now move your completely fresh 10,000 Norse veterans south to face the battered Norman army outside London.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Offer William an immediate surrender demand: Leave England or be wiped out",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      },
+      {
+        "text": "Engage William's exhausted knights in open battle at Northwark",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Full Crown Demand": {
+    "title": "5 Hardrada Full Crown Demand",
+    "text": "**Leader:** $character | **Army Morale:** $morale | **Tostig Alliance:** $tostigAlliance\n\n\n### London Road – October 1066\n\nWhen Harold Godwinson begs for your assistance against Duke William, you demand total abdication: Harold must yield the whole English crown to you, agreeing to serve as your Earl of Wessex in exchange for your army's intervention.\n\nDesperate and facing total destruction by William, Harold reluctantly agrees. You march your fresh 10,000 Varangians south to face William at Hastings.\n\nHow do you array your Norse host at Hastings?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Lead a massed frontal Varangian axe-charge up the center against William's knights",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      },
+      {
+        "text": "Place Harold's Saxons in the center while holding your Varangian guard on the flank",
+        "target": "5 Hardrada Final Ending Solo Norse Empire"
+      }
+    ]
+  },
+  "5 Hardrada Final Ending Dual Empire": {
+    "title": "5 Hardrada Final Ending Dual Empire",
+    "text": "### FINAL ENDING: THE NORTH SEA EMPIRE REBORN\n\n\nYou and Harold Godwinson hold fast to your agreement. England is divided into two prosperous, allied kingdoms. \n\nUnder your joint security pact, no foreign force ever dares cross the Channel or the North Sea again. You return to Scandinavia as the undisputed Emperor of the North, ruling Norway, Denmark, parts of Scotland, and Northern England until your dying day.\n\n> **Historical Impact:** Alternate History. Anglo-Saxon and Scandinavian cultures fuse into a dominant North Sea Empire, keeping Britain politically tied to Northern Europe rather than Continental France.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 Hardrada Final Ending Solo Norse Empire": {
+    "title": "5 Hardrada Final Ending Solo Norse Empire",
+    "text": "### FINAL ENDING: HARDRADA'S GREAT NORTHERN EMPIRE\n\n\nThrough unmatched martial prowess and strategic brilliance, you destroy both Harold Godwinson and Duke William. You are crowned King of England in Westminster Abbey by Archbishop Ealdred.\n\nWith England, Norway, and the Scottish Isles under your sole command, you unite Scandinavia and Britain into the largest, most powerful empire Europe has seen since Rome.\n\n> **Historical Impact:** Alternate History. King Harald Hardrada establishes a long-lasting Scandinavian dynasty in Britain, making Scandinavian the dominant language and culture across Northern Europe.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 Harold Royal Progress North": {
+    "title": "5 Harold Royal Progress North",
+    "text": "### ACT 5: THE NORTHERN SHOW OF FORCE\n\n\n### York Minster – December 1066\n\nYou march into York at the head of 3,000 veteran housecarls. Seeing the formidable royal army that defeated two foreign invasions, Earls Edwin and Morcar drop their plot and pledge renewed fealty on the altar of York Minster.\n\nYou station a permanent royal garrison in York to maintain order, cementing direct Wessex authority over Northumbria for the first time in generations.\n\n*",
+    "choices": [
+      {
+        "text": "Centralize royal administration across all earldoms",
+        "target": "5 Harold Final Ending Centralized Kingdom"
+      }
+    ]
+  },
+  "5 Harold Northern Diplomacy": {
+    "title": "5 Harold Northern Diplomacy",
+    "text": "### ACT 5: THE DIPLOMATIC SETTLEMENT\n\n\n### Nottingham – December 1066\n\nAvoiding further bloodshed, you meet Edwin and Morcar in Nottingham. You grant them reduced royal taxation for five years and finalize a royal marriage pact, linking your family directly with the northern lords.\n\nSatisfied, the northern earldoms willingly integrate into your realm, creating a peaceful, unified Anglo-Saxon kingdom from the English Channel to the Scottish border.\n\n*",
+    "choices": [
+      {
+        "text": "Establish the Golden Age of Wessex",
+        "target": "5 Harold Final Ending Golden Saxon Age"
+      }
+    ]
+  },
+  "5 Harold Final Ending Golden Saxon Age": {
+    "title": "5 Harold Final Ending Golden Saxon Age",
+    "text": "### FINAL ENDING: THE GOLDEN AGE OF WESSEX\n\n\nBy establishing a permanent standing fleet and securing your borders against both Norse and Norman conquerors, your reign ushers in an unprecedented golden age of peace and culture for Anglo-Saxon England.\n\nOld English flourishes as the official language of government and literature. Westminster Abbey stands as a monument to your family's triumph, and the House of Wessex continues unbroken for generations.\n\n> **Historical Impact:** Alternate History. The Saxon state survives intact, preserving native English law, art, and custom without the feudal subjugation of the Norman Conquest.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 Harold Final Ending Centralized Kingdom": {
+    "title": "5 Harold Final Ending Centralized Kingdom",
+    "text": "### FINAL ENDING: THE CENTRALIZED SAXON REALM\n\n\nBy curbing the autonomous power of regional earls and establishing direct royal courts, you transform England from a loose confederation of earldoms into a tightly centralized nation-state.\n\nYour administrative reforms lay the groundwork for a strong, unified monarchy capable of projecting power across Britain, while preserving native English culture, laws, and governance.\n\n> **Historical Impact:** Alternate History. Harold Godwinson creates a modernized, centralized Anglo-Saxon state that withstands all medieval continental threats.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "4 William Hastings High Angle Archery": {
+    "title": "4 William Hastings High Angle Archery",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Senlac Hill – 3:30 PM\n\nYou order your archers to step close to the slope and aim high into the sky. A rain of steel falls straight down onto the heads of the Saxon line. \n\nThrough your spyglass, you see mass confusion around the royal banner: King Harold has been struck near the eye by a descending arrow!\n\nWith their King wounded and the shield wall wavering, you brandish your sword and lead your personal bodyguard of knights in a final, frantic charge up the hill.\n\nWhat is your primary command as you breach the ridge?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Target King Harold directly to break Saxon command and morale",
+        "target": "5 William Victory Historical Conquest"
+      },
+      {
+        "text": "Offer terms of surrender to the remaining Saxon nobles to secure their allegiance",
+        "target": "5 William Victory Diplomatic Submission"
+      }
+    ]
+  },
+  "4 William Hastings Flank Assault": {
+    "title": "4 William Hastings Flank Assault",
+    "text": "**Leader:** $character | **Papal Support:** $papalSupport | **Fleet Status:** $fleetStatus\n\n\n### Senlac Hill – 4:00 PM\n\nYour knights crash through the thinned right flank of the Saxon hill position. Hand-to-hand brutal fighting erupts around the royal standards. \n\nHarold’s brothers, Gyrth and Leofwine, fall in the melee defending their king. As dusk settles, the Saxon line shatters into isolated pockets of resistance.\n\nWhat is your directive as the battle turns to a rout?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Press the assault to eliminate Harold and secure a total military triumph",
+        "target": "5 William Victory Historical Conquest"
+      },
+      {
+        "text": "Bypass the housecarls and send cavalry to burn the surrounding villages to cut off their escape",
+        "target": "5 William Victory Devastation"
+      }
+    ]
+  },
+  "5 William Victory Historical Conquest": {
+    "title": "5 William Victory Historical Conquest",
+    "text": "### ENDING 3 OF 6: THE NORMAN CONQUEST (HISTORICAL)\n\n\nYour knights breach the crest of Senlac Hill. In the gathering darkness around the royal banner, King Harold is slain. \n\nWith their king dead, the Saxon shield wall collapses into a rout. You march on London, burning Southwark, until the Witan and Archbishop Aldred submit to your rule at Berkhamsted. On Christmas Day 1066, you are crowned King of England in Westminster Abbey.\n\nYou redistribute Anglo-Saxon lands to your Norman barons and commission the Domesday Book to catalog your new kingdom.\n\n> **Historical Outcome:** The Actual History. Duke William becomes \"William the Conqueror,\" forever changing English architecture, language, feudal politics, and world history.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 William Victory Diplomatic Submission": {
+    "title": "5 William Victory Diplomatic Submission",
+    "text": "### ENDING 4 OF 6: THE DIPLOMATIC CROWN\n\n\nWith King Harold wounded on the battlefield and the Saxon shield wall faltering, you halt your knights' assault and order the Papal Banner brought to the front. You offer generous terms to the remaining English nobles: total protection of their ancestral lands and titles in exchange for immediate fealty to your holy cause.\n\nRecognizing that Harold cannot continue the fight, Earls Edwin and Morcar alongside the surviving members of the Witan lay down their arms and yield to your authority. Harold is taken into honorable captivity and exiled to Normandy, while you enter London as a legitimate sovereign.\n\nOn Christmas Day 1066, you are crowned King of England in Westminster Abbey with the full backing of both the Saxon council and the Papal See. You rule over a prosperous, unified Anglo-Norman state without needing to resort to widespread land confiscations or brutal military suppression.\n\n> **Historical Outcome:** Alternate History. A negotiated transfer of power preserves the Anglo-Saxon aristocracy alongside Norman leadership, creating a hybrid kingdom without the destruction of the historical conquest.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "4 Harold Hastings Reinforce Centre": {
+    "title": "4 Harold Hastings Reinforce Centre",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 3:30 PM\n\nThe afternoon sun turns crimson. William alters his archers' trajectory, instructing them to loft arrows high into the air so they drop straight down over your shield wall. At the same time, Norman heavy knights surge up the hill for a final, desperate assault.\n\nA high-flying arrow lands near your command banner. You raise your shield just in time as your housecarls lock axes to cut down William's personal bodyguard. \n\nWilliam’s warhorse is killed under him, throwing him to the ground in full view of both armies!\n\nWhat is your final battlefield directive?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Lead a decisive downhill counter-charge while William is unhorsed to rout the Norman army",
+        "target": "5 Harold Victory Saxon Triumph"
+      },
+      {
+        "text": "Maintain the wall strictly and allow William's army to break itself against your high ground as dusk falls",
+        "target": "5 Harold Victory Stalemate Repulse"
+      }
+    ]
+  },
+  "4 Harold Hastings Archer Counter": {
+    "title": "4 Harold Hastings Archer Counter",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 3:00 PM\n\nYour missile counter-fire inflicts heavy casualties on the grouped Norman horses in the marshy valley below. However, stepping forward to fire leaves your missile troops exposed to William's shock cavalry charge.\n\nThe battle degrades into chaotic, brutal melee combat along the entire ridge line as twilight approaches.\n\n* \n*",
+    "choices": [
+      {
+        "text": "Order your brother Gyrth to lead a flank charge against William's mercenaries",
+        "target": "5 Harold Victory Saxon Triumph"
+      },
+      {
+        "text": "Fall back under cover of dark to the London road to preserve your army",
+        "target": "5 Harold Victory Stalemate Repulse"
+      }
+    ]
+  },
+  "4 Harold Hastings Thinned Line": {
+    "title": "4 Harold Hastings Thinned Line",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### Senlac Hill – 4:00 PM\n\nWith your right flank depleted from the earlier pursuit, William directs his entire heavy cavalry assault directly at the weakened gap. \n\nAs a rain of high-trajectory Norman arrows strikes your formation, an arrow catches you in the eye. Your command banner *The Fighting Man* falters, and Norman knights breach the thinned line.\n\n*",
+    "choices": [
+      {
+        "text": "Fight to the death around the royal banner with your royal housecarls",
+        "target": "Death Harold Arrow in Eye"
+      }
+    ]
+  },
+  "4 Harold Hastings Tactical Retreat": {
+    "title": "4 Harold Hastings Tactical Retreat",
+    "text": "**Leader:** $character | **Army Fatigue:** $fatigue | **Witan Loyalty:** $witanLoyalty\n\n\n### The Weald Woodland Border – 4:30 PM\n\nRecognizing that your right flank is hopelessly compromised, you order a disciplined, fighting retreat into the dense, dark woods of the Weald. \n\nYour elite housecarls form a rear-guard, holding off Norman cavalry in the thick underbrush (*the Malfosse ditch*), where horses cannot maneuver. While you lose Senlac Hill, you preserve the core of your army to make a stand at London.\n\n*  \n*",
+    "choices": [
+      {
+        "text": "Fall back to London's Roman walls to unite with fresh homeward levies",
+        "target": "4 Harold London Defense"
+      },
+      {
+        "text": "Blockade the forest tracks to starve William along the Sussex coast",
+        "target": "4 Harold Sussex Blockade"
+      }
+    ]
+  },
+  "5 Harold Victory Saxon Triumph": {
+    "title": "5 Harold Victory Saxon Triumph",
+    "text": "### ACT 5: THE SAXON TRIUMPH\n\n\n### Senlac Hill & Pevensey – October 1066\n\nYou lead your elite housecarls in a crushing downhill charge. With Duke William unhorsed and his Breton wing shattered, the Norman ranks break into a full panic and stream back toward their ships at Pevensey. \n\nDuke William is captured in the retreat, and his invasion fleet is seized or burned by English coastal squadrons.\n\nHaving defeated both Harald Hardrada at Stamford Bridge and Duke William at Hastings in a single month, your crown is unquestioned. The Witan unifies behind your house, and the House of Wessex secures England's independence for centuries to come.\n\nHow do you consolidate your reign across the realm?\n\n* \n*",
+    "choices": [
+      {
+        "text": "Reorganize the Saxon land laws to centralize power under the King, weakening regional Earls",
+        "target": "5 Harold Final Ending Centralized Kingdom"
+      },
+      {
+        "text": "Establish a permanent standing navy along all southern ports to prevent future invasions",
+        "target": "5 Harold Final Ending Golden Saxon Age"
+      }
+    ]
+  },
+  "5 Harold Victory Stalemate Repulse": {
+    "title": "5 Harold Victory Stalemate Repulse",
+    "text": "### ENDING 2 OF 6: THE STRIKETHROUGH STALEMATE\n\n\nYour shield wall holds like a ridge of granite through the gathering dusk. Unable to breach your high ground and suffering catastrophic casualties among his heavy cavalry, Duke William orders a retreat under cover of darkness back to his fortified camp at Hastings.\n\nExhausted, low on horses, and unable to push inland toward London, William's army is trapped along the Sussex coast. Three weeks later, with autumn gales approaching, the Norman barons refuse to stay in England any longer. William is forced to embark his remaining troops and return across the Channel to Normandy to defend his own duchy against French rivals.\n\nEngland remains firmly in your hands, but your royal housecarls and the southern fyrd have taken heavy losses. You spend the remainder of your reign fortifying the coastlines and rebuilding the kingdom in constant anticipation of a future Norman invasion.\n\n> **Historical Outcome:** Alternate History. The invasion is repulsed at great cost, leaving Anglo-Saxon England sovereign but permanently on a defensive war footing.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "Death Harold Arrow in Eye": {
+    "title": "Death Harold Arrow in Eye",
+    "text": "### FATAL CHOICE: THE FALL OF THE KING\n\n\nA descending Norman arrow pierces your eye, throwing your central command post into instant chaos. As you fall beside the royal banner *The Fighting Man*, word spreads along the ridge that the King has been slain.\n\nSeeing your standards waver, Duke William leads a furious heavy cavalry charge straight into the thinned right flank. Norman knights breach the shield wall and cut down your loyal housecarls, who fight to the last man around your fallen body. Without leadership, the remaining Saxon militia breaks rank and flees into the gathering darkness of the Weald.\n\n> **Historical Note:** According to the Bayeux Tapestry and medieval chroniclers, King Harold Godwinson was struck in or near the eye by an arrow during the late afternoon at Hastings, precipitating the collapse of the Saxon shield wall and the end of Anglo-Saxon rule in England.",
+    "choices": [
+      {
+        "text": "Return to Main Menu",
+        "target": "1 The King dies"
+      }
+    ]
+  },
+  "5 William Victory Devastation": {
+    "title": "5 William Victory Devastation",
+    "text": "### ENDING 4 OF 6: THE DIPLOMATIC CROWN\n\n\nWith Harold wounded on the battlefield, you halt the slaughter and offer generous terms to the surviving Saxon nobles: total protection of their ancestral lands in exchange for immediate fealty to the Papal Banner.\n\nRecognizing that Harold cannot win, Earls Edwin and Morcar alongside the Witan switch their allegiance on the battlefield. Harold is captured and exiled to Normandy, while you ascend the throne in London with the full backing of both the Saxon Witan and the Papal See.\n\nYou rule over a unified Anglo-Norman state without the need for prolonged civil rebellion or widespread devastation.\n\n> **Historical Outcome:** Alternate History. A bloodless transfer of power preserves the Anglo-Saxon aristocracy alongside Norman leadership.",
+    "choices": [
+      {
+        "text": "Play Again / Select Another Leader",
+        "target": "1 The King dies"
+      }
+    ]
+  }
+}
