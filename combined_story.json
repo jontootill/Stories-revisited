@@ -1,0 +1,676 @@
+{"story_title": "The Window",
+  "initial_stats": {
+    "heart": 0,
+    "inhibition": 50,
+    "heat": 0
+  },
+
+  "nodes": {
+    "node_1_1": {
+      "text": "It’s just past dusk when you pull back your kitchen curtains to check the weather, your eyes drifting across the courtyard to the opposing brick building. Most apartments opposite have their blinds firmly drawn, but one second-floor window is wide open and brightly lit. Inside, you catch the soft flickering blue glow of a television screen. A man is sitting on the edge of his sofa, casually watching a late-night broadcast, entirely unaware that his living room is completely visible from where you stand.",
+      "choices": [
+        {
+          "text": "Watch for a few seconds out of idle curiosity, then drop your curtains and turn away.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_2_cautious"
+        },
+        {
+          "text": "Pause, leaning against the window frame a little longer, finding a quiet comfort in watching.",
+          "effects": { "heat": 5, "heart": 5, "inhibition": 0 },
+          "next_node": "node_1_2_normal"
+        },
+        {
+          "text": "Keep your lights off so you can stand right at the glass, studying his silhouette in the dim glow.",
+          "effects": { "heat": 15, "inhibition": -10, "heart": 0 },
+          "next_node": "node_1_2_bold"
+        }
+      ]
+    },
+    "node_1_2_cautious": {
+      "text": "You spent last night staring at closed blinds, proud of your self-control. Days pass. You throw yourself into work, avoiding the kitchen after dark entirely. But on a rainy Thursday night, you're forced to open the window to let out the steam from cooking. Across the courtyard, his light is on again. He’s sitting at his small dining table eating a quiet late-night dinner, a glass of water beside his plate, oblivious to the world outside.",
+      "choices": [
+        {
+          "text": "Slam the window shut immediately. Watching someone eat feels far too personal.",
+          "effects": { "heart": 0, "inhibition": 15, "heat": -5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Pause with the wooden spoon in your hand, quietly taking in the solitary rhythm of his evening.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Turn off the kitchen stove and step right up to the wet glass to watch him finish his meal.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 15 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_2_normal": {
+      "text": "The next evening, the sun dips below the horizon, leaving the courtyard in deep shadow. You find yourself standing by your kitchen window again with a warm mug of tea. Sure enough, his window is illuminated. He’s moving around his flat with headphones on, casually vacuuming the rug, totally lost in whatever music he’s listening to, completely unbothered by the wide-open blinds.",
+      "choices": [
+        {
+          "text": "Smile softly to yourself, then force yourself to step away and focus on your own chores.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Lean against the counter, watching him move through his private routine with easy familiarity.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 10 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Turn off your overhead lights so you can rest your forehead against the pane and watch him unimpeded.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 20 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_2_bold": {
+      "text": "By Saturday night, watching has become a deliberate choice. You don't even turn on your kitchen lights anymore. You linger in the dark near the glass, waiting. Around eleven, he emerges from his bathroom with a towel thrown over his shoulder, damp hair clinging to his forehead, bare-chested and entirely relaxed as he walks through his living room.",
+      "choices": [
+        {
+          "text": "Step back quickly into the hallway, cheeks burning at having caught something so private.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 5 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Feel a sudden jolt in your stomach at the intimacy of it, but hold your ground in the dark.",
+          "effects": { "heart": 5, "inhibition": -10, "heat": 20 },
+          "next_node": "node_1_3"
+        },
+        {
+          "text": "Slowly step right up to the pane, letting your eyes linger deliberately on the muscle across his back.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 30 },
+          "next_node": "node_1_3"
+        }
+      ]
+    },
+    "node_1_3": {
+      "text": "A full week slips by, and the habit takes deeper root in the background of your life. Seeing the warm glow of his apartment across the square has become an expected fixture of dusk. You know his small quirks now—how he always leaves one floor lamp burning while he works on his laptop, or how he rests his mug on the sill.",
+      "choices": [
+        {
+          "text": "Watch furtively from behind the heavy fabric of your curtain edge, keeping yourself carefully hidden.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_1_4"
+        },
+        {
+          "text": "Stand comfortably at the glass for longer stretches, holding a fresh glass of wine as you observe.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 10 },
+          "next_node": "node_1_4"
+        },
+        {
+          "text": "Make sure every light in your apartment is killed, standing in complete pitch blackness to get closer.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 20 },
+          "next_node": "node_1_4"
+        }
+      ]
+    },
+    "node_1_4": {
+      "text": "On Friday evening, a close friend comes over for a bottle of wine and a long-overdue catch-up. You're sitting around the kitchen counter when night falls over the courtyard. Right on queue, across the dark square, the familiar second-floor window lights up. He moves into view in his living room, completely unbothered and oblivious.",
+      "choices": [
+        {
+          "text": "Casually stand up and draw your kitchen blinds shut tight, ensuring your friend sees nothing.",
+          "effects": { "heart": 0, "inhibition": 15, "heat": -5 },
+          "flags": { "friend_involved": false },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        },
+        {
+          "text": "Keep talking normally, but position your chair so you can keep discreetly glancing out the glass.",
+          "effects": { "heart": 5, "inhibition": 0, "heat": 10 },
+          "flags": { "friend_involved": false },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        },
+        {
+          "text": "Nudge your friend with a playful smirk, pointing out the window to show off your view.",
+          "effects": { "heart": 10, "inhibition": -20, "heat": 25 },
+          "flags": { "friend_involved": true },
+          "next_node": "node_2_1",
+          "next_file": "data/romance/window/act2.json"
+        }
+      ]
+    }
+  },
+    "node_2_1": {
+      "text": "PRIVATE MOMENTS & FANTASIES\n\nAutumn settles over the courtyard, bringing longer nights and cooler air. Yet across the square, his second-floor flat remains an uncurtained island of warm light. One muggy evening, he emerges from his hallway wearing only a towel slung low on his hips, damp hair dark against his neck. He pauses in the middle of his living room to dry his shoulders, muscles shifting smoothly in the amber light as he remains entirely oblivious to the dark courtyard.",
+      "choices": [
+        {
+          "text": "Step back quickly into the shadowy hallway, pressing a hand to your heart as your cheeks flush hot.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 5 },
+          "next_node": "node_2_2"
+        },
+        {
+          "text": "Lean your forearm against the cool glass, quietly watching the water glisten on his skin.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 15 },
+          "next_node": "node_2_2"
+        },
+        {
+          "text": "Press your front flat against the cold windowpane, refusing to blink as your eyes trace the line of his waist.",
+          "min_heat": 15,
+          "max_inhibition": 40,
+          "effects": { "heart": 5, "inhibition": -15, "heat": 25 },
+          "next_node": "node_2_4_underwear"
+        }
+      ]
+    },    
+    "node_2_2": {
+      "text": "Your mornings begin to sync with his clock. From your darkened kitchen window, you watch his daily morning ritual: stepping into view in crisp trousers, buttoning a white dress shirt, fixing his collar in his hallway mirror, and running his fingers through his hair. Seeing him dress for the outside world feels strangely more intimate than bare skin—a secret glimpse of the man before he puts on his public mask.",
+      "choices": [
+        {
+          "text": "Pull your robe tight around your chest and turn away, feeling an unexpected ache of emotional longing.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 0 },
+          "next_node": "node_2_3_friend_check"
+        },
+        {
+          "text": "Rest your coffee mug against your lips, letting your eyes linger on the sharp curve of his back as he tucks in his shirt.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 15 },
+          "next_node": "node_2_3_friend_check"
+        },
+        {
+          "text": "Stand motionless in the pitch black, letting your gaze track every slow button he fastens up his chest.",
+          "min_heat": 50,
+          "effects": { "heart": 5, "inhibition": -15, "heat": 25 },
+          "next_node": "node_2_3_friend_check"
+        }
+      ]
+    },
+    "node_2_3_friend_check": {
+      "text": "The quiet habit continues to stretch across the days. On a damp Thursday evening, the door buzzer rings—it’s your close friend dropping by unexpectedly with a bottle of red wine.",
+      "choices": [
+        {
+          "text": "Keep the conversation strictly in the living room away from the kitchen window.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_2_4_underwear"
+        },
+        {
+          "text": "Sit at the kitchen counter, quietly tracking his shadow across the courtyard while your friend talks.",
+          "effects": { "heart": 5, "inhibition": 0, "heat": 10 },
+          "next_node": "node_2_4_underwear"
+        },
+        {
+          "text": "Pour two glasses, dim the kitchen lights, and whisper as you watch him together.",
+          "min_heat": 75,
+          "max_inhibition": 20,
+          "effects": { "heart": 10, "inhibition": -20, "heat": 30 },
+          "requires_flag": "friend_involved",
+          "next_node": "node_2_4_underwear"
+        }
+      ]
+    },
+    "node_2_4_underwear": {
+      "text": "By late Sunday night, the tension reaches a new threshold. You stand in your unlit kitchen as the clock ticks past midnight. Across the square, he unbuttons his jeans, letting them pool at his feet, leaving him standing in his living room in nothing but dark, form-fitting boxer briefs. He stretches his arms over his head, entirely relaxed in his private sanctuary.",
+      "choices": [
+        {
+          "text": "Gasp softly and step behind the kitchen doorframe, holding your breath in the dark.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 10 },
+          "next_node": "node_2_5_nudity"
+        },
+        {
+          "text": "Cross your arms and lean against the sill, admiring the firm shape of his thighs and broad shoulders.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 20 },
+          "next_node": "node_2_5_nudity"
+        },
+        {
+          "text": "Slide your fingers slowly under the waistband of your trousers, letting your core begin to warm up as you intently stare at his covered package.",
+          "min_heat": 110,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "next_node": "node_2_6_other_woman"
+        }
+      ]
+    },
+    "node_2_5_nudity": {
+      "text": "The next night, the unwritten rules shatter further. He walks straight out of his bathroom, throwing his towel over a chair—completely, comfortably naked. He moves across his lit living room to reach for a bottle of water on his counter. For several breathtaking seconds, his body is fully uncovered in the warm glow of his lamp.",
+      "choices": [
+        {
+          "text": "Turn your head away quickly, your pulse pounding violently in your ears at the raw exposure.",
+          "effects": { "heart": 5, "inhibition": 15, "heat": 10 },
+          "next_node": "node_2_6_other_woman"
+        },
+        {
+          "text": "Keep your eyes locked on him, mentally taking in every contour, salivating at the giant semi-erect penis that in dangling enticingly before you.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 25 },
+          "next_node": "node_2_6_other_woman"
+        },
+        {
+          "text": "Unbutton your own shirt in the dark, pressing your bare chest to the cold glass as you stare. Enjoy the cold glass on your erect nipples as you watch him move around.",
+          "min_heat": 130,
+          "max_inhibition": 10,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 40 },
+          "next_node": "node_2_6_other_woman"
+        }
+      ]
+    },
+    "node_2_6_other_woman": {
+      "text": "On a heavy Friday night, your heart drops into your stomach. His apartment door opens, and he walks in accompanied by a dark-haired, very attractive woman. He doesn't pull the blinds. Instead, he pours two glasses of wine. Within minutes, he pulls her close, his hands sliding around her waist as they kiss passionately under the bright overhead lights. He backs her against the kitchen counter, one hand sliding under her blouse to cup her breast while the other lifts her skirt. She parts her thighs for him. You watch as he pushes her underwear aside and sinks two fingers deep into her, working them in slow, wet strokes while she moans against his mouth. Moments later he frees himself from his trousers, lifts her fully onto the counter, and drives into her in one smooth thrust, her legs wrapping around his hips as he begins to move.",
+      "choices": [
+        {
+          "text": "Slam your curtains shut immediately, a sharp pang of jealousy burning in your chest as you turn away, still able to picture the way her body opened for him.",
+          "effects": { "heart": 15, "inhibition": 15, "heat": -5 },
+          "next_node": "node_2_7_aftermath"
+        },
+        {
+          "text": "Crack the window slightly to hear the faint ambient noise of their moaning and the wet, rhythmic sound of his body meeting hers, listening in quiet, tortured fascination while your own thighs press tightly together.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 20 },
+          "next_node": "node_2_7_aftermath"
+        },
+        {
+          "text": "Stand dead center in the dark window, eyes fixed on every detail: the way his hips snap forward, how her breasts bounce with each thrust, the glistening stretch of her entrance around him. You imagine it was you on that counter, legs spread wide, taking every inch of him while he looks straight into your eyes.",
+          "min_heat": 100,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "next_node": "node_2_7_aftermath"
+        }
+      ]
+    },
+    "node_2_7_aftermath": {
+      "text": "An hour passes. The woman leaves, and his apartment returns to quiet, low lamp light. He lies back on his sofa in his sweatpants, one arm thrown over his eyes, breathing deeply in the quiet room. Standing hidden in your kitchen, your mind is racing—comparing yourself to her, imagining his hands, his weight, and the size of his erect penis inside you, until the heat in your body is almost unbearable. You can feel yourself becoming increasingly moist.",
+      "choices": [
+        {
+          "text": "Try to force the thoughts out of your head and retreat to your bedroom to sleep.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 10 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/window/act3.json"
+        },
+        {
+          "text": "Linger in the pitch black, letting the intense mental fantasies of him overpowering you wash over you completely.",
+          "effects": { "heart": 15, "inhibition": -10, "heat": 25 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/window/act3.json"
+        },
+        {
+          "text": "Let your hands slip down your body right there in the kitchen dark, unable to stop yourself anymore. Lightly graze your folds as you feel your own slickness let your fingers slide easily across your nub.",
+          "min_heat": 130,
+          "max_inhibition": 30,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 40 },
+          "next_node": "node_3_1",
+          "next_file": "data/romance/window/act3.json"
+        }
+      ]
+    },
+    "node_3_1": {
+      "text": "PRIVATE ESCALATION\n\nMidnight. The atmosphere inside your darkened kitchen is heavy and stifling. Across the square, his living room lamp casts a soft, warm glow. He’s sitting on his sofa in grey sweatpants, completely unbothered, reading a book while resting one hand casually on his bare stomach. For weeks, you’ve settled for just watching. But tonight, standing in the pitch black, watching his chest slowly rise and fall is no longer enough.",
+      "choices": [
+        {
+          "text": "Press your forehead against the cool glass, taking deep, steady breaths as you try to control the tremor in your hands and the growing ache between your thighs.",
+          "effects": { "heart": 10, "inhibition": 10, "heat": 5 },
+          "next_node": "node_3_2_first_touch"
+        },
+        {
+          "text": "Unbutton the top two buttons of your shirt, letting the cool night air brush across your bare breasts while your eyes remain fixed on the soft trail of hair disappearing under his waistband.",
+          "effects": { "heart": 5, "inhibition": -5, "heat": 15 },
+          "next_node": "node_3_2_first_touch"
+        },
+        {
+          "text": "Slowly reach down and slide your fingers under the waistband of your trousers, resting your hand over the soft, already-slick heat of your bare mound.",
+          "min_heat": 190,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -15, "heat": 30 },
+          "next_node": "node_3_2_first_touch"
+        }
+      ]
+    },
+    "node_3_2_first_touch": {
+      "text": "He shifts on his sofa, turning a page. In the dark, your breath hitches. You slip your hand lower, your fingers tracing soft circles against the warm, sensitive skin just above your clit. The sheer contrast makes your skin prickle—he is completely unobserved and relaxed just fifty yards away, completely unaware that his simple presence is driving your private intimacy in the dark.",
+      "choices": [
+        {
+          "text": "Pull your hand back quickly, leaning against the counter as your pulse races at how close you came to spreading yourself open for him.",
+          "min_heat": 100,
+          "max_inhibition": 30,
+          "effects": { "heart": 5, "inhibition": 15, "heat": 5 },
+          "next_node": "node_3_3_friend_check"
+        },
+        {
+          "text": "Keep your hand still against your wet folds, closing your eyes for a brief second to picture his thick fingers replacing yours, pressing firmly against your entrance.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 20 },
+          "next_node": "node_3_3_friend_check"
+        },
+        {
+          "text": "Begin moving your fingers deliberately, parting your slick lips and circling your swollen clit in time with the slow, steady rhythm of his breathing across the courtyard.",
+          "min_heat": 200,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "next_node": "node_3_3_friend_check"
+        }
+      ]
+    },
+    "node_3_3_friend_check": {
+      "text": "A few nights later, a storm rolls over the city, heavy rain drumming against the window panes. The door buzzer rings—it’s your friend coming over late to escape the downpour.",
+      "choices": [
+        {
+          "text": "Keep the kitchen lights off and steer your friend toward the living room sofa, keeping your secret (and the lingering wetness between your legs) safe.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 0 },
+          "next_node": "node_3_4_deepening"
+        },
+        {
+          "text": "Sit at the kitchen counter together in the dim light, sipping wine while occasionally glancing out at his window, thighs pressed tightly together to hide how aroused you still are.",
+          "effects": { "heart": 5, "inhibition": 0, "heat": 10 },
+          "next_node": "node_3_4_deepening"
+        },
+        {
+          "text": "Guide your friend to the dark kitchen glass. Standing side by side in the shadows, you both watch him move around his flat. Without a word you slide two fingers deep into your dripping heat; a quick sideways glance shows her doing the same, her knuckles glistening as you stand shoulder to shoulder, openly pleasuring yourselves while staring at the stranger.",
+          "min_heat": 100,
+          "max_inhibition": 20,
+          "effects": { "heart": 10, "inhibition": -25, "heat": 40 },
+          "requires_flag": "friend_involved",
+          "next_node": "node_3_4_deepening"
+        }
+      ]
+    },
+    "node_3_4_deepening": {
+      "text": "It’s past 1:00 AM on a muggy weekend night when you stand alone in your kitchen again. Across the way, he has finished a workout and is stretching on his rug in dark shorts, sweat glistening on his spine and the hard lines of his abdomen under his floor lamp. You stand right by your glass in the dark, shedding your clothes onto the floor until you are completely bare, nipples tight, thighs already slick with need.",
+      "choices": [
+        {
+          "text": "Wrap your arms tightly around your chest, squeezing your breasts together while you admire the bulge shifting inside his shorts, forcing yourself not to touch the aching emptiness between your legs.",
+          "effects": { "heart": 10, "inhibition": 5, "heat": 10 },
+          "next_node": "node_3_3_friend_check"
+        },
+        {
+          "text": "Lean back against the kitchen counter and spread your thighs, two fingers plunging into your soaked entrance while your thumb works your clit in tight, urgent circles. Soft, wet sounds fill the empty flat as you stare at the sweat sliding down his stomach.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 25 },
+          "next_node": "node_3_5_breaking_point"
+        },
+        {
+          "text": "Press your naked body flush against the cold window glass, breasts flattened to the pane, and drive three fingers deep into yourself. You work yourself open right there in full view of the courtyard, watching every flex of his muscles while your juices drip down your inner thighs.",
+          "min_heat": 200,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 40 },
+          "next_node": "node_3_5_breaking_point"
+        }
+      ]
+    },
+    "node_3_5_breaking_point": {
+      "text": "He finishes stretching, wipes his face with a towel, and walks over to his window sill to pick up his phone. He stands right at his open frame, looking out into the dark night. Standing in the pitch-black safety of your room, bare and trembling, a sudden surge of thrill washes over you. Hiding in the shadows isn't enough anymore. You want him to see exactly how wet and open you are for him.",
+      "choices": [
+        {
+          "text": "Reach out a trembling hand toward your light switch, hesitating on the threshold of exposure, your other hand still buried between your slick, swollen folds.",
+          "effects": { "heart": 10, "inhibition": 0, "heat": 15 },
+          "next_node": "node_3_4_deepening",
+          "next_file": "data/romance/window/act3.json"
+        },
+        {
+          "text": "Step out from behind the doorframe into the faint moonlight filtering through your pane, letting your outline take shape—naked breasts, the wet gleam between your parted thighs, fingers still working inside yourself.",
+          "min_heat": 300,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -10, "heat": 25 },
+          "next_node": "node_4_1",
+          "next_file": "data/romance/window/act4.json"
+        },
+        {
+          "text": "Flick your wall switch on with a firm click, flooding your kitchen with light and exposing yourself completely: legs spread, your entrance glistening and stretched around your fingers, nipples hard, eyes locked on him as you keep working yourself in plain view of the courtyard.",
+          "min_heat": 350,
+          "max_inhibition": 0,
+          "effects": { "heart": 5, "inhibition": -30, "heat": 45 },
+          "next_node": "node_4_1",
+          "next_file": "data/romance/window/act4.json"
+        }
+      ]
+    },
+    "node_4_1": {
+      "text": "EXPOSURE & PRETEND SECRECY\n\nThe click of your wall switch sounds like a gunshot in the silent flat. Bright, warm overhead light floods your kitchen, instantly turning your window glass into an illuminated stage. For weeks you were an invisible ghost in the dark. Now, you stand fully visible against the night sky, heart hammering against your ribs as you wait for the courtyard to notice.",
+      "choices": [
+        {
+          "text": "Panic slightly and retreat a step into the doorway, letting only your side profile remain lit, the soft curve of your breast still catching the light.",
+          "effects": { "heart": 5, "inhibition": 10, "heat": 10 },
+          "next_node": "node_4_2_pretend_oblivious"
+        },
+        {
+          "text": "Stand near your counter with a glass of water, pretending you just walked in normally while holding your breath, the thin silk of your robe clinging to the hard peaks of your nipples.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 20 },
+          "next_node": "node_4_2_pretend_oblivious"
+        },
+        {
+          "text": "Walk straight to the glass, slowly unbuttoning your silk robe and letting it slip off your shoulders onto the floor, leaving your bare breasts and the soft triangle between your thighs fully exposed under the bright kitchen light.",
+          "min_heat": 50,
+          "max_inhibition": 20,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 35 },
+          "next_node": "node_4_2_pretend_oblivious"
+        }
+      ]
+    },
+    "node_4_2_pretend_oblivious": {
+      "text": "Across the square, his motion pauses. He raises his head from his book, his eyes drifting over to your building. Through the glass, you see the exact second his gaze catches your lit frame. He freezes for a long, thrilling beat, staring. Then, quickly—almost too quickly—he looks back down at his book, pretending he saw nothing, his shoulders visibly tightening as his breathing changes.",
+      "choices": [
+        {
+          "text": "Feel a rush of heat at his silent reaction, stepping back slightly to give him room to steal glances at the way the light slides over your bare skin.",
+          "effects": { "heart": 10, "inhibition": 5, "heat": 15 },
+          "next_node": "node_4_3_parallel_acts"
+        },
+        {
+          "text": "Lean against your counter, slowly running your hand down your neck and over the full swell of your breast while casually looking out at the sky, letting your fingertips linger on a tight nipple.",
+          "effects": { "heart": 5, "inhibition": -10, "heat": 25 },
+          "next_node": "node_4_3_parallel_acts"
+        },
+        {
+          "text": "Slowly trail your fingers down over your chest and belly, parting your slick folds and circling your swollen clit while pretending you think you’re alone, performing every deliberate stroke for him.",
+          "min_heat": 55,
+          "max_inhibition": 15,
+          "effects": { "heart": 5, "inhibition": -20, "heat": 40 },
+          "next_node": "node_4_3_parallel_acts"
+        }
+      ]
+    },
+    "node_4_3_parallel_acts": {
+      "text": "By the following evening, the rules of the game have been written without a single word. Both of your kitchen lights are ablaze. He sits by his open frame in dark shorts, unbuttoning his shirt with slow, deliberate fingers while staring slightly off-center. You stand in full view across from him, doing the same. It is an uncurtained duel—each of you touching yourselves in plain sight, pretending to look away while absorbing every inch of the other.",
+      "choices": [
+        {
+          "text": "Keep a hand on the counter for balance as you touch yourself gently, fingers gliding through your wet heat, keeping your eyes on his reflection.",
+          "effects": { "heart": 10, "inhibition": -5, "heat": 20 },
+          "next_node": "node_4_4_escalation"
+        },
+        {
+          "text": "Slide your hands over your hips and thighs in rhythmic strokes, arching your back so he gets a clear view of your open, glistening entrance and the way your fingers disappear inside.",
+          "effects": { "heart": 5, "inhibition": -15, "heat": 30 },
+          "next_node": "node_4_4_escalation"
+        },
+        {
+          "text": "Spread your legs slightly right at the windowpane, two fingers buried deep in your soaked heat as you watch his breath fog his glass, working yourself in slow, deliberate thrusts for him.",
+          "min_heat": 60,
+          "max_inhibition": 15,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 45 },
+          "next_node": "node_4_4_escalation"
+        }
+      ]
+    },
+    "node_4_4_escalation": {
+      "text": "The mutual performance reaches a fever pitch. Across the gap, he steps right to the edge of his window, his body glistening in his lamp light as his hand moves in rapid, heavy strokes down his lap. He tilts his head back against his frame, letting out a heavy groan that almost carries across the courtyard. You are trembling against your own sill, completely bare, flushed from head to toe.",
+      "choices": [
+        {
+          "text": "Bite your lip to stifle your own soft gasps, matching his rhythm stroke for stroke, fingers plunging deeper into your dripping entrance with every shared beat.",
+          "effects": { "heart": 10, "inhibition": -10, "heat": 25 },
+          "next_node": "node_4_5_the_look"
+        },
+        {
+          "text": "Press your body tight against the glass, breasts flattened to the cold pane, letting your hands move wild and fast as you ride the thrill, juices streaking down your inner thighs.",
+          "effects": { "heart": 5, "inhibition": -20, "heat": 35 },
+          "next_node": "node_4_5_the_look"
+        },
+        {
+          "text": "If your friend is involved, bring your friend right to the lit glass to join you. Side by side you both spread yourselves open, fingers working deep and fast, putting on a full, shameless show for his window.",
+          "min_heat": 70,
+          "max_inhibition": 10,
+          "effects": { "heart": 10, "inhibition": -30, "heat": 50 },
+          "requires_flag": "friend_involved",
+          "next_node": "node_4_5_the_look"
+        }
+      ]
+    },
+    "node_4_5_the_look": {
+      "text": "At the absolute peak of the shared moment, the illusion shatters. He stops moving his hand. He lowers his head, turns his face slowly, and looks DIRECTLY across the dark courtyard straight into your eyes. No glancing away. No pretending. His dark eyes lock onto yours through the double glass panes, burning with raw, undeniable intensity.",
+      "choices": [
+        {
+          "text": "Freeze in place, your breath catching in your throat as you hold his gaze for the first time, your wet fingers still resting against your swollen folds.",
+          "effects": { "heart": 15, "inhibition": 0, "heat": 25 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/window/act5.json"
+        },
+        {
+          "text": "Slowly raise one hand to the glass without breaking eye contact, offering a tiny, knowing smirk while your other hand continues its slow, deliberate circles over your aching clit.",
+          "effects": { "heart": 10, "inhibition": -15, "heat": 35 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/window/act5.json"
+        },
+        {
+          "text": "Keep touching yourself right under his unwavering stare, three fingers buried deep, hips rocking gently against your own hand as you let him watch every pulse and shudder while looking into his eyes.",
+          "min_heat": 70,
+          "max_inhibition": 10,
+          "effects": { "heart": 5, "inhibition": -30, "heat": 50 },
+          "next_node": "node_5_1",
+          "next_file": "data/romance/window/act5.json"
+        }
+      ]
+    },
+    "node_5_1": {
+      "text": "SILENT DIALOGUE & THE CROSSROAD\n\nThe silence across the courtyard feels charged, heavy with mutual realization. Neither of you hides anymore. Standing fully illuminated in your respective kitchen windows, your gazes remain locked across the open night air. For several long minutes, no one moves. The wordless boundary has been breached, and the unwritten rules must now be chosen.",
+      "choices": [
+        {
+          "text": "Slowly step back into your room and turn off your light, leaving him with the lingering memory of your bare silhouette and the soft gleam of moisture still visible on your inner thighs.",
+          "effects": { "heart": 10, "inhibition": 10, "heat": 5 },
+          "next_node": "node_5_2_first_signal"
+        },
+        {
+          "text": "Hold his stare firmly, resting your palm against the glass as a silent invitation, your other hand still lightly cupping the warm, slick heat between your legs.",
+          "effects": { "heart": 15, "inhibition": -5, "heat": 20 },
+          "next_node": "node_5_2_first_signal"
+        },
+        {
+          "text": "Slowly trace a heart or a question mark on the condensation of your window pane while looking straight at him, your free hand sliding lower to part your folds and show him how wet you still are.",
+          "min_heat": 70,
+          "effects": { "heart": 10, "inhibition": -20, "heat": 35 },
+          "next_node": "node_5_2_first_signal"
+        }
+      ]
+    },
+    "node_5_2_first_signal": {
+      "text": "The next evening at dusk, you find a thick black marker and a stack of white paper waiting on your counter. Right on cue, his light switches on. He walks up to his glass holding a sheet of paper. Written in bold, heavy letters is a simple question: 'WHAT IS YOUR NAME?'",
+      "choices": [
+        {
+          "text": "Write a note back holding it up to your pane: 'BETTER IF WE DON'T KNOW.' Your robe hangs open, the soft curve of one breast and the shadowed line between your thighs still on full display.",
+          "effects": { "heart": 10, "inhibition": 15, "heat": 10 },
+          "flags": { "keep_glass_boundary": true },
+          "next_node": "node_5_3_rules"
+        },
+        {
+          "text": "Write your actual name on the paper in clear letters and hold it against the glass with a smile, the light catching the tight peaks of your nipples and the faint sheen still visible on your skin.",
+          "effects": { "heart": 20, "inhibition": -10, "heat": 15 },
+          "flags": { "personal_connection": true },
+          "next_node": "node_5_3_rules"
+        },
+        {
+          "text": "Write a provocative challenge on your sign: 'SHOW ME AGAIN FIRST.' As you hold it up you slowly part your thighs, two fingers gliding through your wet entrance so he can see exactly what you mean.",
+          "min_heat": 75,
+          "effects": { "heart": 5, "inhibition": -25, "heat": 40 },
+          "flags": { "bold_communicator": true },
+          "next_node": "node_5_3_rules"
+        }
+      ]
+    },
+    "node_5_3_rules": {
+      "text": "A unspoken negotiation unfolds over the next hour through held-up signs and hand signals across the gap. You learn his smile, his quick handwriting, and the intense, focused look in his eyes when he reads your notes. The game has evolved from raw fantasy into a shared secret language between two windows in the city night.",
+      "choices": [
+        {
+          "text": "Hold up a note establishing the rules: 'ONLY EVER BEHIND GLASS. THAT'S THE MAGIC.' Your free hand rests low on your belly, fingers tracing slow circles just above the place he has already watched you open for him.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 10 },
+          "flags": { "chosen_route": "glass_permanence" },
+          "next_node": "node_5_4_the_crossroad"
+        },
+        {
+          "text": "Hold up a note suggesting a shift: 'TOMORROW NIGHT. COURTYARD BENCH AT MIDNIGHT.' As you press the paper to the glass you let your robe slip further open, giving him one last clear view of your bare breasts and the soft, glistening folds between your legs.",
+          "effects": { "heart": 20, "inhibition": -15, "heat": 25 },
+          "flags": { "chosen_route": "physical_encounter" },
+          "next_node": "node_5_4_the_crossroad"
+        },
+        {
+          "text": "If your friend is with you, write a joint note: 'WOULD YOU PREFER BOTH OF US OR JUST ONE?' Side by side at the lit glass, you and your friend both stand with thighs parted, fingers slowly working through your own wet heat while you wait for his answer.",
+          "min_heat": 80,
+          "max_inhibition": 15,
+          "effects": { "heart": 10, "inhibition": -30, "heat": 45 },
+          "requires_flag": "friend_involved",
+          "flags": { "chosen_route": "friend_triad" },
+          "next_node": "node_5_4_the_crossroad"
+        }
+      ]
+    },
+    "node_5_4_the_crossroad": {
+      "text": "The hour grows late. Midnight arrives, and the warm yellow light in his flat flickers twice—his signature sign-off for the night. He stands by his window pane, resting his hand against the glass right where yours would align if the space between your buildings vanished. The trajectory of your fantasy now rests entirely on your choice.",
+      "choices": [
+        {
+          "text": "Press your palm flat against the cold glass opposite his, committing to the perfection of an unbroken, distant fantasy. Your other hand stays between your thighs, gently holding the lingering ache he left you with.",
+          "effects": { "heart": 15, "inhibition": 10, "heat": 15 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        },
+        {
+          "text": "Write a final note against the glass before turning off your light: 'I'M COMING DOWNSTAIRS NOW.' Your body is still bare, nipples tight, the soft evidence of your earlier pleasure still visible on your inner thighs as you step away from the window.",
+          "min_heat": 50,
+          "max_inhibition": 30,
+          "effects": { "heart": 20, "inhibition": -20, "heat": 35 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        },
+        {
+          "text": "Flick your lights off and walk straight to your front door, key already in hand, letting the anticipation consume you. Every step reminds you how open and slick you still feel, the memory of his eyes locked on your most private places driving you forward.",
+          "min_heat": 60,
+          "max_inhibition": 20,
+          "effects": { "heart": 10, "inhibition": -30, "heat": 50 },
+          "next_node": "node_6_1",
+          "next_file": "data/romance/window/act6.json"
+        }
+      ]
+    },
+    "node_6_1": {
+      "text": "DENOUEMENT\n\nThe decision is made. The air in your apartment is electric as the distance between fantasy and reality reaches its final, inevitable outcome.",
+      "choices": [
+        {
+          "text": "Refuse to shatter the spell. Step up to the glass for your nightly ritual behind the safety of the pane.",
+          "effects": { "heart": 20, "inhibition": 15, "heat": 10 },
+          "next_node": "node_6_2_glass_sanctuary"
+        },
+        {
+          "text": "Step out into the cool night air of the courtyard, walking slowly toward the entrance of his building.",
+          "effects": { "heart": 15, "inhibition": -20, "heat": 35 },
+          "next_node": "node_6_2_physical_threshold"
+        },
+        {
+          "text": "Walk down the stairs side-by-side with your friend, heading across the square toward his lit door.",
+          "effects": { "heart": 10, "inhibition": -30, "heat": 50 },
+          "requires_flag": "friend_involved",
+          "next_node": "node_6_2_triad_encounter"
+        }
+      ]
+    },
+    "node_6_2_glass_sanctuary": {
+      "text": "Months pass into winter. You never meet in person. You never learn his surname or hear the sound of his voice. But every single evening at dusk, two windows across the courtyard light up simultaneously. In a world full of messy, predictable realities, you have built something rare and perfect: an unbroken, intoxicating sanctuary of pure desire, preserved forever behind glass.\n\n--- THE END: THE GLASS SANCTUARY ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_physical_threshold": {
+      "text": "The courtyard rain washes over your skin as you reach his door. You press the buzzer. A second later, the latch clicks open. You walk up the stairs, your heart hammering wildly against your ribs. As you reach the second floor, his door is already standing half-open, warm lamp light spilling into the hallway. You step inside, and for the very first time, the glass is gone.\n\n--- THE END: THE PHYSICAL THRESHOLD ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/window/act1.json"
+        }
+      ]
+    },
+    "node_6_2_triad_encounter": {
+      "text": "The hallway light flickers as the two of you stand outside his door. The latch pulls back with a soft click, and he steps into the doorway, his eyes taking in both of you standing together in the warm corridor. A slow, knowing smile touches his lips as he steps back, holding the door wide open for you both to enter.\n\n--- THE END: THE SHARED DESTINY ---",
+      "choices": [
+        {
+          "text": "Play Again from the Beginning",
+          "effects": { "heart": 0, "inhibition": 0, "heat": 0 },
+          "next_node": "node_1_1",
+          "next_file": "data/romance/triad/act1.json"
+        }
+      ]
+    }
+  }

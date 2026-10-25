@@ -1,8 +1,9 @@
-// Global State Tracker
+// Global State Tracker (Clean baseline for any story)
 let gameState = {
-    stats: {},         // Dynamic stats container (e.g., fatigue, heat, witanLoyalty)
+    stats: {},         // Dynamic stats container
     flags: {},         // Story flags
-    currentFile: ''    // Currently loaded act JSON file
+    currentFile: '',   // Currently loaded act JSON file
+    previousView: 'home'
 };
 
 function openPasswordModal() {
@@ -15,7 +16,6 @@ function closePasswordModal() {
     document.getElementById('password-modal').classList.add('hidden');
 }
 
-// Called when the user clicks "Submit" in the password modal
 function unlockRomance() {
     let inputPassword = document.getElementById('genre-password').value;
     const ROMANCE_PASSWORD = "261213"; 
@@ -30,11 +30,6 @@ function unlockRomance() {
     }
 }
 
-// Add origin variable to state tracker
-gameState.previousView = 'home'; // Default fallback
-
-
-// Opens a specific genre's sub-library page
 function openGenreLibrary(genre) {
     document.getElementById('homepage-container').classList.add('hidden');
     
@@ -44,18 +39,17 @@ function openGenreLibrary(genre) {
         document.getElementById('fantasy-library-container').classList.remove('hidden');
     }
 }
-// Handles genre button clicks from homepage
+
 function startGenre(genre) {
     if (genre === 'romance') {
         openPasswordModal();
     }
 }
 
-// Updated startStory to accept and remember origin view
+// Universal story starter - reads custom initial states and variables from story JSON
 async function startStory(startFile, originView = 'historical') {
     gameState.previousView = originView;
 
-    // Dynamically update the back button text based on source library
     const backBtn = document.getElementById('back-to-library-btn');
     if (backBtn) {
         if (originView === 'historical') {
@@ -67,7 +61,6 @@ async function startStory(startFile, originView = 'historical') {
         }
     }
 
-    // Hide all libraries and reveal game view
     document.getElementById('homepage-container').classList.add('hidden');
     document.getElementById('historical-library-container').classList.add('hidden');
     document.getElementById('fantasy-library-container').classList.add('hidden');
@@ -76,9 +69,11 @@ async function startStory(startFile, originView = 'historical') {
     
     document.getElementById('game-container').classList.remove('hidden');
 
-    // Reset game state
+    // Reset game state for a fresh playthrough
     gameState.flags = {};
     gameState.stats = {};
+    gameState.identity = "";
+    gameState.familyOrigin = "";
     gameState.currentFile = startFile;
 
     try {
@@ -86,6 +81,14 @@ async function startStory(startFile, originView = 'historical') {
         if (!response.ok) throw new Error(`Failed to load ${startFile}`);
         let data = await response.json();
 
+        // Load custom initial variables from JSON if defined
+        if (data.initial_variables) {
+            for (let [key, val] of Object.entries(data.initial_variables)) {
+                gameState[key] = val;
+            }
+        }
+
+        // Load initial stats from JSON if defined
         if (data.initial_stats) {
             gameState.stats = { ...data.initial_stats };
         }
@@ -100,7 +103,6 @@ async function startStory(startFile, originView = 'historical') {
     }
 }
 
-// Smart back button returns to the exact genre sub-library the user came from
 function smartBack() {
     document.getElementById('game-container').classList.add('hidden');
     
@@ -135,7 +137,6 @@ function updateStatsDisplay() {
     }
 }
 
-// Returns to the root homepage
 function returnToHome() {
     document.getElementById('game-container').classList.add('hidden');
     document.getElementById('historical-library-container').classList.add('hidden');
@@ -154,7 +155,22 @@ function returnToRomanceLibrary() {
     updateStoryUnlocks();
 }
 
-// Universal node loader supporting single-file JSON maps or multi-act structures
+function parseConditionals(rawText) {
+    return rawText.replace(/<<if\s+\$(\w+)\s+is\s+"([^"]+)"\s*>>([\s\S]*?)(?:<<elseif\s+\$\1\s+is\s+"([^"]+)"\s*>>([\s\S]*?))?(?:<<else>>([\s\S]*?))?<<\/if>>/g, 
+    (match, variable, ifVal, ifText, elseifVal, elseifText, elseText) => {
+        let currentVal = gameState[variable];
+
+        if (currentVal === ifVal) {
+            return ifText.trim();
+        } else if (elseifVal && currentVal === elseifVal) {
+            return elseifText.trim();
+        } else if (elseText) {
+            return elseText.trim();
+        }
+        return ""; 
+    });
+}
+
 async function loadNode(nodeId, actFile) {
     if (actFile) {
         gameState.currentFile = actFile;
@@ -165,26 +181,28 @@ async function loadNode(nodeId, actFile) {
         if (!response.ok) throw new Error(`Failed to load ${gameState.currentFile}`);
         
         let data = await response.json();
-        
-        // Supports both structured { nodes: { ... } } formats and flat JSON passage maps
         let nodeCollection = data.nodes ? data.nodes : data;
         let currentNode = nodeCollection[nodeId];
+
+        window.scrollTo(0, 0);
 
         if (!currentNode) {
             console.error(`Node "${nodeId}" not found in "${gameState.currentFile}"`);
             return;
         }
 
-        // Render Story Title & Text
+        // Render Story Title
         const titleElem = document.getElementById('scene-title');
-        if (titleElem) titleElem.innerText = currentNode.title ? currentNode.title.replace(/_/g, ' ') : '';
+        if (titleElem) {
+            titleElem.innerText = currentNode.title ? String(currentNode.title).replace(/_/g, ' ') : '';
+        }
 
+        // Render Story Text & Parse <<if>> Conditionals
         const textElem = document.getElementById('story-text') || document.getElementById('scene-text');
         if (textElem) {
-            let cleanBody = currentNode.text
-                .replace(/^#\s*/gm, '')
-                .replace(/^\*\s*/gm, '')
-                .replace(/\n\n/g, '<br><br>');
+            let rawText = currentNode.text || currentNode.body || ""; 
+            let processedText = parseConditionals(rawText);
+            let cleanBody = processedText.replace(/\n\n/g, '<br><br>');
             textElem.innerHTML = cleanBody;
         }
         
@@ -194,7 +212,14 @@ async function loadNode(nodeId, actFile) {
 
         if (currentNode.choices && currentNode.choices.length > 0) {
             currentNode.choices.forEach(choice => {
-                // Flag requirement check
+                
+                if (choice.condition) {
+                    let [condKey, condVal] = Object.entries(choice.condition)[0];
+                    if (gameState[condKey] && gameState[condKey] !== condVal) {
+                        return; 
+                    }
+                }
+
                 if (choice.requires_flag && !gameState.flags[choice.requires_flag]) {
                     return;
                 }
@@ -203,10 +228,8 @@ async function loadNode(nodeId, actFile) {
                 let isLocked = false;
                 let lockReason = "";
 
-                // Dynamic generic stat requirement checking (e.g., min_heat, min_fatigue, max_inhibition)
                 if (choice.requirements) {
                     for (let [reqStat, limitVal] of Object.entries(choice.requirements)) {
-                        // Check if requirement is a minimum or maximum rule
                         if (reqStat.startsWith('min_')) {
                             let statName = reqStat.replace('min_', '');
                             if ((gameState.stats[statName] || 0) < limitVal) {
@@ -221,16 +244,6 @@ async function loadNode(nodeId, actFile) {
                             }
                         }
                     }
-                }
-
-                // Legacy fallback checks for backward compatibility
-                if (choice.min_heat && (gameState.stats.heat || 0) < choice.min_heat) {
-                    isLocked = true;
-                    lockReason += ` [Req: ${choice.min_heat} Heat]`;
-                }
-                if (choice.max_inhibition && (gameState.stats.inhibition || 0) > choice.max_inhibition) {
-                    isLocked = true;
-                    lockReason += ` [Max ${choice.max_inhibition} Inhibition]`;
                 }
 
                 if (isLocked) {
@@ -251,11 +264,15 @@ async function loadNode(nodeId, actFile) {
     }
 }
 
-// Handle player choice execution
 function makeChoice(choice) {
-    // Apply stat changes dynamically
     if (choice.effects) {
         for (let [statKey, changeValue] of Object.entries(choice.effects)) {
+            if (statKey === 'familyorigin') {
+                gameState.familyOrigin = changeValue;
+            } else if (statKey === 'identity') {
+                gameState.identity = changeValue;
+            }
+
             if (gameState.stats.hasOwnProperty(statKey)) {
                 gameState.stats[statKey] += changeValue;
             } else {
@@ -265,7 +282,6 @@ function makeChoice(choice) {
         updateStatsDisplay();
     }
 
-    // Apply flags
     if (choice.flags) {
         for (let key in choice.flags) {
             gameState.flags[key] = choice.flags[key];
@@ -276,37 +292,27 @@ function makeChoice(choice) {
     loadNode(choice.target || choice.next_node, nextFile);
 }
 
-// Romance Unlock Checkers (Kept safe so your romance features continue to work)
+// Unlocks / Story Selectors (Triad and others remain open)
 function updateStoryUnlocks() {
-    const isCompleted = localStorage.getItem('window_completed') === 'true';
     const triadBtn = document.getElementById('btn-triad');
     const triadLockIcon = document.getElementById('triad-lock-icon');
     const triadDesc = document.getElementById('triad-desc');
 
     if (triadBtn) {
-        if (isCompleted) {
-            triadBtn.classList.remove('locked-story');
-            if (triadLockIcon) triadLockIcon.innerText = "✨";
-            if (triadDesc) triadDesc.innerText = "The sequel: Crossing the threshold together.";
-        } else {
-            triadBtn.classList.add('locked-story');
-            if (triadLockIcon) triadLockIcon.innerText = "🔒";
-            if (triadDesc) triadDesc.innerText = "Complete 'The Window' to unlock this sequel.";
-        }
+        triadBtn.classList.remove('locked-story');
+        if (triadLockIcon) triadLockIcon.innerText = "✨";
+        if (triadDesc) triadDesc.innerText = "The sequel: Crossing the threshold together.";
     }
 }
 
-// Updated selectTriadStory helper
+function selectAshAndBoneStory() {
+    startStory('data/romance/The Binding of Ash and Bone/Act 1.json', 'romance'); 
+}
+
 function selectTriadStory() {
-    const isCompleted = localStorage.getItem('window_completed') === 'true';
-    if (isCompleted) {
-        startStory('data/romance/triad/act1.json', 'romance');
-    } else {
-        alert("The Triad Arc is locked! You must complete 'The Window' first to unlock this sequel.");
-    }
+    startStory('data/romance/triad/act1.json', 'romance');
 }
 
-// Window Onload Setup
 window.onload = () => {
     const gameCont = document.getElementById('game-container');
     const romanceLib = document.getElementById('romance-library-container');
