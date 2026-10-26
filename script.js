@@ -171,6 +171,42 @@ function parseConditionals(rawText) {
     });
 }
 
+// ==========================================
+// UTILITY: Text & Variant Parsing
+// ==========================================
+function renderNodeText(nodeData) {
+    let outputHTML = "";
+
+    if (Array.isArray(nodeData.text)) {
+        nodeData.text.forEach(block => {
+            if (block.type === "narrative") {
+                outputHTML += `<p>${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
+            } 
+            else if (block.type === "familyOrigin_variant") {
+                // Check against engine's current state (case-insensitive fallback)
+                const currentState = gameState.familyOrigin || gameState.familyorigin;
+                if (block.familyOrigin === currentState) {
+                    outputHTML += `<p class="variant-text">${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
+                }
+            }
+            else if (block.type === "homeLI_relation_variant") {
+                // Check against engine's current state (case-insensitive fallback)
+                const currentState = gameState.homeLI_relation || gameState.homeLI_relation;
+                if (block.homeLI_relation === currentState) {
+                    outputHTML += `<p class="variant-text">${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
+                }
+            }
+            // Add extra types here as your story grows (e.g., identity_variant, temperament_variant)
+        });
+    } else if (typeof nodeData.text === "string") {
+        // Fallback for older single-string node passages
+        outputHTML += `<p>${nodeData.text.replace(/\n\n/g, '</p><p>')}</p>`;
+    }
+
+    return outputHTML;
+}
+
+
 async function loadNode(nodeId, actFile) {
     if (actFile) {
         gameState.currentFile = actFile;
@@ -197,13 +233,36 @@ async function loadNode(nodeId, actFile) {
             titleElem.innerText = currentNode.title ? String(currentNode.title).replace(/_/g, ' ') : '';
         }
 
-        // Render Story Text & Parse <<if>> Conditionals
+// Render Story Text & Parse Variants / <<if>> Conditionals
         const textElem = document.getElementById('story-text') || document.getElementById('scene-text');
         if (textElem) {
-            let rawText = currentNode.text || currentNode.body || ""; 
-            let processedText = parseConditionals(rawText);
-            let cleanBody = processedText.replace(/\n\n/g, '<br><br>');
-            textElem.innerHTML = cleanBody;
+            let renderedHTML = "";
+
+            // Check if currentNode.text is an array (your new structured format)
+            if (Array.isArray(currentNode.text)) {
+                currentNode.text.forEach(block => {
+                    if (block.type === "narrative") {
+                        // Process narrative blocks normally
+                        let parsed = parseConditionals(block.content || "");
+                        renderedHTML += `<p>${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
+                    } 
+                    else if (block.type === "familyOrigin_variant") {
+                        // Only render if the player's familyOrigin matches this block
+                        const currentOrigin = gameState.familyOrigin || gameState.familyorigin || "";
+                        if (block.familyOrigin === currentOrigin) {
+                            let parsed = parseConditionals(block.content || "");
+                            renderedHTML += `<p class="variant-text">${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
+                        }
+                    }
+                });
+            } else {
+                // Fallback for older nodes that still use a plain string
+                let rawText = currentNode.text || currentNode.body || ""; 
+                let processedText = parseConditionals(rawText);
+                renderedHTML = `<p>${processedText.replace(/\n\n/g, '<br><br>')}</p>`;
+            }
+
+            textElem.innerHTML = renderedHTML;
         }
         
         // Render Choices
@@ -326,3 +385,25 @@ window.onload = () => {
 
     updateStoryUnlocks();
 };
+
+// ==========================================
+// DEVELOPER TOOL: State Inspector Shortcut
+// ==========================================
+document.addEventListener('keydown', function(event) {
+    // Supports Ctrl+M OR Ctrl+Shift+I
+    if ((event.ctrlKey && (event.key === 'm' || event.key === 'M')) || 
+        (event.ctrlKey && event.shiftKey && (event.key === 'i' || event.key === 'I'))) {
+        
+        event.preventDefault();
+        
+        console.clear(); // Clears previous clutter
+        console.log("%c === CURRENT GAME STATE ===", "color: #00ffcc; font-weight: bold; font-size: 14px;");
+        
+        if (typeof gameState !== 'undefined') {
+            console.log("Raw Object:", gameState);
+            console.table(gameState);
+        } else {
+            console.error("`gameState` object is undefined! Check how your state variable is named in script.js.");
+        }
+    }
+});
