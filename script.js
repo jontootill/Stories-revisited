@@ -156,6 +156,11 @@ function returnToRomanceLibrary() {
 }
 
 function parseConditionals(rawText) {
+    // Safety check: if rawText is missing, not a string, or an array, bail out safely
+    if (typeof rawText !== 'string') {
+        return typeof rawText === 'object' && rawText !== null ? JSON.stringify(rawText) : "";
+    }
+
     return rawText.replace(/<<if\s+\$(\w+)\s+is\s+"([^"]+)"\s*>>([\s\S]*?)(?:<<elseif\s+\$\1\s+is\s+"([^"]+)"\s*>>([\s\S]*?))?(?:<<else>>([\s\S]*?))?<<\/if>>/g, 
     (match, variable, ifVal, ifText, elseifVal, elseifText, elseText) => {
         let currentVal = gameState[variable];
@@ -177,29 +182,58 @@ function parseConditionals(rawText) {
 function renderNodeText(nodeData) {
     let outputHTML = "";
 
+    function checkCondition(blockValue, currentGameStateValue, fieldName) {
+        if (blockValue === undefined) return true; // No requirement specified
+
+        const currentStr = String(currentGameStateValue || "").trim().toLowerCase();
+
+        if (Array.isArray(blockValue)) {
+            const matches = blockValue.map(v => String(v).trim().toLowerCase()).includes(currentStr);
+            console.log(`[Variant Check] '${fieldName}': required [${blockValue}], player has '${currentGameStateValue}' -> Match: ${matches}`);
+            return matches;
+        } else {
+            const targetStr = String(blockValue).trim().toLowerCase();
+            const matches = (currentStr === targetStr);
+            console.log(`[Variant Check] '${fieldName}': required '${blockValue}', player has '${currentGameStateValue}' -> Match: ${matches}`);
+            return matches;
+        }
+    }
+
     if (Array.isArray(nodeData.text)) {
-        nodeData.text.forEach(block => {
+        nodeData.text.forEach((block, index) => {
             if (block.type === "narrative") {
                 outputHTML += `<p>${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
             } 
-            else if (block.type === "familyOrigin_variant") {
-                // Check against engine's current state (case-insensitive fallback)
-                const currentState = gameState.familyOrigin || gameState.familyorigin;
-                if (block.familyOrigin === currentState) {
+            else if (block.type === "narrative_variant") {
+                // Look in both root gameState AND gameState.stats for flexibility
+                const currentTemperament = gameState.temperament || (gameState.stats && gameState.stats.temperament);
+                const currentFamilyOrigin = gameState.familyOrigin || (gameState.stats && gameState.stats.familyOrigin) || gameState.familyorigin;
+                const currentIdentity = gameState.identity || (gameState.stats && gameState.stats.identity);
+                const currentRelation = gameState.homeLI_relation || (gameState.stats && gameState.stats.homeLI_relation);
+
+                let passes = true;
+                if (block.temperament !== undefined) {
+                    if (!checkCondition(block.temperament, currentTemperament, 'temperament')) passes = false;
+                }
+                if (block.familyOrigin !== undefined) {
+                    if (!checkCondition(block.familyOrigin, currentFamilyOrigin, 'familyOrigin')) passes = false;
+                }
+                if (block.identity !== undefined) {
+                    if (!checkCondition(block.identity, currentIdentity, 'identity')) passes = false;
+                }
+                if (block.homeLI_relation !== undefined) {
+                    if (!checkCondition(block.homeLI_relation, currentRelation, 'homeLI_relation')) passes = false;
+                }
+
+                if (passes) {
+                    console.log(`✅ Variant Block #${index} PASSED. Rendering.`);
                     outputHTML += `<p class="variant-text">${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
+                } else {
+                    console.log(`❌ Variant Block #${index} FAILED. Skipping.`);
                 }
             }
-            else if (block.type === "homeLI_relation_variant") {
-                // Check against engine's current state (case-insensitive fallback)
-                const currentState = gameState.homeLI_relation || gameState.homeLI_relation;
-                if (block.homeLI_relation === currentState) {
-                    outputHTML += `<p class="variant-text">${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
-                }
-            }
-            // Add extra types here as your story grows (e.g., identity_variant, temperament_variant)
         });
     } else if (typeof nodeData.text === "string") {
-        // Fallback for older single-string node passages
         outputHTML += `<p>${nodeData.text.replace(/\n\n/g, '</p><p>')}</p>`;
     }
 
@@ -233,23 +267,58 @@ async function loadNode(nodeId, actFile) {
             titleElem.innerText = currentNode.title ? String(currentNode.title).replace(/_/g, ' ') : '';
         }
 
-// Render Story Text & Parse Variants / <<if>> Conditionals
+        // Render Story Text & Parse Variants / <<if>> Conditionals
         const textElem = document.getElementById('story-text') || document.getElementById('scene-text');
         if (textElem) {
             let renderedHTML = "";
 
-            // Check if currentNode.text is an array (your new structured format)
+            // Helper function to validate conditions on variant blocks
+            function checkBlockCondition(blockValue, currentGameStateValue) {
+                if (blockValue === undefined) return true; // Property not required by this block
+                const currentStr = String(currentGameStateValue || "").trim().toLowerCase();
+                
+                if (Array.isArray(blockValue)) {
+                    return blockValue.map(v => String(v).trim().toLowerCase()).includes(currentStr);
+                }
+                return currentStr === String(blockValue).trim().toLowerCase();
+            }
+
+            // Check if currentNode.text is an array (structured format)
             if (Array.isArray(currentNode.text)) {
                 currentNode.text.forEach(block => {
                     if (block.type === "narrative") {
-                        // Process narrative blocks normally
+                        // Always render standard narrative blocks
                         let parsed = parseConditionals(block.content || "");
                         renderedHTML += `<p>${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
                     } 
-                    else if (block.type === "familyOrigin_variant") {
-                        // Only render if the player's familyOrigin matches this block
-                        const currentOrigin = gameState.familyOrigin || gameState.familyorigin || "";
-                        if (block.familyOrigin === currentOrigin) {
+                    else if (block.type === "narrative_variant" || block.type === "familyOrigin_variant") {
+                        // Evaluate all potential condition keys on this block
+                        const currentTemp = gameState.temperament || gameState.stats?.temperament;
+                        const currentOrigin = gameState.familyOrigin || gameState.familyorigin || gameState.stats?.familyOrigin;
+                        const currentIdent = gameState.identity || gameState.stats?.identity;
+                        const currentRel = gameState.homeLI_relation || gameState.homeli_relation || gameState.stats?.homeLI_relation;
+
+                        let matches = true;
+                        
+                        // Check temperament if defined on block
+                        if (block.temperament !== undefined && !checkBlockCondition(block.temperament, currentTemp)) {
+                            matches = false;
+                        }
+                        // Check familyOrigin if defined on block
+                        if (block.familyOrigin !== undefined && !checkBlockCondition(block.familyOrigin, currentOrigin)) {
+                            matches = false;
+                        }
+                        // Check identity if defined on block
+                        if (block.identity !== undefined && !checkBlockCondition(block.identity, currentIdent)) {
+                            matches = false;
+                        }
+                        // Check homeLI_relation if defined on block
+                        if (block.homeLI_relation !== undefined && !checkBlockCondition(block.homeLI_relation, currentRel)) {
+                            matches = false;
+                        }
+
+                        // If all specified conditions pass, render the block
+                        if (matches) {
                             let parsed = parseConditionals(block.content || "");
                             renderedHTML += `<p class="variant-text">${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
                         }
