@@ -297,6 +297,7 @@ async function loadNode(nodeId, actFile) {
                         const currentOrigin = gameState.familyOrigin || gameState.familyorigin || gameState.stats?.familyOrigin;
                         const currentIdent = gameState.identity || gameState.stats?.identity;
                         const currentRel = gameState.homeLI_relation || gameState.homeli_relation || gameState.stats?.homeLI_relation;
+                        const previousNode = gameState.previousNode; 
 
                         let matches = true;
                         
@@ -306,6 +307,9 @@ async function loadNode(nodeId, actFile) {
                         }
                         // Check familyOrigin if defined on block
                         if (block.familyOrigin !== undefined && !checkBlockCondition(block.familyOrigin, currentOrigin)) {
+                            matches = false;
+                        }
+                        if (block.previousNode !== undefined && !checkBlockCondition(block.previousNode, previousNode)) {
                             matches = false;
                         }
                         // Check identity if defined on block
@@ -400,6 +404,11 @@ function makeChoice(choice) {
             } else if (statKey === 'identity') {
                 gameState.identity = changeValue;
             }
+
+            if (gameState.currentNode) {
+                gameState.previousNode = gameState.currentNode;
+                gameState.currentNode = choice.target;
+                }
 
             if (gameState.stats.hasOwnProperty(statKey)) {
                 gameState.stats[statKey] += changeValue;
