@@ -1,487 +1,388 @@
-// Global State Tracker (Clean baseline for any story)
-let gameState = {
-    stats: {},         // Dynamic stats container
-    flags: {},         // Story flags
-    currentFile: '',   // Currently loaded act JSON file
-    previousView: 'home'
-};
+// ==========================================
+// CONFIG & STATE
+// ==========================================
+const ROMANCE_PASSWORD = "261213";
 
-function openPasswordModal() {
-    document.getElementById('password-modal').classList.remove('hidden');
-    document.getElementById('genre-password').value = "";
-    document.getElementById('password-error').innerText = "";
+const VIEWS = [
+    'homepage-container',
+    'historical-library-container',
+    'fantasy-library-container',
+    'romance-library-container',
+    'game-container'
+];
+
+// Fresh state for a new playthrough
+function createState(previousView = 'home') {
+    return {
+        stats: {},          // Numeric/text stats shown in the HUD
+        flags: {},          // Story flags
+        currentFile: '',    // Act JSON file currently loaded
+        currentNode: '',    // Node currently on screen
+        previousNode: '',   // Node the player came from (used by variants)
+        previousView        // Which library to return to
+    };
 }
 
-function closePasswordModal() {
-    document.getElementById('password-modal').classList.add('hidden');
+let gameState = createState();
+let history = [];           // Snapshots of gameState, one per scene visited (powers the back button)
+const storyCache = {};      // Loaded JSON files, so we only fetch each once
+
+// ==========================================
+// VIEW HELPERS
+// ==========================================
+const $ = (id) => document.getElementById(id);
+
+function showView(viewId) {
+    VIEWS.forEach(id => {
+        const el = $(id);
+        if (el) el.classList.toggle('hidden', id !== viewId);
+    });
 }
 
-function unlockRomance() {
-    let inputPassword = document.getElementById('genre-password').value;
-    const ROMANCE_PASSWORD = "261213"; 
-    
-    if (inputPassword === ROMANCE_PASSWORD) {
-        closePasswordModal();
-        document.getElementById('homepage-container').classList.add('hidden');
-        document.getElementById('romance-library-container').classList.remove('hidden');
-        updateStoryUnlocks();
-    } else {
-        document.getElementById('password-error').innerText = "Incorrect password. Try again.";
-    }
+function returnToHome() {
+    showView('homepage-container');
 }
 
 function openGenreLibrary(genre) {
-    document.getElementById('homepage-container').classList.add('hidden');
-    
-    if (genre === 'historical') {
-        document.getElementById('historical-library-container').classList.remove('hidden');
-    } else if (genre === 'fantasy') {
-        document.getElementById('fantasy-library-container').classList.remove('hidden');
+    showView(`${genre}-library-container`);
+}
+
+// Back to whichever library the story was started from
+function smartBack() {
+    showView(`${gameState.previousView}-library-container`);
+}
+
+// ==========================================
+// PASSWORD MODAL (Romance)
+// ==========================================
+function openPasswordModal() {
+    $('password-modal').classList.remove('hidden');
+    $('genre-password').value = "";
+    $('password-error').innerText = "";
+}
+
+function closePasswordModal() {
+    $('password-modal').classList.add('hidden');
+}
+
+function unlockRomance() {
+    if ($('genre-password').value === ROMANCE_PASSWORD) {
+        closePasswordModal();
+        showView('romance-library-container');
+    } else {
+        $('password-error').innerText = "Incorrect password. Try again.";
     }
 }
 
-function startGenre(genre) {
-    if (genre === 'romance') {
-        openPasswordModal();
-    }
+// ==========================================
+// STORY DATA
+// ==========================================
+async function fetchStory(file) {
+    if (storyCache[file]) return storyCache[file];
+
+    const response = await fetch(file);
+    if (!response.ok) throw new Error(`Failed to load ${file}`);
+
+    storyCache[file] = await response.json();
+    return storyCache[file];
 }
 
-// Universal story starter - reads custom initial states and variables from story JSON
-async function startStory(startFile, originView = 'historical') {
-    gameState.previousView = originView;
+// Some files wrap nodes in { nodes: {...} }, others are the nodes themselves
+const getNodes = (data) => data.nodes || data;
 
-    const backBtn = document.getElementById('back-to-library-btn');
-    if (backBtn) {
-        if (originView === 'historical') {
-            backBtn.innerText = "← Back to Historical Library";
-        } else if (originView === 'fantasy') {
-            backBtn.innerText = "← Back to Fantasy Library";
-        } else if (originView === 'romance') {
-            backBtn.innerText = "← Back to Romance Library";
-        }
-    }
-
-    document.getElementById('homepage-container').classList.add('hidden');
-    document.getElementById('historical-library-container').classList.add('hidden');
-    document.getElementById('fantasy-library-container').classList.add('hidden');
-    const romanceLib = document.getElementById('romance-library-container');
-    if (romanceLib) romanceLib.classList.add('hidden');
-    
-    document.getElementById('game-container').classList.remove('hidden');
-
-    // Reset game state for a fresh playthrough
-    gameState.flags = {};
-    gameState.stats = {};
-    gameState.identity = "";
-    gameState.familyOrigin = "";
-    gameState.currentFile = startFile;
-
-    try {
-        let response = await fetch(startFile);
-        if (!response.ok) throw new Error(`Failed to load ${startFile}`);
-        let data = await response.json();
-
-        // Load custom initial variables from JSON if defined
-        if (data.initial_variables) {
-            for (let [key, val] of Object.entries(data.initial_variables)) {
-                gameState[key] = val;
+// Look up a story variable (identity, temperament, familyOrigin, etc.).
+// Checks stats first, then the root state, ignoring letter case so
+// "familyorigin" and "familyOrigin" are treated as the same thing.
+function getVar(name) {
+    const target = name.toLowerCase();
+    for (const source of [gameState.stats, gameState]) {
+        for (const [key, value] of Object.entries(source)) {
+            if (key.toLowerCase() === target && typeof value !== 'object' && value !== '') {
+                return value;
             }
         }
+    }
+    return undefined;
+}
 
-        // Load initial stats from JSON if defined
-        if (data.initial_stats) {
-            gameState.stats = { ...data.initial_stats };
-        }
+// ==========================================
+// STARTING A STORY
+// ==========================================
+async function startStory(startFile, originView = 'historical') {
+    gameState = createState(originView);
+    gameState.currentFile = startFile;
+    history = [];
+    lastTracked = null;   // so the first scene doesn't highlight everything
 
-        renderStatsHUD();
+    const genreName = originView.charAt(0).toUpperCase() + originView.slice(1);
+    $('back-to-library-btn').innerText = `← Back to ${genreName} Library`;
+    showView('game-container');
 
-        let startNodeKey = data.start_node || (data.nodes ? Object.keys(data.nodes)[0] : Object.keys(data)[0]);
-        loadNode(startNodeKey, startFile);
+    try {
+        const data = await fetchStory(startFile);
 
+        // Optional starting variables and stats defined in the JSON
+        Object.assign(gameState, data.initial_variables);
+        gameState.stats = { ...data.initial_stats };
+
+        const startNode = data.start_node || Object.keys(getNodes(data))[0];
+        await renderNode(startNode);
     } catch (error) {
         console.error("Error starting story:", error);
     }
 }
 
-function smartBack() {
-    document.getElementById('game-container').classList.add('hidden');
-    
-    if (gameState.previousView === 'historical') {
-        document.getElementById('historical-library-container').classList.remove('hidden');
-    } else if (gameState.previousView === 'fantasy') {
-        document.getElementById('fantasy-library-container').classList.remove('hidden');
-    } else if (gameState.previousView === 'romance') {
-        document.getElementById('romance-library-container').classList.remove('hidden');
-    } else {
-        document.getElementById('homepage-container').classList.remove('hidden');
-    }
-}
+// ==========================================
+// TEXT RENDERING
+// ==========================================
 
-function renderStatsHUD() {
-    let statsDisplay = document.getElementById('stats-display') || document.getElementById('stats-bar');
-    if (!statsDisplay) return;
-
-    let statPairs = [];
-    for (let [key, value] of Object.entries(gameState.stats)) {
-        let formattedKey = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
-        statPairs.push(`<span class="stat-item">${formattedKey}: <span id="stat-${key}">${value}</span></span>`);
-    }
-
-    statsDisplay.innerHTML = statPairs.join(' | ');
-}
-
-function updateStatsDisplay() {
-    for (let [key, value] of Object.entries(gameState.stats)) {
-        let el = document.getElementById(`stat-${key}`);
-        if (el) el.innerText = value;
-    }
-}
-
-function returnToHome() {
-    document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('historical-library-container').classList.add('hidden');
-    document.getElementById('fantasy-library-container').classList.add('hidden');
-    const romanceLib = document.getElementById('romance-library-container');
-    if (romanceLib) romanceLib.classList.add('hidden');
-    
-    document.getElementById('homepage-container').classList.remove('hidden');
-}
-
-function returnToRomanceLibrary() {
-    document.getElementById('game-container').classList.add('hidden');
-    document.getElementById('homepage-container').classList.add('hidden');
-    const romanceLib = document.getElementById('romance-library-container');
-    if (romanceLib) romanceLib.classList.remove('hidden');
-    updateStoryUnlocks();
-}
-
+// Handles <<if $var is "x">> ... <<elseif $var is "y">> ... <<else>> ... <</if>>
 function parseConditionals(rawText) {
-    // Safety check: if rawText is missing, not a string, or an array, bail out safely
     if (typeof rawText !== 'string') {
-        return typeof rawText === 'object' && rawText !== null ? JSON.stringify(rawText) : "";
+        return (typeof rawText === 'object' && rawText !== null) ? JSON.stringify(rawText) : "";
     }
 
-    return rawText.replace(/<<if\s+\$(\w+)\s+is\s+"([^"]+)"\s*>>([\s\S]*?)(?:<<elseif\s+\$\1\s+is\s+"([^"]+)"\s*>>([\s\S]*?))?(?:<<else>>([\s\S]*?))?<<\/if>>/g, 
-    (match, variable, ifVal, ifText, elseifVal, elseifText, elseText) => {
-        let currentVal = gameState[variable];
+    return rawText.replace(
+        /<<if\s+\$(\w+)\s+is\s+"([^"]+)"\s*>>([\s\S]*?)(?:<<elseif\s+\$\1\s+is\s+"([^"]+)"\s*>>([\s\S]*?))?(?:<<else>>([\s\S]*?))?<<\/if>>/g,
+        (match, variable, ifVal, ifText, elseifVal, elseifText, elseText) => {
+            const current = getVar(variable);
 
-        if (currentVal === ifVal) {
-            return ifText.trim();
-        } else if (elseifVal && currentVal === elseifVal) {
-            return elseifText.trim();
-        } else if (elseText) {
-            return elseText.trim();
+            if (current === ifVal) return ifText.trim();
+            if (elseifVal && current === elseifVal) return elseifText.trim();
+            if (elseText) return elseText.trim();
+            return "";
         }
-        return ""; 
+    );
+}
+
+// Does a required value (string or array of strings) match what the player has?
+function valueMatches(required, actual) {
+    const current = String(actual ?? "").trim().toLowerCase();
+    const options = Array.isArray(required) ? required : [required];
+    return options.some(option => String(option).trim().toLowerCase() === current);
+}
+
+// A variant block shows only if every condition it defines is met
+const VARIANT_CONDITIONS = ['temperament', 'familyOrigin', 'identity', 'homeLI_relation', 'previousNode'];
+
+function variantMatches(block) {
+    return VARIANT_CONDITIONS.every(key =>
+        block[key] === undefined || valueMatches(block[key], getVar(key))
+    );
+}
+
+function buildNodeHTML(node) {
+    // Text can be an array of blocks, or a plain string (older nodes)
+    const blocks = Array.isArray(node.text)
+        ? node.text
+        : [{ type: 'narrative', content: node.text || node.body || "" }];
+
+    return blocks
+        .filter(block =>
+            block.type === 'narrative' ||
+            ((block.type === 'narrative_variant' || block.type === 'familyOrigin_variant') && variantMatches(block))
+        )
+        .map(block => {
+            const cssClass = block.type === 'narrative' ? '' : ' class="variant-text"';
+            const text = parseConditionals(block.content || "").replace(/\n\n/g, '<br><br>');
+            return `<p${cssClass}>${text}</p>`;
+        })
+        .join('');
+}
+
+// ==========================================
+// HUD & BACK BUTTON
+// ==========================================
+function renderStatsHUD() {
+    const hud = $('stats-display');
+    if (!hud) return;
+
+    hud.innerHTML = Object.entries(gameState.stats)
+        .map(([key, value]) => {
+            const label = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
+            return `<span class="stat-item">${label}: ${value}</span>`;
+        })
+        .join(' | ');
+}
+
+// Dropdown tracker: lists every variable and highlights anything that changed since the last scene
+let lastTracked = null;
+
+const escapeHTML = (text) => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function renderTracker() {
+    const panel = $('tracker-content');
+    if (!panel) return;
+
+    // Anything on gameState that isn't a known field is a story variable (identity, temperament...)
+    const { stats, flags, currentFile, currentNode, previousNode, previousView, ...variables } = gameState;
+
+    const sections = {
+        'Scene': {
+            'File': currentFile,
+            'Node': currentNode,
+            'Previous node': previousNode || '—',
+            'Scenes back available': history.length
+        },
+        'Stats': stats,
+        'Flags': flags,
+        'Variables': variables
+    };
+
+    const current = {};
+    let html = '';
+
+    for (const [title, entries] of Object.entries(sections)) {
+        const rows = Object.entries(entries).map(([key, value]) => {
+            const id = `${title}.${key}`;
+            const text = String(value);
+            current[id] = text;
+
+            const changed = title !== 'Scene' && lastTracked && lastTracked[id] !== text;
+            return `<tr class="${changed ? 'changed' : ''}"><td>${escapeHTML(key)}</td><td>${escapeHTML(text)}</td></tr>`;
+        });
+
+        html += `<h4>${title}</h4>`;
+        html += rows.length
+            ? `<table>${rows.join('')}</table>`
+            : `<p class="tracker-empty">None yet</p>`;
+    }
+
+    lastTracked = current;
+    panel.innerHTML = html;
+}
+
+function updateBackButton() {
+    $('step-back-btn').classList.toggle('hidden', history.length === 0);
+}
+
+// ==========================================
+// RENDERING A NODE
+// ==========================================
+// Draws the node on screen. Returns true on success, false if it couldn't be shown.
+async function renderNode(nodeId) {
+    try {
+        const data = await fetchStory(gameState.currentFile);
+        const node = getNodes(data)[nodeId];
+
+        if (!node) {
+            console.error(`Node "${nodeId}" not found in "${gameState.currentFile}"`);
+            return false;
+        }
+
+        gameState.currentNode = nodeId;
+
+        $('scene-title').innerText = node.title ? String(node.title).replace(/_/g, ' ') : '';
+        $('story-text').innerHTML = buildNodeHTML(node);
+
+        renderChoices(node);
+        renderStatsHUD();
+        renderTracker();
+        updateBackButton();
+        window.scrollTo(0, 0);
+        return true;
+
+    } catch (error) {
+        console.error("Error in renderNode:", error);
+        return false;
+    }
+}
+
+function renderChoices(node) {
+    const choicesBox = $('choices-box');
+    choicesBox.innerHTML = "";
+
+    (node.choices || []).forEach(choice => {
+        // Hide choices whose variable condition doesn't match
+        if (choice.condition) {
+            const [condKey, condVal] = Object.entries(choice.condition)[0];
+            const current = getVar(condKey);
+            if (current && current !== condVal) return;
+        }
+
+        // Hide choices that need a flag the player doesn't have
+        if (choice.requires_flag && !gameState.flags[choice.requires_flag]) return;
+
+        // Work out whether stat requirements lock this choice
+        let lockReason = "";
+        for (const [req, limit] of Object.entries(choice.requirements || {})) {
+            const statName = req.replace(/^(min|max)_/, '');
+            const value = gameState.stats[statName] || 0;
+
+            if (req.startsWith('min_') && value < limit) lockReason += ` [Req: ${limit} ${statName}]`;
+            if (req.startsWith('max_') && value > limit) lockReason += ` [Max: ${limit} ${statName}]`;
+        }
+
+        const btn = document.createElement('button');
+        btn.innerText = choice.text + lockReason;
+
+        if (lockReason) {
+            btn.disabled = true;
+            btn.classList.add('locked-choice');
+        } else {
+            btn.onclick = () => makeChoice(choice);
+        }
+
+        choicesBox.appendChild(btn);
     });
 }
 
 // ==========================================
-// UTILITY: Text & Variant Parsing
+// NAVIGATION
 // ==========================================
-function renderNodeText(nodeData) {
-    let outputHTML = "";
-
-    function checkCondition(blockValue, currentGameStateValue, fieldName) {
-        if (blockValue === undefined) return true; // No requirement specified
-
-        const currentStr = String(currentGameStateValue || "").trim().toLowerCase();
-
-        if (Array.isArray(blockValue)) {
-            const matches = blockValue.map(v => String(v).trim().toLowerCase()).includes(currentStr);
-            console.log(`[Variant Check] '${fieldName}': required [${blockValue}], player has '${currentGameStateValue}' -> Match: ${matches}`);
-            return matches;
-        } else {
-            const targetStr = String(blockValue).trim().toLowerCase();
-            const matches = (currentStr === targetStr);
-            console.log(`[Variant Check] '${fieldName}': required '${blockValue}', player has '${currentGameStateValue}' -> Match: ${matches}`);
-            return matches;
-        }
-    }
-
-    if (Array.isArray(nodeData.text)) {
-        nodeData.text.forEach((block, index) => {
-            if (block.type === "narrative") {
-                outputHTML += `<p>${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
-            } 
-            else if (block.type === "narrative_variant") {
-                // Look in both root gameState AND gameState.stats for flexibility
-                const currentTemperament = gameState.temperament || (gameState.stats && gameState.stats.temperament);
-                const currentFamilyOrigin = gameState.familyOrigin || (gameState.stats && gameState.stats.familyOrigin) || gameState.familyorigin;
-                const currentIdentity = gameState.identity || (gameState.stats && gameState.stats.identity);
-                const currentRelation = gameState.homeLI_relation || (gameState.stats && gameState.stats.homeLI_relation);
-
-                let passes = true;
-                if (block.temperament !== undefined) {
-                    if (!checkCondition(block.temperament, currentTemperament, 'temperament')) passes = false;
-                }
-                if (block.familyOrigin !== undefined) {
-                    if (!checkCondition(block.familyOrigin, currentFamilyOrigin, 'familyOrigin')) passes = false;
-                }
-                if (block.identity !== undefined) {
-                    if (!checkCondition(block.identity, currentIdentity, 'identity')) passes = false;
-                }
-                if (block.homeLI_relation !== undefined) {
-                    if (!checkCondition(block.homeLI_relation, currentRelation, 'homeLI_relation')) passes = false;
-                }
-
-                if (passes) {
-                    console.log(`✅ Variant Block #${index} PASSED. Rendering.`);
-                    outputHTML += `<p class="variant-text">${block.content.replace(/\n\n/g, '</p><p>')}</p>`;
-                } else {
-                    console.log(`❌ Variant Block #${index} FAILED. Skipping.`);
-                }
-            }
-        });
-    } else if (typeof nodeData.text === "string") {
-        outputHTML += `<p>${nodeData.text.replace(/\n\n/g, '</p><p>')}</p>`;
-    }
-
-    return outputHTML;
-}
-
-
-async function loadNode(nodeId, actFile) {
-    if (actFile) {
-        gameState.currentFile = actFile;
-    }
-
-    try {
-        let response = await fetch(gameState.currentFile);
-        if (!response.ok) throw new Error(`Failed to load ${gameState.currentFile}`);
-        
-        let data = await response.json();
-        let nodeCollection = data.nodes ? data.nodes : data;
-        let currentNode = nodeCollection[nodeId];
-
-        window.scrollTo(0, 0);
-
-        if (!currentNode) {
-            console.error(`Node "${nodeId}" not found in "${gameState.currentFile}"`);
-            return;
-        }
-
-        // Render Story Title
-        const titleElem = document.getElementById('scene-title');
-        if (titleElem) {
-            titleElem.innerText = currentNode.title ? String(currentNode.title).replace(/_/g, ' ') : '';
-        }
-
-        // Render Story Text & Parse Variants / <<if>> Conditionals
-        const textElem = document.getElementById('story-text') || document.getElementById('scene-text');
-        if (textElem) {
-            let renderedHTML = "";
-
-            // Helper function to validate conditions on variant blocks
-            function checkBlockCondition(blockValue, currentGameStateValue) {
-                if (blockValue === undefined) return true; // Property not required by this block
-                const currentStr = String(currentGameStateValue || "").trim().toLowerCase();
-                
-                if (Array.isArray(blockValue)) {
-                    return blockValue.map(v => String(v).trim().toLowerCase()).includes(currentStr);
-                }
-                return currentStr === String(blockValue).trim().toLowerCase();
-            }
-
-            // Check if currentNode.text is an array (structured format)
-            if (Array.isArray(currentNode.text)) {
-                currentNode.text.forEach(block => {
-                    if (block.type === "narrative") {
-                        // Always render standard narrative blocks
-                        let parsed = parseConditionals(block.content || "");
-                        renderedHTML += `<p>${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
-                    } 
-                    else if (block.type === "narrative_variant" || block.type === "familyOrigin_variant") {
-                        // Evaluate all potential condition keys on this block
-                        const currentTemp = gameState.temperament || gameState.stats?.temperament;
-                        const currentOrigin = gameState.familyOrigin || gameState.familyorigin || gameState.stats?.familyOrigin;
-                        const currentIdent = gameState.identity || gameState.stats?.identity;
-                        const currentRel = gameState.homeLI_relation || gameState.homeli_relation || gameState.stats?.homeLI_relation;
-                        const previousNode = gameState.previousNode; 
-
-                        let matches = true;
-                        
-                        // Check temperament if defined on block
-                        if (block.temperament !== undefined && !checkBlockCondition(block.temperament, currentTemp)) {
-                            matches = false;
-                        }
-                        // Check familyOrigin if defined on block
-                        if (block.familyOrigin !== undefined && !checkBlockCondition(block.familyOrigin, currentOrigin)) {
-                            matches = false;
-                        }
-                        if (block.previousNode !== undefined && !checkBlockCondition(block.previousNode, previousNode)) {
-                            matches = false;
-                        }
-                        // Check identity if defined on block
-                        if (block.identity !== undefined && !checkBlockCondition(block.identity, currentIdent)) {
-                            matches = false;
-                        }
-                        // Check homeLI_relation if defined on block
-                        if (block.homeLI_relation !== undefined && !checkBlockCondition(block.homeLI_relation, currentRel)) {
-                            matches = false;
-                        }
-
-                        // If all specified conditions pass, render the block
-                        if (matches) {
-                            let parsed = parseConditionals(block.content || "");
-                            renderedHTML += `<p class="variant-text">${parsed.replace(/\n\n/g, '<br><br>')}</p>`;
-                        }
-                    }
-                });
-            } else {
-                // Fallback for older nodes that still use a plain string
-                let rawText = currentNode.text || currentNode.body || ""; 
-                let processedText = parseConditionals(rawText);
-                renderedHTML = `<p>${processedText.replace(/\n\n/g, '<br><br>')}</p>`;
-            }
-
-            textElem.innerHTML = renderedHTML;
-        }
-        
-        // Render Choices
-        let choicesBox = document.getElementById('choices-box');
-        choicesBox.innerHTML = "";
-
-        if (currentNode.choices && currentNode.choices.length > 0) {
-            currentNode.choices.forEach(choice => {
-                
-                if (choice.condition) {
-                    let [condKey, condVal] = Object.entries(choice.condition)[0];
-                    if (gameState[condKey] && gameState[condKey] !== condVal) {
-                        return; 
-                    }
-                }
-
-                if (choice.requires_flag && !gameState.flags[choice.requires_flag]) {
-                    return;
-                }
-
-                let btn = document.createElement('button');
-                let isLocked = false;
-                let lockReason = "";
-
-                if (choice.requirements) {
-                    for (let [reqStat, limitVal] of Object.entries(choice.requirements)) {
-                        if (reqStat.startsWith('min_')) {
-                            let statName = reqStat.replace('min_', '');
-                            if ((gameState.stats[statName] || 0) < limitVal) {
-                                isLocked = true;
-                                lockReason += ` [Req: ${limitVal} ${statName}]`;
-                            }
-                        } else if (reqStat.startsWith('max_')) {
-                            let statName = reqStat.replace('max_', '');
-                            if ((gameState.stats[statName] || 0) > limitVal) {
-                                isLocked = true;
-                                lockReason += ` [Max: ${limitVal} ${statName}]`;
-                            }
-                        }
-                    }
-                }
-
-                if (isLocked) {
-                    btn.innerText = choice.text + lockReason;
-                    btn.disabled = true;
-                    btn.classList.add('locked-choice');
-                } else {
-                    btn.innerText = choice.text;
-                    btn.onclick = () => makeChoice(choice);
-                }
-
-                choicesBox.appendChild(btn);
-            });
-        }
-
-    } catch (error) {
-        console.error("Error in loadNode:", error);
+function applyEffects(effects = {}) {
+    for (const [key, value] of Object.entries(effects)) {
+        const current = gameState.stats[key];
+        // Numbers add up; text values (identity, temperament...) are simply set
+        gameState.stats[key] = (typeof value === 'number' && typeof current === 'number')
+            ? current + value
+            : value;
     }
 }
 
-function makeChoice(choice) {
-    if (choice.effects) {
-        for (let [statKey, changeValue] of Object.entries(choice.effects)) {
-            if (statKey === 'familyorigin') {
-                gameState.familyOrigin = changeValue;
-            } else if (statKey === 'identity') {
-                gameState.identity = changeValue;
-            }
+async function makeChoice(choice) {
+    // Save the state BEFORE the choice so "Previous scene" can restore it exactly
+    history.push(structuredClone(gameState));
 
-            if (gameState.currentNode) {
-                gameState.previousNode = gameState.currentNode;
-                gameState.currentNode = choice.target;
-                }
+    applyEffects(choice.effects);
+    Object.assign(gameState.flags, choice.flags);
 
-            if (gameState.stats.hasOwnProperty(statKey)) {
-                gameState.stats[statKey] += changeValue;
-            } else {
-                gameState.stats[statKey] = changeValue;
-            }
-        }
-        updateStatsDisplay();
-    }
+    gameState.previousNode = gameState.currentNode;
+    if (choice.next_file) gameState.currentFile = choice.next_file;
 
-    if (choice.flags) {
-        for (let key in choice.flags) {
-            gameState.flags[key] = choice.flags[key];
-        }
-    }
+    const success = await renderNode(choice.target || choice.next_node);
 
-    let nextFile = choice.next_file || gameState.currentFile;
-    loadNode(choice.target || choice.next_node, nextFile);
+    // If the next node couldn't load, undo everything we just changed
+    if (!success) gameState = history.pop();
 }
 
-// Unlocks / Story Selectors (Triad and others remain open)
-function updateStoryUnlocks() {
-    const triadBtn = document.getElementById('btn-triad');
-    const triadLockIcon = document.getElementById('triad-lock-icon');
-    const triadDesc = document.getElementById('triad-desc');
+async function goBack() {
+    if (history.length === 0) return;
 
-    if (triadBtn) {
-        triadBtn.classList.remove('locked-story');
-        if (triadLockIcon) triadLockIcon.innerText = "✨";
-        if (triadDesc) triadDesc.innerText = "The sequel: Crossing the threshold together.";
-    }
+    // Restoring the snapshot also rolls back stats, flags and variables
+    gameState = history.pop();
+    await renderNode(gameState.currentNode);
 }
 
-function selectAshAndBoneStory() {
-    startStory('data/romance/The Binding of Ash and Bone/Act 1.json', 'romance'); 
-}
-
-function selectTriadStory() {
-    startStory('data/romance/triad/act1.json', 'romance');
-}
-
+// ==========================================
+// INIT
+// ==========================================
 window.onload = () => {
-    const gameCont = document.getElementById('game-container');
-    const romanceLib = document.getElementById('romance-library-container');
-    const modal = document.getElementById('password-modal');
-    const homeCont = document.getElementById('homepage-container');
-
-    if (gameCont) gameCont.classList.add('hidden');
-    if (romanceLib) romanceLib.classList.add('hidden');
-    if (modal) modal.classList.add('hidden');
-    if (homeCont) homeCont.classList.remove('hidden');
-
-    updateStoryUnlocks();
+    $('password-modal').classList.add('hidden');
+    showView('homepage-container');
 };
 
 // ==========================================
-// DEVELOPER TOOL: State Inspector Shortcut
+// DEVELOPER TOOL: State Inspector (Ctrl+M or Ctrl+Shift+I)
 // ==========================================
-document.addEventListener('keydown', function(event) {
-    // Supports Ctrl+M OR Ctrl+Shift+I
-    if ((event.ctrlKey && (event.key === 'm' || event.key === 'M')) || 
-        (event.ctrlKey && event.shiftKey && (event.key === 'i' || event.key === 'I'))) {
-        
-        event.preventDefault();
-        
-        console.clear(); // Clears previous clutter
-        console.log("%c === CURRENT GAME STATE ===", "color: #00ffcc; font-weight: bold; font-size: 14px;");
-        
-        if (typeof gameState !== 'undefined') {
-            console.log("Raw Object:", gameState);
-            console.table(gameState);
-        } else {
-            console.error("`gameState` object is undefined! Check how your state variable is named in script.js.");
-        }
-    }
+document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase();
+    if (!event.ctrlKey || !(key === 'm' || (event.shiftKey && key === 'i'))) return;
+
+    event.preventDefault();
+    console.clear();
+    console.log("%c === CURRENT GAME STATE ===", "color: #00ffcc; font-weight: bold; font-size: 14px;");
+    console.log("Raw Object:", gameState);
+    console.table(gameState);
+    console.log(`History depth: ${history.length}`);
 });

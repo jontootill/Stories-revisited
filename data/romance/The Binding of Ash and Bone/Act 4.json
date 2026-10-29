@@ -155,7 +155,8 @@
     "choices": [
       {
         "text": "Unleash the volatile storm upon Marek's vanguard.",
-        "target": "3.5g Act 3 Epilogue - Mastery"
+        "target": "3.5g Act 3 Epilogue - Mastery",
+          "effects": {"magicalExposure":1}
       }
     ]
   },
@@ -170,15 +171,18 @@
     "choices": [
       {
         "text": "Remain where you are, holding his gaze as the leyline energy settles between you.",
-        "target": "3.3f The True Name Reckoning"
+        "target": "3.3f The True Name Reckoning",
+        "effects": {"faeTrust":1,"physicalTemp":1}
       },
       {
         "text": "Channel the Ley-line vision to map out the Coven's hidden strike positions while staying close to him.",
-        "target": "3.3f The True Name Reckoning"
+        "target": "3.3f The True Name Reckoning",
+        "effects": {"magicalExposure":1}
       },
       {
         "text": "Awaken the ancient stone monoliths around the grove to secure your perimeter together.",
-        "target": "3.3f The True Name Reckoning"
+        "target": "3.3f The True Name Reckoning",
+        "effects": {"magicalExposure":1}
       }
     ]
   },
@@ -193,11 +197,14 @@
     "choices": [
       {
         "text": "Look him in the eye and whisper his true Fae name in return, binding your souls as complete equals.",
-        "target": "3.4f Consummation - Bound Souls"
+        "target": "3.4f Consummation - Bound Souls",
+        "effects": {"physicalTemp": 3}
       },
       {
         "text": "Demand he surrender your true name to the sacred pool to prove he won't use it as a leash.",
-        "target": "3.4f Consummation - Sealed Pact"
+        "target": "3.4f Consummation - Sealed Pact",
+        "effects": {"faeDominance":1, "physicalTemp": 3},
+        "fae Dominance": {"gte":4}
       },
       {
         "text": "Ignore the power play entirely and pull him in by his collar, letting wild desire take over.",

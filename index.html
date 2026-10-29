@@ -14,27 +14,25 @@
         <p>Your gateway to revisiting stories until you get the ending you want.</p>
 
         <div class="genre-grid">
-            <!-- Historical Genre Card -->
             <button class="genre-card historical-card" onclick="openGenreLibrary('historical')">
                 <h2>Historical</h2>
                 <p>Explore alternative endings to historical events.</p>
             </button>
 
-            <!-- Fantasy Genre Card -->
             <button class="genre-card fantasy-card" onclick="openGenreLibrary('fantasy')">
                 <h2>Fantasy / Adventure</h2>
                 <p>Forge your path through ancient realms.</p>
             </button>
 
-            <!-- Romance Genre Card (Password Protected) -->
-            <button class="genre-card romance-card protected" onclick="startGenre('romance')">
+            <!-- Password protected -->
+            <button class="genre-card romance-card protected" onclick="openPasswordModal()">
                 <h2>Romance 🔒</h2>
                 <p>Password protected collection.</p>
             </button>
         </div>
     </div>
 
-    <!-- HISTORICAL SUB-LIBRARY VIEW -->
+    <!-- HISTORICAL LIBRARY -->
     <div id="historical-library-container" class="hidden">
         <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
         <h2>Historical Library</h2>
@@ -48,7 +46,7 @@
         </div>
     </div>
 
-    <!-- FANTASY SUB-LIBRARY VIEW -->
+    <!-- FANTASY LIBRARY -->
     <div id="fantasy-library-container" class="hidden">
         <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
         <h2>Fantasy Library</h2>
@@ -62,14 +60,14 @@
         </div>
     </div>
 
-    <!-- ROMANCE SUB-LIBRARY VIEW -->
+    <!-- ROMANCE LIBRARY -->
     <div id="romance-library-container" class="hidden">
         <button class="back-btn" onclick="returnToHome()">← Back to Genres</button>
         <h2>Romance Library</h2>
         <p>Select a story to begin:</p>
 
         <div class="genre-grid">
-                        <button class="genre-card romance-card protected" onclick="startStory('data/romance/The Binding of Ash and Bone/Act 1.json', 'romance')">
+            <button class="genre-card romance-card protected" onclick="startStory('data/romance/The Binding of Ash and Bone/Act 1.json', 'romance')">
                 <h2>The Binding of Ash and Bone</h2>
                 <p>A story of blood, love and lies.</p>
             </button>
@@ -79,9 +77,9 @@
                 <p>The original distant observation saga.</p>
             </button>
 
-            <button id="btn-triad" class="genre-card romance-card protected locked-story" onclick="selectTriadStory()">
-                <h2>The Triad Arc <span id="triad-lock-icon">🔒</span></h2>
-                <p id="triad-desc">Complete 'The Window' to unlock this sequel.</p>
+            <button class="genre-card romance-card protected" onclick="startStory('data/romance/triad/act1.json', 'romance')">
+                <h2>The Triad Arc ✨</h2>
+                <p>The sequel: Crossing the threshold together.</p>
             </button>
         </div>
     </div>
@@ -103,16 +101,23 @@
     <!-- GAME VIEW -->
     <div id="game-container" class="hidden">
         <div id="top-bar">
-            <!-- Dynamic Back Button -->
-            <button id="back-to-library-btn" class="back-btn" onclick="smartBack()">← Back</button>
-            
-            <!-- Dynamic HUD Container -->
+            <div class="top-bar-left">
+                <button id="back-to-library-btn" class="back-btn" onclick="smartBack()">← Back</button>
+                <!-- Goes back one scene; hidden until there is a scene to go back to -->
+                <button id="step-back-btn" class="nav-btn hidden" onclick="goBack()">&#x21A9; Previous scene</button>
+            </div>
             <div id="stats-display"></div>
         </div>
 
+        <!-- Dropdown variable tracker (click the title to open/close) -->
+        <details id="tracker">
+            <summary>Variable tracker</summary>
+            <div id="tracker-content"></div>
+        </details>
+
         <div id="story-box">
             <h1 id="scene-title"></h1>
-            <p id="story-text"></p>
+            <div id="story-text"></div>
             <div id="choices-box"></div>
         </div>
     </div>

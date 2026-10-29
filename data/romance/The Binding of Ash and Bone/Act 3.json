@@ -471,7 +471,8 @@
   "choices": [
     {
       "text": "Take his hand and jump into the river ravine together, fleeing the garrison tonight.",
-      "target": "2.5 Major Branch - Wild"
+      "target": "2.5 Major Branch - Wild",
+          "effects": {"faeTrust":1}
     },
     {
       "text": "Refuse to jump tonight: use the secret drain route to act as a rogue courier inside the keep.",
@@ -771,7 +772,7 @@
     "choices": [
       {
         "text": "Stay by his side through the night, holding his hand as he heals.",
-        "effects": { "faeTrust": 1 },
+        "effects": { "faeTrust": 1, "physicalTemp": 1 },
         "target": "3.1b Fae Alliance Path",
         "next_file": "data/romance/The Binding of Ash and Bone/Act 4.json"
       },
@@ -808,11 +809,13 @@
     "choices": [
       {
         "text": "Accept his terms and begin translating the Sanguine Registers together.",
-        "target": "2.6f The Sanguine Registers"
+        "target": "2.6f The Sanguine Registers",
+          "effects": {"witchTrust":1}
       },
       {
         "text": "Demand ironclad protections for Highspire written directly into a blood-ink contract first.",
-        "target": "2.6f The Blood-Ink Treaty"
+        "target": "2.6f The Blood-Ink Treaty",
+          "effects": {"villageStanding":1}
       },
       {
         "text": "Refuse to collaborate with the Coven and demand your immediate release.",
@@ -831,7 +834,8 @@
     "choices": [
       {
         "text": "Confide in him about your ancestral memories, choosing to trust his intentions.",
-        "target": "2.7f Whispers in Ash"
+        "target": "2.7f Whispers in Ash",
+          "effects": {"witchTrust":1, "emotionalTemp": 1}
       },
       {
         "text": "Keep your answers strictly professional and challenge his loyalty to the Coven Elders.",
@@ -839,7 +843,8 @@
       },
       {
         "text": "Sabotage the translation by feeding him false bloodline glyphs.",
-        "target": "2.7f The Iron Oubliette"
+        "target": "2.7f The Iron Oubliette",
+          "effects": {"witchTrust":-1}
       }
     ]
   },
@@ -854,11 +859,13 @@
     "choices": [
       {
         "text": "Hold his blood-stained palm firmly, allowing the bond to settle into mutual respect.",
-        "target": "2.7f Whispers in Ash"
+        "target": "2.7f Whispers in Ash",
+        "effects": {"witchTrust":1, "physicalTemp": 1}
       },
       {
         "text": "Withdraw your hand immediately after the seal sets, maintaining a cold business boundary.",
-        "target": "2.7f Inquisitor's Eye"
+        "target": "2.7f Inquisitor's Eye",
+          "effects": {"physicalTemp":-1}
       }
     ]
   },
@@ -888,7 +895,8 @@
     "choices": [
       {
         "text": "Thank him for stepping in.",
-        "target": "2.8f The Forced Pact"
+        "target": "2.8f The Forced Pact",
+          "effects": {"witchTrust":1, "emotionalTemp": 1}
       },
       {
         "text": "Demand he give you a weapon.",
@@ -907,11 +915,13 @@
     "choices": [
       {
         "text": "Reach out and touch his cheek.",
-        "target": "2.8f Midnight Arcana"
+        "target": "2.8f Midnight Arcana",
+          "effects": {"witchTrust":1, "physicalTemp": 2}
       },
       {
         "text": "Acknowledge his protection, but insist on keeping your focus purely on surviving Xyler.",
-        "target": "2.8f The Forced Pact"
+        "target": "2.8f The Forced Pact",
+          "effects": {"emotionalTemp":1}
       }
     ]
   },

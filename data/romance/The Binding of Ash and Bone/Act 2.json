@@ -148,7 +148,8 @@
         },
         {
           "text": "Search the smoking perimeter first to ensure no villagers are trapped.",
-          "target": "2.3 The Unbound & The Standoff"
+          "target": "2.3 The Unbound & The Standoff",
+          "effects": {"villageStanding":1}
         },
                 {
           "text": "Draw back into the shadows of the burning lane to observe.",
