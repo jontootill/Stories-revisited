@@ -36,7 +36,8 @@
   "choices": [
     {
       "text": "Stand your ground against Marek's advance as the final battle begins.",
-      "target": "3.5h Act 3 Epilogue - Sole Guardian"
+      "target": "3.5h Act 3 Epilogue - Sole Guardian",
+      "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
     }
   ]
 },
@@ -110,7 +111,8 @@
   "choices": [
     {
       "text": "Step into the mist as the sovereign guardian of the wild border.",
-      "target": "3.5h Act 3 Epilogue - Sacred Memory"
+      "target": "3.5h Act 3 Epilogue - Sacred Memory",
+      "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
     }
   ]
 },
@@ -125,7 +127,8 @@
     "choices": [
       {
         "text": "Lead your unified, subjugated forces into the final clash against Marek.",
-        "target": "3.5g Act 3 Epilogue - Mastery"
+        "target": "3.5g Act 3 Epilogue - Mastery",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
       }
     ]
   },
@@ -140,7 +143,8 @@
     "choices": [
       {
         "text": "March out of the sanctuary to dismantle the Coven's lines with cold efficiency.",
-        "target": "3.5g Act 3 Epilogue - Mastery"
+        "target": "3.5g Act 3 Epilogue - Mastery",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
       }
     ]
   },
@@ -156,6 +160,7 @@
       {
         "text": "Unleash the volatile storm upon Marek's vanguard.",
         "target": "3.5g Act 3 Epilogue - Mastery",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json",
           "effects": {"magicalExposure":1}
       }
     ]
@@ -266,15 +271,18 @@
     "choices": [
       {
         "text": "Awaken the ancient stone monoliths to turn the grove into an impenetrable sanctuary wall.",
-        "target": "3.6f Dawn - Sanctuary Shield"
+        "target": "3.6f Dawn - Sanctuary Shield",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
       },
       {
         "text": "Use your shared leyline connection to launch an immediate, overwhelming vanguard strike on Marek's camp.",
-        "target": "3.6f Dawn - Leyline Vanguard"
+        "target": "3.6f Dawn - Leyline Vanguard",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
       },
       {
         "text": "Weave spirit mists to slip behind Marek's lines and dismantle his iron wards from the inside.",
-        "target": "3.6f Dawn - Shadow Ambush"
+        "target": "3.6f Dawn - Shadow Ambush",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json"
       }
     ]
   },
@@ -796,6 +804,7 @@
       {
         "text": "Focus on cleansing the magical fallout and healing the wounded in the village.",
         "target": "5.2a Healing the Valley",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json",
         "effects": {
           "villageStanding": 2,
           "emotionalTemp": 1
@@ -804,6 +813,7 @@
       {
         "text": "Begin immediate repairs on the keep and fortify the valley passes.",
         "target": "5.2b Rebuilding Highspire",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json",
         "effects": {
           "temperament": "pragmatic",
           "physicalTemp": 1
@@ -812,6 +822,7 @@
       {
         "text": "Track the retreating Coven into the deep woods to strike at their sanctuary.",
         "target": "5.2c The Hunt Begins",
+        "next_file": "data/romance/The Binding of Ash and Bone/Act 5.json",
         "effects": {
           "temperament": "defiant",
           "magicalExposure": 1
